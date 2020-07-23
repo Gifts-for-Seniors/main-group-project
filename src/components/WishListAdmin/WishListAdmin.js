@@ -23,29 +23,19 @@ class WishListAdmin extends Component {
                             return <tr key={item.id}>
                                         <td>{item.item}</td>
                                         <td><button value={item.id}>Edit</button></td>
-                                        <td><input type="checkbox"/></td>
+                                        <td><input type="checkbox" value="true"/></td>
                                         <td><button value={item.id}>Delete</button></td>
                                     </tr>
                         
                     })}
                 </table>
 
-                <div className="regularPriorityItems">
-                    <h2>Other Items</h2>
 
-                    {/* Mapping through our item reducer to display remaining items */}
-                    {this.props.state.list.map((item) => {
-                        if (item.priority === false) {
-                            return <ul key={item.id}>{item.item}</ul>
-                        }
-                    })
-                    }
-                </div>
+                <table>
 
-                <div>
-                    <button>Click here for drop-Off locations</button>
-                    <button>Click to shop our Amazon wishList</button>
-                </div>
+                </table>
+
+                
 
             </div>
         );
