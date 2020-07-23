@@ -13,7 +13,7 @@ class WishListAdmin extends Component {
                         <tr>
                             <th>Item</th>
                             <th>Edit</th>
-                            <th>High Priority</th>
+                            <th>Select High Priority</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -29,9 +29,32 @@ class WishListAdmin extends Component {
                         
                     })}
                 </table>
+                    <br></br>
+                    <br></br>
 
+                    <h2>Insert new item</h2>
 
                 <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Select High Priority</th>
+                            <th>Save Item</th>
+
+                            
+                        </tr>
+                        <tr>
+                            <td>
+                            <input type="text"></input>
+                            </td>
+                            <td>
+                                <input type="checkbox"></input>
+                            </td>
+                            <td>
+                                <button>Save New Item</button>
+                            </td>
+                        </tr>
+                    </thead>
 
                 </table>
 
