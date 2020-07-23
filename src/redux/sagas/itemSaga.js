@@ -13,15 +13,10 @@ function* fetchList(action) {
     }
 }
 
-//POST A NEW ITEM
-
-
 //UPDATE ITEM DESCRIPTION
 
 
 //UPDATE THE PRIORITY
-
-
 
 
 function* ItemSaga() {
