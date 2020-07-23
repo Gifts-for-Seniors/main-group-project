@@ -41,7 +41,7 @@ VALUES ($1, $2);`;
 /**
  * UPDATE WISHLIST ITEM
  */
-router.put("/edit-item", (req, res) => {
+router.put("/:edit-item", (req, res) => {
   let queryText = `UPDATE items SET "item"=$1, "priority"=$2 WHERE "id"=$3`;
   let itemId = req.params.id;
   let item = req.params.item;
@@ -61,7 +61,7 @@ router.put("/edit-item", (req, res) => {
 /**
  * UPDATE PRIORITY OF WISHLIST ITEM
  */
-router.put("/update-priority", (req, res) => {
+router.put("/:update-priority", (req, res) => {
   let priority = req.params.priority;
   let id = req.params.id;
   let queryText = `UPDATE items SET priority = !priority WHERE id=$1`;

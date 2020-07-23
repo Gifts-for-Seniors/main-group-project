@@ -2,9 +2,9 @@ import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
 
+//GET WISHLIST
 function* fetchList(action) {
     const id = action.payload
-    console.log('in payload', id)
     try {
         const response = yield axios.get(`/api/wishlist`);
         yield put({ type: 'SET_LIST', payload: response.data });
@@ -12,6 +12,17 @@ function* fetchList(action) {
         console.log('error getting details', error)
     }
 }
+
+//POST A NEW ITEM
+
+
+//UPDATE ITEM DESCRIPTION
+
+
+//UPDATE THE PRIORITY
+
+
+
 
 function* ItemSaga() {
     yield takeLatest('FETCH_LIST', fetchList);
