@@ -41,7 +41,7 @@ VALUES ($1, $2);`;
 /**
  * UPDATE WISHLIST ITEM
  */
-router.put("/:edit-item", rejectUnauthenticated, (req, res) => {
+router.put("/edit/:edit-item", rejectUnauthenticated, (req, res) => {
   let queryText = `UPDATE items SET "item"=$1, "priority"=$2 WHERE "id"=$3`;
   let itemId = req.params.id;
   let item = req.params.item;
@@ -61,12 +61,17 @@ router.put("/:edit-item", rejectUnauthenticated, (req, res) => {
 /**
  * UPDATE PRIORITY OF WISHLIST ITEM
  */
-router.put("/:update-priority", rejectUnauthenticated, (req, res) => {
-  let priority = req.params.priority;
-  let id = req.params.id;
-  let queryText = `UPDATE items SET priority = !priority WHERE id=$1`;
+router.put("/update/:id", rejectUnauthenticated, (req, res) => {
+  let id = req.body.id;
+  let priority = req.body.priority;
+  console.log(req.body.priority);
+  let changeHelper = !priority;
+
+  console.log(!priority);
+  console.log(id);
+  let queryText = `UPDATE items SET priority = $2 WHERE id=$1`;
   pool
-    .query(queryText, [id])
+    .query(queryText, [id, changeHelper])
     .then((result) => {
       res.sendStatus(200);
     })
