@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class WishListAdmin extends Component {
+  state = {
+    item: "",
+    priority: false,
+  };
+
   updatePriority = (item) => {
     console.log(item);
     let data = {
@@ -13,6 +18,7 @@ class WishListAdmin extends Component {
       payload: data,
     });
   };
+
   render() {
     return (
       <div>
@@ -41,7 +47,7 @@ class WishListAdmin extends Component {
                       this.updatePriority(item);
                     }}
                     type="checkbox"
-                    value="true"
+                    checked={item.priority}
                   />
                 </td>
                 <td>
@@ -71,7 +77,7 @@ class WishListAdmin extends Component {
                 <input type="checkbox"></input>
               </td>
               <td>
-                <button>Save New Item</button>
+                <button onClick={() => this.addItem()}>Save New Item</button>
               </td>
             </tr>
           </thead>
