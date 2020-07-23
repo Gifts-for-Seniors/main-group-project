@@ -12,13 +12,36 @@ function* fetchList(action) {
 }
 
 //POST A NEW ITEM
-
+function* addItem(action) {
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.post(`/api/wishlist`, action.payload, config);
+    yield put({ type: "FETCH_LIST" });
+  } catch (error) {
+    console.log("POST ERR", error);
+  }
+}
 //UPDATE ITEM DESCRIPTION
-
+function* updateItem(action) {
+    
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+  } catch (error) {
+    console.log("CLIENT UPDATE ERR", error);
+  }
+}
 //UPDATE THE PRIORITY
 
+//SAGA FUNCTIONS
 function* ItemSaga() {
   yield takeLatest("FETCH_LIST", fetchList);
+  yield takeLatest("ADD_ITEM", addItem);
 }
 
 export default ItemSaga;

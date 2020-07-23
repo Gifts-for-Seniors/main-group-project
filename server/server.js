@@ -10,6 +10,7 @@ const passport = require("./strategies/user.strategy");
 // Route includes
 const userRouter = require("./routes/user.router");
 const wishlistRouter = require("./routes/wishlist.router");
+const barrelLocations = require("./routes/barrel.router");
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,6 +25,7 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use("/api/wishlist", wishlistRouter);
+app.use("/api/barrel-locations", barrelLocations);
 
 // Serve static files
 app.use(express.static("build"));
