@@ -24,10 +24,14 @@ function* addItem(action) {
         console.log("POST ERR", error);
     }
 }
+
 //UPDATE ITEM DESCRIPTION
 function* updateItem(action) {
-
+    console.log(action.payload);
     try {
+        let payload = action.payload
+        let dataObject = { payload }
+        yield axios.put(`api/wishlist/${action.payload}`, dataObject);
         const config = {
             headers: { "Content-Type": "application/json" },
             withCredentials: true,
@@ -42,6 +46,7 @@ function* updateItem(action) {
 function* ItemSaga() {
     yield takeLatest("FETCH_LIST", fetchList);
     yield takeLatest("ADD_ITEM", addItem);
+    yield takeLatest("UPDATE_ITEM", updateItem);
 }
 
 export default ItemSaga;
