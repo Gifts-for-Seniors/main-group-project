@@ -10,7 +10,7 @@ const router = express.Router();
  * GET ALL WISHLIST ITEMS
  */
 router.get("/", (req, res) => {
-  queryText = `SELECT * FROM items ORDER BY item ASC`;
+  queryText = `SELECT * FROM items ORDER BY priority DESC`;
   pool
     .query(queryText)
     .then((result) => {
