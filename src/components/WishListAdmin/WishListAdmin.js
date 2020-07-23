@@ -3,12 +3,22 @@ import { connect } from 'react-redux';
 
 class WishListAdmin extends Component {
 
+    deleteItem = (id) => {
+
+        this.props.dispatch({
+            type: 'DELETE_ITEM', payload: id,
+        })
+        console.log('payload', id)
+
+    }
+
+
     render() {
         return (
             <div>
                 <h1>Admin WishList</h1>
 
-               <table>
+                <table>
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -19,20 +29,21 @@ class WishListAdmin extends Component {
                     </thead>
                     {/* Mapping through our item reducer to display items marked as high priority */}
                     {this.props.state.list.map((item) => {
-                       
-                            return <tr key={item.id}>
-                                        <td>{item.item}</td>
-                                        <td><button value={item.id}>Edit</button></td>
-                                        <td><input type="checkbox" value="true"/></td>
-                                        <td><button value={item.id}>Delete</button></td>
-                                    </tr>
-                        
+
+                        return <tr key={item.id}>
+                            <td>{item.item}</td>
+                            <td><button value={item.id}>Edit</button></td>
+                            <td><input type="checkbox" value="true" /></td>
+                            {/* <td><button value={item.id}>Delete</button></td> */}
+                            <td><button onClick={() => this.deleteItem(item.id)}>Delete</button></td>
+                        </tr>
+
                     })}
                 </table>
-                    <br></br>
-                    <br></br>
+                <br></br>
+                <br></br>
 
-                    <h2>Insert new item</h2>
+                <h2>Insert new item</h2>
 
                 <table>
                     <thead>
@@ -41,11 +52,11 @@ class WishListAdmin extends Component {
                             <th>Select High Priority</th>
                             <th>Save Item</th>
 
-                            
+
                         </tr>
                         <tr>
                             <td>
-                            <input type="text"></input>
+                                <input type="text"></input>
                             </td>
                             <td>
                                 <input type="checkbox"></input>
@@ -58,7 +69,7 @@ class WishListAdmin extends Component {
 
                 </table>
 
-                
+
 
             </div>
         );

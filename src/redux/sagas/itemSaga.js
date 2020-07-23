@@ -40,6 +40,16 @@ function* updateItem(action) {
         console.log("CLIENT UPDATE ERR", error);
     }
 }
+//DELETE ITEM
+function* deleteItem(action) {
+    console.log(action.payload)
+    try {
+        yield axios.delete(`/api/wishlist/${action.payload}`)
+        yield put({ type: 'SET_LIST' })
+    } catch (error) {
+        console.log(error);
+    }
+}
 //UPDATE THE PRIORITY
 
 //SAGA FUNCTIONS
@@ -47,6 +57,7 @@ function* ItemSaga() {
     yield takeLatest("FETCH_LIST", fetchList);
     yield takeLatest("ADD_ITEM", addItem);
     yield takeLatest("UPDATE_ITEM", updateItem);
+    yield takeLatest("SET_LIST", deleteItem);
 }
 
 export default ItemSaga;
