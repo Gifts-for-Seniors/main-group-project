@@ -12,7 +12,7 @@ class WishList extends Component {
                     <h2>High Priority Items</h2>
 
                     {/* Mapping through our item reducer to display items marked as high priority */}
-                    {this.props.state.items.map((item) => {
+                    {this.props.state.list.map((item) => {
                         if(item.priority === true){
                             return <ul key={item.id}>{item.item}</ul>
                         }
@@ -24,7 +24,7 @@ class WishList extends Component {
                     <h2>Other Items</h2>
 
                     {/* Mapping through our item reducer to display remaining items */}
-                    {this.props.state.items.map((item) => {
+                    {this.props.state.list.map((item) => {
                         if (item.priority === false) {
                             return <ul key={item.id}>{item.item}</ul>
                         }
