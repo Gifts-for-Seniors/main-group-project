@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import LogOutButton from "../LogOutButton/LogOutButton";
+import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
   state = {
@@ -70,7 +71,7 @@ class WishListAdmin extends Component {
   render() {
     return (
       <div className="adminView">
-        <h1>Admin WishList</h1>
+        {/* <h1>Admin WishList</h1> */}
 
         <table>
           <thead>

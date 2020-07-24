@@ -1,6 +1,10 @@
 table > td {
   display: inline;
 }
-.colorMe{
+.colorMe {
   background-color: red;
+}
+
+.adminView {
+  margin-top: 1.5%;
 }
