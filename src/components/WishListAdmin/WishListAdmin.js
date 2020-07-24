@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import LogOutButton from "../LogOutButton/LogOutButton";
@@ -8,6 +7,45 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 class WishListAdmin extends Component {
   state = {
     item: "",
+    itemToEdit: 0,
+    itemDescription: "",
+    // itemPriority: true
+  };
+
+  editItem = (id, description) => {
+    console.log("in edit", id, description);
+
+    this.setState({
+      ...this.state,
+      itemToEdit: id,
+      itemDescription: description,
+    });
+  };
+
+  cancelEdit = () => {
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
+  trackEdit = (event) => {
+    this.setState({
+      itemDescription: event.target.value,
+    });
+  };
+
+  saveEdit = () => {
+    this.props.dispatch({
+      type: "EDIT_ITEM",
+      payload: this.state,
+    });
+
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+      itemDescription: "",
+    });
   };
 
   updatePriority = (item) => {
@@ -36,34 +74,73 @@ class WishListAdmin extends Component {
               <th>Delete</th>
             </tr>
           </thead>
-          {/* Mapping through our item reducer to display items marked as high priority */}
-          {this.props.state.list.map((item) => {
-            return (
-              <tr key={item.id}>
-                <td>{item.item}</td>
-                <td>
-                  <StyledButton value={item.id}>Edit</StyledButton>
-                </td>
-                <td>
-                  <input
-                    onChange={() => {
-                      this.updatePriority(item);
-                    }}
-                    type="checkbox"
-                    checked={item.priority}
-                  />
-                </td>
-                <td>
-                  <RemoveButton value={item.id}>Delete</RemoveButton>
-                </td>
-              </tr>
-            );
-          })}
+
+          <tbody>
+            {/* Mapping through our item reducer to display items marked as high priority */}
+            {this.props.state.list.map((item) => {
+              if (item.id === this.state.itemToEdit) {
+                return (
+                  <tr key={item.id}>
+                    <td>
+                      <input
+                        size="125"
+                        type="text"
+                        value={this.state.itemDescription}
+                        onChange={this.trackEdit}
+                      ></input>
+                    </td>
+                    <td>
+                      <StyledButton
+                        value={item.id}
+                        onClick={(event) => this.saveEdit(event)}
+                      >
+                        Save
+                      </StyledButton>
+                      <StyledButton value={item.id} onClick={this.cancelEdit}>
+                        Cancel
+                      </StyledButton>
+                    </td>
+                    <td>
+                      <input type="checkbox" value="true" />
+                    </td>
+                    <td>
+                      <button value={item.id}>Delete</button>
+                    </td>
+                  </tr>
+                );
+              } else
+                return (
+                  <tr key={item.id}>
+                    <td>{item.item}</td>
+                    <td>
+                      <StyledButton
+                        value={item.id}
+                        onClick={() => this.editItem(item.id, item.item)}
+                      >
+                        Edit
+                      </StyledButton>
+                    </td>
+                    <td>
+                      <input
+                        onChange={() => {
+                          this.updatePriority(item);
+                        }}
+                        type="checkbox"
+                        checked={item.priority}
+                      />
+                    </td>
+
+                    <td>
+                      <RemoveButton value={item.id}>Delete</RemoveButton>
+                    </td>
+                  </tr>
+                );
+            })}
+          </tbody>
         </table>
         <br></br>
         <br></br>
-
-        <h2>Add an Item</h2>
+        <h2>Insert new item</h2>
 
         <table>
           <thead>
@@ -87,7 +164,6 @@ class WishListAdmin extends Component {
             </tr>
           </thead>
         </table>
-        <LogOutButton />
       </div>
     );
   }
