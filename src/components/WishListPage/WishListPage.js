@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 class WishList extends Component {
 
+    goToBarrelPage = () => {
+        this.props.history.push('/barrels')
+    }
+
     render() {
         return (
             <div>
@@ -33,7 +37,7 @@ class WishList extends Component {
                 </div>
 
                 <div>
-                    <button>Click here for drop-Off locations</button>
+                    <button onClick={this.goToBarrelPage}>Click here for drop-Off locations</button>
                     <button>Click to shop our Amazon wishList</button>
                 </div>
                 
