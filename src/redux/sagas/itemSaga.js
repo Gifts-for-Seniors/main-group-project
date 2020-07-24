@@ -42,22 +42,43 @@ function* updateItem(action) {
 }
 //DELETE ITEM
 function* deleteItem(action) {
-    console.log(action.payload)
+    // console.log(action.payload)
     try {
-        yield axios.delete(`/api/wishlist/${action.payload}`)
+        yield axios.delete(`/api/wishlist/edit/${action.payload}`)
         yield put({ type: 'SET_LIST' })
     } catch (error) {
         console.log(error);
     }
 }
 //UPDATE THE PRIORITY
+function* updatePriority(action) {
+    console.log(action.payload);
+    let data = {
+        id: action.payload.id,
+        priority: action.payload.priority,
+    };
+    console.log(data);
+    try {
+        const config = {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+        };
+        yield axios.put(`api/wishlist/update/${data}`, data);
+        yield put({ type: "FETCH_LIST" });
+    } catch (error) {
+        console.log("CLIENT UPDATE ERR", error);
+    }
+}
+
+//DELETE ITEM
 
 //SAGA FUNCTIONS
 function* ItemSaga() {
     yield takeLatest("FETCH_LIST", fetchList);
     yield takeLatest("ADD_ITEM", addItem);
     yield takeLatest("UPDATE_ITEM", updateItem);
-    yield takeLatest("SET_LIST", deleteItem);
+    // yield takeLatest("SET_LIST", deleteItem);
+    yield takeLatest("DELETE_ITEM", deleteItem);
 }
 
 export default ItemSaga;

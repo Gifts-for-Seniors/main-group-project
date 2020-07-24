@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class WishListAdmin extends Component {
-
-    deleteItem = (id) => {
-
+    updatePriority = (item) => {
+        console.log(item);
+        let data = {
+            id: item.id,
+            priority: item.priority,
+        };
+        this.props.dispatch({
+            type: "UPDATE_PRIORITY",
+            payload: data,
+        });
+    };
+    deleteFavorite = (id) => {
         this.props.dispatch({
             type: 'DELETE_ITEM', payload: id,
         })
         console.log('payload', id)
-
     }
 
 
@@ -29,15 +37,26 @@ class WishListAdmin extends Component {
                     </thead>
                     {/* Mapping through our item reducer to display items marked as high priority */}
                     {this.props.state.list.map((item) => {
-
-                        return <tr key={item.id}>
-                            <td>{item.item}</td>
-                            <td><button value={item.id}>Edit</button></td>
-                            <td><input type="checkbox" value="true" /></td>
-                            {/* <td><button value={item.id}>Delete</button></td> */}
-                            <td><button onClick={() => this.deleteItem(item.id)}>Delete</button></td>
-                        </tr>
-
+                        return (
+                            <tr key={item.id}>
+                                <td>{item.item}</td>
+                                <td>
+                                    <button value={item.id}>Edit</button>
+                                </td>
+                                <td>
+                                    <input
+                                        onChange={() => {
+                                            this.updatePriority(item);
+                                        }}
+                                        type="checkbox"
+                                        value="true"
+                                    />
+                                </td>
+                                <td>
+                                    <td><button onClick={() => this.deleteItem(item.id)}>Delete</button></td>
+                                </td>
+                            </tr>
+                        );
                     })}
                 </table>
                 <br></br>
@@ -51,8 +70,6 @@ class WishListAdmin extends Component {
                             <th>Item</th>
                             <th>Select High Priority</th>
                             <th>Save Item</th>
-
-
                         </tr>
                         <tr>
                             <td>
@@ -66,19 +83,14 @@ class WishListAdmin extends Component {
                             </td>
                         </tr>
                     </thead>
-
                 </table>
-
-
-
             </div>
         );
     }
 }
 
-
-const mapStateToProps = state => ({
-    state
+const mapStateToProps = (state) => ({
+    state,
 });
 
 export default connect(mapStateToProps)(WishListAdmin);
