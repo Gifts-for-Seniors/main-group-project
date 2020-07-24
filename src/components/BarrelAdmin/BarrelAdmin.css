@@ -1,0 +1,19 @@
+.addBarrels {
+  display: inline-block;
+  margin: 0 auto;
+  height: 100%;
+  align-content: center;
+}
+
+.addBarrels input {
+  display: inline-block;
+  margin: auto;
+}
+
+.addBarrelInput {
+  background-color: red;
+}
+
+.addBarrelButton {
+  float: right;
+}
