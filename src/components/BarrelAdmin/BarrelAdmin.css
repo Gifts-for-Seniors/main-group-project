@@ -1,5 +1,4 @@
-.addBarrels {
-  display: inline-block;
+/* .addBarrels {
   margin: 0 auto;
   height: 100%;
   align-content: center;
@@ -7,13 +6,38 @@
 
 .addBarrels input {
   display: inline-block;
-  margin: auto;
+  padding: 0%;
 }
 
 .addBarrelInput {
-  background-color: red;
+  display: inline-flexbox;
+  flex-wrap: wrap-reverse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding: 1%;
 }
 
 .addBarrelButton {
   float: right;
+} */
+.addBarrelInput {
+  padding: 2%;
+}
+.addBarrels {
+  /* background-color: antiquewhite; */
+  border: blueviolet 7px;
+  justify-content: center;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 22px;
+}
+
+#addDonationH3 {
+  text-align: center;
+}
+
+#theSubmitButtonForCarolyn {
+  background-color: plum;
+margin-bottom: 2%;
 }
