@@ -23,6 +23,9 @@ const Nav = (props) => (
           <Link className="nav-link" to="/wishlist-admin">
             Wishlist Admin
           </Link>
+          <Link className="nav-link" to="/barrel-admin">
+            Barrel Admin
+          </Link>
           {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
@@ -35,6 +38,9 @@ const Nav = (props) => (
       </Link> */}
       <Link className="nav-link" to="/wishlist">
         Wishlist
+      </Link>
+      <Link className="nav-link" to="/barrels">
+        Barrels
       </Link>
     </div>
   </div>
