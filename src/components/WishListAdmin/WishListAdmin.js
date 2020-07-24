@@ -91,28 +91,32 @@ class WishListAdmin extends Component {
                   <tr key={item.id}>
                     <td>
                       <input
-                        size="125"
+                        className="editInput"
                         type="text"
                         value={this.state.itemDescription}
                         onChange={this.trackEdit}
                       ></input>
                     </td>
-                    <td>
+                    <td className="buttonRow">
                       <StyledButton
+                        className="editButtons"
                         value={item.id}
                         onClick={(event) => this.saveEdit(event)}
                       >
                         Save
-                      </StyledButton>
-                      <StyledButton value={item.id} onClick={this.cancelEdit}>
-                        Cancel
                       </StyledButton>
                     </td>
                     <td>
                       <input type="checkbox" value="true" />
                     </td>
                     <td>
-                      <button value={item.id}>Delete</button>
+                      <RemoveButton
+                        className="editButtons"
+                        value={item.id}
+                        onClick={this.cancelEdit}
+                      >
+                        Undo
+                      </RemoveButton>
                     </td>
                   </tr>
                 );

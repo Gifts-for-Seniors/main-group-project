@@ -7,4 +7,18 @@ table > td {
 
 .adminView {
   margin-top: 1.5%;
+  max-width: 100%;
+}
+
+.editInput {
+  width: 95%;
+}
+.editButtons {
+  max-width: 100%;
+  display: inline-flex;
+}
+
+.buttonRow {
+  display: inline-flexbox;
+  max-width: 100%;
 }
