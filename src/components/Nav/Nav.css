@@ -6,12 +6,12 @@
     padding-left: 10px;
 }
 
-.nav {
+/* .nav {
   overflow: hidden;
   background-color: #00acb0;
-}
+} */
 
-.nav-link {
+/* .nav-link {
   float: left;
   color: #f2f2f2;
   background-color: #00acb0;
@@ -20,17 +20,15 @@
   text-decoration: none;
   font-size: 15px;
 
-  /* these last two make the logout button in
-  the nav bar look like another link */
   border:none;
   cursor: pointer;
   outline:0;
-}
+} */
 
-.nav-link:hover {
+/* .nav-link:hover {
   background-color: #008183;
-}
+} */
 
 .nav-right {
-  float: right;
+  float: left;
 }

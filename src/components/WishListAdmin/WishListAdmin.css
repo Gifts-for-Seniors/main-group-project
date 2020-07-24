@@ -1,0 +1,6 @@
+table > td {
+  display: inline;
+}
+.colorMe{
+  background-color: red;
+}

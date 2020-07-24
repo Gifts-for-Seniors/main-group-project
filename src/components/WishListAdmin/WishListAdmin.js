@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
+import StyledCheckbox from "../ButtonStyles/Checkbox";
+
 class WishListAdmin extends Component {
+  state = {
+    item: "",
+  };
+
   updatePriority = (item) => {
     console.log(item);
     let data = {
@@ -13,9 +20,10 @@ class WishListAdmin extends Component {
       payload: data,
     });
   };
+
   render() {
     return (
-      <div>
+      <div className="adminView">
         <h1>Admin WishList</h1>
 
         <table>
@@ -33,7 +41,7 @@ class WishListAdmin extends Component {
               <tr key={item.id}>
                 <td>{item.item}</td>
                 <td>
-                  <button value={item.id}>Edit</button>
+                  <StyledButton value={item.id}>Edit</StyledButton>
                 </td>
                 <td>
                   <input
@@ -41,11 +49,11 @@ class WishListAdmin extends Component {
                       this.updatePriority(item);
                     }}
                     type="checkbox"
-                    value="true"
+                    checked={item.priority}
                   />
                 </td>
                 <td>
-                  <button value={item.id}>Delete</button>
+                  <RemoveButton value={item.id}>Delete</RemoveButton>
                 </td>
               </tr>
             );
@@ -67,11 +75,13 @@ class WishListAdmin extends Component {
               <td>
                 <input type="text"></input>
               </td>
-              <td>
-                <input type="checkbox"></input>
+              <td className="checkBox">
+                <StyledCheckbox type="checkbox"></StyledCheckbox>
               </td>
               <td>
-                <button>Save New Item</button>
+                <StyledButton onClick={() => this.addItem()}>
+                  Save New Item
+                </StyledButton>
               </td>
             </tr>
           </thead>
