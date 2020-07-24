@@ -156,7 +156,9 @@ class WishListAdmin extends Component {
               } else
                 return (
                   <tr key={item.id}>
-                    <td>{item.item}</td>
+                    <td onDoubleClick={() => this.editItem(item.id, item.item)}>
+                      {item.item}
+                    </td>
                     <td className="checkBox">
                       <StyledCheckbox
                         onChange={() => {
@@ -215,7 +217,7 @@ class WishListAdmin extends Component {
                 onChange={this.trackNewItemPriority}
               />
             </td>
-            <td>
+            <td className="buttonRow">
               <StyledButton
                 className="addButton"
                 onClick={() => this.addItem()}
