@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import LogOutButton from "../LogOutButton/LogOutButton";
+import { Input } from "@material-ui/core";
 import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
@@ -90,12 +91,15 @@ class WishListAdmin extends Component {
                 return (
                   <tr key={item.id}>
                     <td>
-                      <input
+                      <Input
+                        autoFocus="true"
                         className="editInput"
                         type="text"
-                        value={this.state.itemDescription}
+                        label={this.state.itemDescription}
+                        // value={this.state.itemDescription}
+                        variant="filled"
                         onChange={this.trackEdit}
-                      ></input>
+                      />
                     </td>
                     <input
                       onChange={() => {
