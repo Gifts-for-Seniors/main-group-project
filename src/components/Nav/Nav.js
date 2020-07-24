@@ -3,19 +3,20 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
-
+import logo from "../../images/gifts-for-seniors-logo.png";
 const Nav = (props) => (
   <div className="nav">
     {/* <Link to="/home">
       <h2 className="nav-title">Gifts for Seniors</h2>
     </Link> */}
-    <h2 className="nav-title">Gifts for Seniors</h2>
+    <img className="srcLogo" src={logo} />
+    {/* <h2 className="nav-title">Gifts for Seniors</h2> */}
     <div className="nav-left">
       {/* <Link className="nav-link" to="/home"> */}
-        {/* Show this link if they are logged in or not,
+      {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
-        {/* {props.user.id ? "Home" : "Login / Register"}
+      {/* {props.user.id ? "Home" : "Login / Register"}
       </Link> */}
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (

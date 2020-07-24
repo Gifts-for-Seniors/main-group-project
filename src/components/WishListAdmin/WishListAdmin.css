@@ -12,6 +12,7 @@ table > td {
 
 .editInput {
   width: 98%;
+  padding-left: 2%;
 }
 .editButtons {
   max-width: 100%;
@@ -21,4 +22,15 @@ table > td {
 .buttonRow {
   display: inline-flexbox;
   max-width: 100%;
+}
+
+.checkBox {
+  width: 5%;
+  justify-self: start;
+}
+
+.wishlistItem {
+  height: auto;
+  max-width: 100%;
+  padding-left: 2%
 }
