@@ -95,7 +95,7 @@ class WishListAdmin extends Component {
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.itemDescription}
+                        value={this.state.itemDescription}
                         // value={this.state.itemDescription}
                         variant="filled"
                         onChange={this.trackEdit}
