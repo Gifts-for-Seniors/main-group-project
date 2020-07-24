@@ -13,6 +13,7 @@ function* fetchList(action) {
 
 //POST A NEW ITEM
 function* addItem(action) {
+    console.log(action.payload)
     try {
         const config = {
             headers: { "Content-Type": "application/json" },
@@ -24,8 +25,6 @@ function* addItem(action) {
         console.log("POST ERR", error);
     }
 }
-
-//UPDATE ITEM DESCRIPTION
 
 //DELETE ITEM
 function* deleteItem(action) {
@@ -80,6 +79,8 @@ function* ItemSaga() {
     yield takeLatest("DELETE_ITEM", deleteItem);
     yield takeLatest("EDIT_ITEM", editItem);
     yield takeLatest("UPDATE_PRIORITY", updatePriority);
+    // yield takeLatest("ADD_ITEM", addItem);
+    // yield takeLatest("FETCH_LIST", addItem);
 }
 
 export default ItemSaga;

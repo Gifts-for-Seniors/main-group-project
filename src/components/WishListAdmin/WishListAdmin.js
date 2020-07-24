@@ -11,7 +11,7 @@ class WishListAdmin extends Component {
     item: "",
     itemToEdit: 0,
     itemDescription: "",
-    // itemPriority: true
+    newItemPriority: false,
   };
 
   editItem = (id, description) => {
@@ -31,14 +31,20 @@ class WishListAdmin extends Component {
     });
   };
 
-  trackEdit = (event, name) => {
-    console.log(name);
-
+  trackEdit = (event, type) => {
     this.setState({
       ...this.state,
-      [name]: event.target.value,
+      [type]: event.target.value,
     });
-    console.log(this.state);
+  };
+
+  trackNewItemPriority = (event) => {
+    this.setState({
+      ...this.state,
+      newItemPriority: !this.state.newItemPriority,
+    });
+
+    console.log(this.state.newItemPriority);
   };
 
   saveEdit = () => {
@@ -73,6 +79,16 @@ class WishListAdmin extends Component {
     console.log("payload", id);
   };
 
+  addItem = () => {
+    console.log("item description", this.state.newItemDescription);
+    console.log("high priority", this.state.newItemPriority);
+
+    this.props.dispatch({
+      type: "ADD_ITEM",
+      payload: this.state,
+    });
+  };
+
   render() {
     return (
       <div className="adminView">
@@ -99,7 +115,7 @@ class WishListAdmin extends Component {
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        value={this.state.itemDescription}
+                        label={this.state.itemDescription}
                         // value={this.state.itemDescription}
                         variant="filled"
                         onChange={(event) =>
@@ -140,13 +156,13 @@ class WishListAdmin extends Component {
               } else
                 return (
                   <tr key={item.id}>
-                    <td className="wishlistItem">{item.item}</td>
+                    <td>{item.item}</td>
                     <td className="checkBox">
                       <StyledCheckbox
                         onChange={() => {
                           this.updatePriority(item);
                         }}
-                        type="checkbox"
+                        // type="checkbox"
                         checked={item.priority}
                       />
                     </td>
@@ -171,7 +187,7 @@ class WishListAdmin extends Component {
         </table>
         <br></br>
         <br></br>
-        <h2>Add Item</h2>
+        <h2>Insert new item</h2>
 
         <table>
           <thead>
@@ -183,25 +199,18 @@ class WishListAdmin extends Component {
             <tr>
               <td>
                 <Input
-                  className="editInput"
-                  type="text"
                   onChange={(event) => {
-                    this.trackEdit(event, "newItem");
+                    this.trackEdit(event, "newItemDescription");
                   }}
-                  placeholder="Add Item and Description Please"
-                />
+                  type="text"
+                ></Input>
               </td>
               <td className="checkBox">
                 <StyledCheckbox
-                  value="false"
+                  // checked="false"
                   type="checkbox"
-                  onChange={(event) => {
-                    this.setState({
-                      newPriority: !event.target.value,
-                    });
-                    console.log(this.state.newPriority);
-                  }}
-                ></StyledCheckbox>
+                  onChange={this.trackNewItemPriority}
+                />
               </td>
               <td>
                 <StyledButton onClick={() => this.addItem()}>

@@ -23,8 +23,8 @@ router.get("/", (req, res) => {
  * POST NEW WISHLIST ITEM
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  let newItem = req.body.item;
-  let priority = req.body.priority;
+  let newItem = req.body.newItemDescription;
+  let priority = req.body.newItemPriority;
   let queryText = `INSERT INTO items (item, priority)
 VALUES ($1, $2);`;
   pool
