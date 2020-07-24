@@ -26,20 +26,7 @@ function* addItem(action) {
 }
 
 //UPDATE ITEM DESCRIPTION
-function* updateItem(action) {
-    console.log(action.payload);
-    try {
-        let payload = action.payload
-        let dataObject = { payload }
-        yield axios.put(`api/wishlist/${action.payload}`, dataObject);
-        const config = {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-        };
-    } catch (error) {
-        console.log("CLIENT UPDATE ERR", error);
-    }
-}
+
 //DELETE ITEM
 function* deleteItem(action) {
     // console.log(action.payload)
@@ -48,6 +35,21 @@ function* deleteItem(action) {
         yield put({ type: 'FETCH_LIST' })
     } catch (error) {
         console.log(error);
+    }
+}
+function* editItem(action) {
+
+    console.log('action.payload:', action.payload)
+
+    try {
+        const config = {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+        };
+        yield axios.put(`/api/wishlist/edit-item`, action.payload, config);
+        yield put({ type: "FETCH_LIST" });
+    } catch (error) {
+        console.log("ITEM EDIT FAILED", error);
     }
 }
 //UPDATE THE PRIORITY
@@ -70,15 +72,14 @@ function* updatePriority(action) {
     }
 }
 
-//DELETE ITEM
 
 //SAGA FUNCTIONS
 function* ItemSaga() {
     yield takeLatest("FETCH_LIST", fetchList);
     yield takeLatest("ADD_ITEM", addItem);
-    yield takeLatest("UPDATE_ITEM", updateItem);
-    // yield takeLatest("SET_LIST", deleteItem);
     yield takeLatest("DELETE_ITEM", deleteItem);
+    yield takeLatest("EDIT_ITEM", editItem);
+    yield takeLatest("UPDATE_PRIORITY", updatePriority);
 }
 
 export default ItemSaga;
