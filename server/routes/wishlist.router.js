@@ -77,7 +77,10 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-//DELETE ITEM
+
+/**
+ * DELETE ITEM FROM WISHLIST
+ */
 router.delete('/delete/:id', (req, res) => {
   let reqId = req.params.id;
   console.log('Delete request for id', reqId);
