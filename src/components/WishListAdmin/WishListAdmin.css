@@ -14,19 +14,27 @@ table > td {
   width: 98%;
   padding-left: 2%;
 }
-.editButtons {
+/* .editButtons {
   max-width: 100%;
   display: inline-flex;
-}
+} */
 
 .buttonRow {
-  display: inline-flexbox;
-  max-width: 100%;
+  width: 2%;
+  display: flexbox;
+  text-align: center;
+}
+.buttonRow > Button {
+  display: flexbox;
+  flex-direction: row;
+  margin: auto;
 }
 
 .checkBox {
-  width: 5%;
-  justify-self: start;
+  display: flexbox;
+  flex-direction: row;
+  margin: auto;
+  width: 2%;
 }
 
 .wishlistItem {

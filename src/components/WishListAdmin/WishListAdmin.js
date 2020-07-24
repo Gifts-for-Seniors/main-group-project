@@ -142,7 +142,7 @@ class WishListAdmin extends Component {
                       </StyledButton>
                     </td>
 
-                    <td>
+                    <td className="buttonRow">
                       <RemoveButton
                         className="editButtons"
                         value={item.id}
@@ -166,8 +166,9 @@ class WishListAdmin extends Component {
                         checked={item.priority}
                       />
                     </td>
-                    <td>
+                    <td className="buttonRow">
                       <StyledButton
+                        className="editButtons"
                         value={item.id}
                         onClick={() => this.editItem(item.id, item.item)}
                       >
@@ -175,7 +176,7 @@ class WishListAdmin extends Component {
                       </StyledButton>
                     </td>
 
-                    <td>
+                    <td className="buttonRow">
                       <RemoveButton onClick={() => this.deleteItem(item.id)}>
                         Delete
                       </RemoveButton>
@@ -215,7 +216,12 @@ class WishListAdmin extends Component {
               />
             </td>
             <td>
-              <StyledButton onClick={() => this.addItem()}>Add</StyledButton>
+              <StyledButton
+                className="addButton"
+                onClick={() => this.addItem()}
+              >
+                Add
+              </StyledButton>
             </td>
           </tr>
         </table>
