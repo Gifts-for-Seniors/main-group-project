@@ -94,7 +94,7 @@ class WishListAdmin extends Component {
       <div className="adminView">
         {/* <h1>Admin WishList</h1> */}
 
-        <table>
+        <table className="wishListAdminTable">
           <thead>
             <tr>
               <th>Item</th>
@@ -116,7 +116,7 @@ class WishListAdmin extends Component {
                         className="editInput"
                         type="text"
                         label={this.state.itemDescription}
-                        // value={this.state.itemDescription}
+                        value={this.state.itemDescription}
                         variant="filled"
                         onChange={(event) =>
                           this.trackEdit(event, "itemDescription")
@@ -193,32 +193,31 @@ class WishListAdmin extends Component {
           <thead>
             <tr>
               <th>Item</th>
-              <th>Select High Priority</th>
-              <th>Save Item</th>
-            </tr>
-            <tr>
-              <td>
-                <Input
-                  onChange={(event) => {
-                    this.trackEdit(event, "newItemDescription");
-                  }}
-                  type="text"
-                ></Input>
-              </td>
-              <td className="checkBox">
-                <StyledCheckbox
-                  // checked="false"
-                  type="checkbox"
-                  onChange={this.trackNewItemPriority}
-                />
-              </td>
-              <td>
-                <StyledButton onClick={() => this.addItem()}>
-                  Save New Item
-                </StyledButton>
-              </td>
+              <th>Select Priority</th>
+              <th>Add Item</th>
             </tr>
           </thead>
+          <tr className="insertItem">
+            <td>
+              <Input
+                className="addItemInput"
+                onChange={(event) => {
+                  this.trackEdit(event, "newItemDescription");
+                }}
+                placeholder="Add item description please"
+                type="text"
+              ></Input>
+            </td>
+            <td className="checkBox">
+              <StyledCheckbox
+                type="checkbox"
+                onChange={this.trackNewItemPriority}
+              />
+            </td>
+            <td>
+              <StyledButton onClick={() => this.addItem()}>Add</StyledButton>
+            </td>
+          </tr>
         </table>
       </div>
     );
