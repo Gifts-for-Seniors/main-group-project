@@ -5,17 +5,17 @@
     color: #f2f2f2;
     padding-left: 10px;
 }
-
-/* .nav {
+/* 
+.nav {
   overflow: hidden;
   background-color: #00acb0;
 } */
 
-/* .nav-link {
+.nav-link {
   float: left;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: Blue;
   text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
@@ -23,11 +23,11 @@
   border:none;
   cursor: pointer;
   outline:0;
-} */
+}
 
-/* .nav-link:hover {
+.nav-link:hover {
   background-color: #008183;
-} */
+}
 
 .nav-right {
   float: left;

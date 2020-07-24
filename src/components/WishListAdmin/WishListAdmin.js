@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
+import LogOutButton from "../LogOutButton/LogOutButton";
 
 class WishListAdmin extends Component {
   state = {
@@ -62,7 +63,7 @@ class WishListAdmin extends Component {
         <br></br>
         <br></br>
 
-        <h2>Insert new item</h2>
+        <h2>Add an Item</h2>
 
         <table>
           <thead>
@@ -86,6 +87,7 @@ class WishListAdmin extends Component {
             </tr>
           </thead>
         </table>
+        <LogOutButton />
       </div>
     );
   }
