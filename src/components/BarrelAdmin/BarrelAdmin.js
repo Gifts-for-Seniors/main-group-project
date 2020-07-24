@@ -46,6 +46,9 @@ class BarrelAdmin extends Component {
                     <label for="hours">hours:</label><br />
                     <input name="hours" type="text" value={this.state.hours} onChange={this.handleInput} /><br />
 
+                    <label for="status">Status:</label><br />
+                    <input name="status" type="text" value={this.state.status} onChange={this.handleInput} /><br />
+
                 </form>
             </div>
         );
