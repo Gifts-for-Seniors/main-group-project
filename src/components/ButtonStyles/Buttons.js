@@ -2,10 +2,11 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 import { withTheme } from "emotion-theming";
+import { red } from "@material-ui/core/colors";
 const StyledButton = withStyles({
   root: {
-    background: "blue",
-    borderRadius: 7,
+    background: "#0352fc",
+    borderRadius: 17,
     color: "white",
     padding: "0 30px",
     height: ".2%",
@@ -16,7 +17,7 @@ const StyledButton = withStyles({
 })(Button);
 const RemoveButton = withStyles({
   root: {
-    background: "red",
+    background: "#bd0f32",
     borderRadius: 22,
     color: "white",
     height: ".2%",
