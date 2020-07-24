@@ -1,7 +1,3 @@
-.highPriority {
-  background-color: red;
-}
-
-.lowPriority {
-    background-color: blue;
+table > td {
+  display: inline;
 }

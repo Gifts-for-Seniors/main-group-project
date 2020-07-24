@@ -45,7 +45,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 /**
  * UPDATE BARREL STATUS
  */
-router.put("/", rejectUnauthenticated, (req, res) => {
+router.put("/update/:id", rejectUnauthenticated, (req, res) => {
   let status = req.body.status;
   let id = req.body.id;
   let statusUpdater = !status;
