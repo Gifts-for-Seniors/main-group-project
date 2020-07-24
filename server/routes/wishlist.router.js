@@ -10,7 +10,7 @@ const router = express.Router();
  * GET ALL WISHLIST ITEMS
  */
 router.get("/", (req, res) => {
-  queryText = `SELECT * FROM items`;
+  queryText = `SELECT * FROM items ORDER BY priority DESC, item ASC`;
   pool
     .query(queryText)
     .then((result) => {
@@ -67,13 +67,12 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
   console.log(req.body.priority);
   let changeHelper = !priority;
 
-  console.log(!priority);
-  console.log(id);
   let queryText = `UPDATE items SET priority = $2 WHERE id=$1`;
   pool
     .query(queryText, [id, changeHelper])
     .then((result) => {
       res.sendStatus(200);
+      console.log("success", result);
     })
     .catch((error) => {
       console.log("ERROR IN SERVER PUT", error);
