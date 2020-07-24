@@ -42,5 +42,23 @@ router.post("/", rejectUnauthenticated, (req, res) => {
     });
 });
 
+/**
+ * UPDATE BARREL STATUS
+ */
+router.put("/", rejectUnauthenticated, (req, res) => {
+  let status = req.body.status;
+  let id = req.body.id;
+  let statusUpdater = !status;
+  const queryText = `UPDATE barrels set status = $2 WHERE id = $1;`;
+  pool
+    .query(queryText, [id, statusUpdater])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
