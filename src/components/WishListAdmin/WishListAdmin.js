@@ -7,193 +7,222 @@ import { Input } from "@material-ui/core";
 import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
-  state = {
-    item: "",
-    itemToEdit: 0,
-    itemDescription: "",
-    // itemPriority: true
-  };
-
-  editItem = (id, description) => {
-    console.log("in edit", id, description);
-
-    this.setState({
-      ...this.state,
-      itemToEdit: id,
-      itemDescription: description,
-    });
-  };
-
-  cancelEdit = () => {
-    this.setState({
-      ...this.state,
-      itemToEdit: 0,
-    });
-  };
-
-  trackEdit = (event) => {
-    this.setState({
-      itemDescription: event.target.value,
-    });
-  };
-
-  saveEdit = () => {
-    this.props.dispatch({
-      type: "EDIT_ITEM",
-      payload: this.state,
-    });
-
-    this.setState({
-      ...this.state,
-      itemToEdit: 0,
-      itemDescription: "",
-    });
-  };
-
-  updatePriority = (item) => {
-    console.log(item);
-    let data = {
-      id: item.id,
-      priority: item.priority,
+    state = {
+        item: "",
+        itemToEdit: 0,
+        itemDescription: "",
+        newItemPriority: false
     };
-    this.props.dispatch({
-      type: "UPDATE_PRIORITY",
-      payload: data,
-    });
-  };
-  deleteItem = (id) => {
-    this.props.dispatch({
-      type: "DELETE_ITEM",
-      payload: id,
-    });
-    console.log("payload", id);
-  };
 
-  render() {
-    return (
-      <div className="adminView">
-        {/* <h1>Admin WishList</h1> */}
+    editItem = (id, description) => {
+        console.log("in edit", id, description);
 
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Select Priority</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
+        this.setState({
+            ...this.state,
+            itemToEdit: id,
+            itemDescription: description,
+        });
+    };
 
-          <tbody>
-            {/* Mapping through our item reducer to display items marked as high priority */}
-            {this.props.state.list.map((item) => {
-              if (item.id === this.state.itemToEdit) {
-                return (
-                  <tr key={item.id}>
-                    <td>
-                      <Input
-                        autoFocus="true"
-                        className="editInput"
-                        type="text"
-                        label={this.state.itemDescription}
-                        // value={this.state.itemDescription}
-                        variant="filled"
-                        onChange={this.trackEdit}
-                      />
-                    </td>
-                    <input
-                      onChange={() => {
-                        this.updatePriority(item);
-                      }}
-                      type="checkbox"
-                      checked={item.priority}
-                    />
-                    <td className="buttonRow">
-                      <StyledButton
-                        className="editButtons"
-                        value={item.id}
-                        onClick={(event) => this.saveEdit(event)}
-                      >
-                        Save
+    cancelEdit = () => {
+        this.setState({
+            ...this.state,
+            itemToEdit: 0,
+        });
+    };
+
+    trackEdit = (event, type) => {
+        this.setState({
+            ...this.state,
+            [type]: event.target.value,
+
+        });
+    };
+
+    trackNewItemPriority = (event) => {
+
+        this.setState({
+            ...this.state,
+            newItemPriority: !this.state.newItemPriority
+        })
+
+        console.log(this.state.newItemPriority)
+    }
+
+    saveEdit = () => {
+        this.props.dispatch({
+            type: "EDIT_ITEM",
+            payload: this.state,
+        });
+
+        this.setState({
+            ...this.state,
+            itemToEdit: 0,
+            itemDescription: "",
+        });
+    };
+
+    updatePriority = (item) => {
+        console.log(item);
+        let data = {
+            id: item.id,
+            priority: item.priority,
+        };
+        this.props.dispatch({
+            type: "UPDATE_PRIORITY",
+            payload: data,
+        });
+    };
+    deleteItem = (id) => {
+        this.props.dispatch({
+            type: "DELETE_ITEM",
+            payload: id,
+        });
+        console.log("payload", id);
+    };
+
+    addItem = () => {
+        console.log("item description", this.state.newItemDescription);
+        console.log("high priority", this.state.newItemPriority);
+
+        this.props.dispatch({
+            type: "ADD_ITEM",
+            payload: this.state
+        });
+
+    };
+
+
+
+    render() {
+        return (
+            <div className="adminView">
+                {/* <h1>Admin WishList</h1> */}
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Select Priority</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {/* Mapping through our item reducer to display items marked as high priority */}
+                        {this.props.state.list.map((item) => {
+                            if (item.id === this.state.itemToEdit) {
+                                return (
+                                    <tr key={item.id}>
+                                        <td>
+                                            <Input
+                                                autoFocus="true"
+                                                className="editInput"
+                                                type="text"
+                                                label={this.state.itemDescription}
+                                                // value={this.state.itemDescription}
+                                                variant="filled"
+                                                onChange={(event) => this.trackEdit(event, "itemDescription")}
+                                            />
+                                        </td>
+                                        <input
+                                            onChange={() => {
+                                                this.updatePriority(item);
+                                            }}
+                                            type="checkbox"
+                                            checked={item.priority}
+                                        />
+                                        <td className="buttonRow">
+                                            <StyledButton
+                                                className="editButtons"
+                                                value={item.id}
+                                                onClick={(event) => this.saveEdit(event)}
+                                            >
+                                                Save
                       </StyledButton>
-                    </td>
+                                        </td>
 
-                    <td>
-                      <RemoveButton
-                        className="editButtons"
-                        value={item.id}
-                        onClick={this.cancelEdit}
-                      >
-                        Undo
+                                        <td>
+                                            <RemoveButton
+                                                className="editButtons"
+                                                value={item.id}
+                                                onClick={this.cancelEdit}
+                                            >
+                                                Undo
                       </RemoveButton>
-                    </td>
-                  </tr>
-                );
-              } else
-                return (
-                  <tr key={item.id}>
-                    <td>{item.item}</td>
-                    <td>
-                      <input
-                        onChange={() => {
-                          this.updatePriority(item);
-                        }}
-                        type="checkbox"
-                        checked={item.priority}
-                      />
-                    </td>
-                    <td>
-                      <StyledButton
-                        value={item.id}
-                        onClick={() => this.editItem(item.id, item.item)}
-                      >
-                        Edit
+                                        </td>
+                                    </tr>
+                                );
+                            } else
+                                return (
+                                    <tr key={item.id}>
+                                        <td>{item.item}</td>
+                                        <td>
+                                            <input
+                                                onChange={() => {
+                                                    this.updatePriority(item);
+                                                }}
+                                                type="checkbox"
+                                                checked={item.priority}
+                                            />
+                                        </td>
+                                        <td>
+                                            <StyledButton
+                                                value={item.id}
+                                                onClick={() => this.editItem(item.id, item.item)}
+                                            >
+                                                Edit
                       </StyledButton>
-                    </td>
+                                        </td>
 
-                    <td>
-                      <RemoveButton onClick={() => this.deleteItem(item.id)}>
-                        Delete
+                                        <td>
+                                            <RemoveButton onClick={() => this.deleteItem(item.id)}>
+                                                Delete
                       </RemoveButton>
-                    </td>
-                  </tr>
-                );
-            })}
-          </tbody>
-        </table>
-        <br></br>
-        <br></br>
-        <h2>Insert new item</h2>
+                                        </td>
+                                    </tr>
+                                );
+                        })}
+                    </tbody>
+                </table>
+                <br></br>
+                <br></br>
+                <h2>Insert new item</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Select High Priority</th>
-              <th>Save Item</th>
-            </tr>
-            <tr>
-              <td>
-                <input type="text"></input>
-              </td>
-              <td className="checkBox">
-                <StyledCheckbox type="checkbox"></StyledCheckbox>
-              </td>
-              <td>
-                <StyledButton onClick={() => this.addItem()}>
-                  Save New Item
-                </StyledButton>
-              </td>
-            </tr>
-          </thead>
-        </table>
-      </div>
-    );
-  }
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Select High Priority</th>
+                            <th>Save Item</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Input onChange={(event) => {
+                                    this.trackEdit(event, "newItemDescription")
+                                }}
+                                    type="text">
+                                </Input>
+                            </td>
+                            <td className="checkBox">
+                                <StyledCheckbox type="checkbox" onChange={this.trackNewItemPriority} />
+                            </td>
+                            <td>
+                                <StyledButton onClick={() => this.addItem()}>
+                                    Save New Item
+                                </StyledButton>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = (state) => ({
-  state,
+    state,
 });
 
 export default connect(mapStateToProps)(WishListAdmin);
