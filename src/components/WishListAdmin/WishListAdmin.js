@@ -97,7 +97,7 @@ class WishListAdmin extends Component {
         <table className="wishListAdminTable">
           <thead>
             <tr>
-              <th>Item</th>
+              <th className="tableTitle">Current Wishlist</th>
               <th>Select Priority</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -190,7 +190,7 @@ class WishListAdmin extends Component {
         </table>
         <br></br>
         <br></br>
-        <h2>Insert new item</h2>
+        <h2 className="wishHeader">Add to Wishlist</h2>
 
         <table>
           <thead>
@@ -207,7 +207,7 @@ class WishListAdmin extends Component {
                 onChange={(event) => {
                   this.trackEdit(event, "newItemDescription");
                 }}
-                placeholder="Add item description please"
+                placeholder="Add item description please.."
                 type="text"
               ></Input>
             </td>

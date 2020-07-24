@@ -59,6 +59,6 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
       console.log("ERROR IN SERVER PUT", error);
       res.sendStatus(500);
     });
-});
+});9
 
 module.exports = router;
