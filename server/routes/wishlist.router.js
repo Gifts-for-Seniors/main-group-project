@@ -66,7 +66,6 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
   let priority = req.body.priority;
   console.log(req.body.priority);
   let changeHelper = !priority;
-
   let queryText = `UPDATE items SET priority = $2 WHERE id=$1`;
   pool
     .query(queryText, [id, changeHelper])
@@ -79,4 +78,5 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
 module.exports = router;
