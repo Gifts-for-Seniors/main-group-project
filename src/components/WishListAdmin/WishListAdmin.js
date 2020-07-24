@@ -3,6 +3,51 @@ import { connect } from 'react-redux';
 
 class WishListAdmin extends Component {
 
+    state = {
+        itemToEdit: 0,
+        itemDescription: '',
+        itemPriority: true
+    }
+
+    editItem = (id, description) => {
+        console.log('in edit', id, description)
+
+        this.setState({
+            ...this.state,
+            itemToEdit: id,
+            itemDescription: description
+            })
+    }
+
+    cancelEdit = () => {
+        this.setState({
+            ...this.state,
+            itemToEdit: 0
+        })
+    }
+
+    trackEdit = (event) => {
+        this.setState({
+            itemDescription: event.target.value
+        })
+    }
+
+    saveEdit = () => {
+
+        this.props.dispatch({
+            type: 'EDIT_ITEM',
+            payload: this.state
+        })
+
+        this.setState({
+            ...this.state,
+            itemToEdit: 0,
+            itemDescription: ''
+        })
+    }
+
+
+
     render() {
         return (
             <div>
@@ -17,17 +62,30 @@ class WishListAdmin extends Component {
                             <th>Delete</th>
                         </tr>
                     </thead>
+
+                    <tbody>
                     {/* Mapping through our item reducer to display items marked as high priority */}
                     {this.props.state.list.map((item) => {
-                       
+                       if (item.id === this.state.itemToEdit){
+        
+                            return <tr key={item.id}>
+                                <td><input size="125" type="text" value={this.state.itemDescription} onChange={this.trackEdit}></input></td>
+                                <td><button value={item.id} onClick={(event)=>this.saveEdit(event)}>Save</button>
+                                <button value={item.id} onClick={this.cancelEdit}>Cancel</button></td>
+                                <td><input type="checkbox" value="true" /></td>
+                                <td><button value={item.id}>Delete</button></td>
+                            </tr>
+                       }
+                       else
                             return <tr key={item.id}>
                                         <td>{item.item}</td>
-                                        <td><button value={item.id}>Edit</button></td>
+                                        <td><button value={item.id} onClick={()=>this.editItem(item.id, item.item)}>Edit</button></td>
                                         <td><input type="checkbox" value="true"/></td>
                                         <td><button value={item.id}>Delete</button></td>
                                     </tr>
                         
                     })}
+                    </tbody>
                 </table>
                     <br></br>
                     <br></br>

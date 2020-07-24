@@ -41,11 +41,11 @@ VALUES ($1, $2);`;
 /**
  * UPDATE WISHLIST ITEM
  */
-router.put("/:edit-item", rejectUnauthenticated, (req, res) => {
+router.put("/edit-item", rejectUnauthenticated, (req, res) => {
   let queryText = `UPDATE items SET "item"=$1, "priority"=$2 WHERE "id"=$3`;
-  let itemId = req.params.id;
-  let item = req.params.item;
-  let priority = req.param.priority;
+  let itemId = req.body.itemToEdit;
+  let item = req.body.itemDescription;
+  let priority = req.body.itemPriority;
 
   pool
     .query(queryText, [item, priority, itemId])

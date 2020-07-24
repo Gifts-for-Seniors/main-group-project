@@ -25,15 +25,18 @@ function* addItem(action) {
   }
 }
 //UPDATE ITEM DESCRIPTION
-function* updateItem(action) {
+function* editItem(action) {
+  console.log('action.payload:', action.payload)
     
   try {
     const config = {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
+    yield axios.put(`/api/wishlist/edit-item`, action.payload, config);
+    yield put({ type: "FETCH_LIST" });
   } catch (error) {
-    console.log("CLIENT UPDATE ERR", error);
+    console.log("ITEM EDIT FAILED", error);
   }
 }
 //UPDATE THE PRIORITY
@@ -42,6 +45,7 @@ function* updateItem(action) {
 function* ItemSaga() {
   yield takeLatest("FETCH_LIST", fetchList);
   yield takeLatest("ADD_ITEM", addItem);
+  yield takeLatest("EDIT_ITEM", editItem);
 }
 
 export default ItemSaga;
