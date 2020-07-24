@@ -19,7 +19,7 @@ class WishListAdmin extends Component {
             ...this.state,
             itemToEdit: id,
             itemDescription: description
-            })
+        })
     }
 
     cancelEdit = () => {
@@ -60,15 +60,19 @@ class WishListAdmin extends Component {
             payload: data,
         });
     };
-
-
+    deleteItem = (id) => {
+        this.props.dispatch({
+            type: 'DELETE_ITEM', payload: id,
+        })
+        console.log('payload', id)
+    }
 
     render() {
         return (
             <div className="adminView">
                 <h1>Admin WishList</h1>
 
-               <table>
+                <table>
                     <thead>
                         <tr>
                             <th>Item</th>
@@ -79,42 +83,42 @@ class WishListAdmin extends Component {
                     </thead>
 
                     <tbody>
-                    {/* Mapping through our item reducer to display items marked as high priority */}
-                    {this.props.state.list.map((item) => {
-                       if (item.id === this.state.itemToEdit){
-        
-                            return <tr key={item.id}>
-                                <td><input size="125" type="text" value={this.state.itemDescription} onChange={this.trackEdit}></input></td>
-                                <td><StyledButton value={item.id} onClick={(event)=>this.saveEdit(event)}>Save</StyledButton>
-                                <StyledButton value={item.id} onClick={this.cancelEdit}>Cancel</StyledButton></td>
-                                <td><input type="checkbox" value="true" /></td>
-                                <td><button value={item.id}>Delete</button></td>
-                            </tr>
-                       }
-                       else
-                            return <tr key={item.id}>
-                                        <td>{item.item}</td>
-                                        <td><StyledButton value={item.id} onClick={() => this.editItem(item.id, item.item)}>Edit</StyledButton></td>
-                                        <td>  
-                                            <input
+                        {/* Mapping through our item reducer to display items marked as high priority */}
+                        {this.props.state.list.map((item) => {
+                            if (item.id === this.state.itemToEdit) {
+
+                                return <tr key={item.id}>
+                                    <td><input size="125" type="text" value={this.state.itemDescription} onChange={this.trackEdit}></input></td>
+                                    <td><StyledButton value={item.id} onClick={(event) => this.saveEdit(event)}>Save</StyledButton>
+                                        <StyledButton value={item.id} onClick={this.cancelEdit}>Cancel</StyledButton></td>
+                                    <td><input type="checkbox" value="true" /></td>
+                                    <td><button value={item.id}>Delete</button></td>
+                                </tr>
+                            }
+                            else
+                                return <tr key={item.id}>
+                                    <td>{item.item}</td>
+                                    <td><StyledButton value={item.id} onClick={() => this.editItem(item.id, item.item)}>Edit</StyledButton></td>
+                                    <td>
+                                        <input
                                             onChange={() => {
                                                 this.updatePriority(item);
                                             }}
                                             type="checkbox"
                                             checked={item.priority}
-                                            />
-                                        </td>
-                                        
-                                <td>
-                                    <RemoveButton value={item.id}>Delete</RemoveButton>
-                                </td>
-                                    </tr>
-                        
-                    })}
+                                        />
+                                    </td>
+
+                                    <td>
+                                        <RemoveButton onClick={() => this.deleteItem(item.id)}>Delete</RemoveButton>
+                                    </td>
+                                </tr>
+
+                        })}
                     </tbody>
                 </table>
-                    <br></br>
-                    <br></br>
+                <br></br>
+                <br></br>
                 <h2>Insert new item</h2>
 
                 <table>
@@ -146,7 +150,7 @@ class WishListAdmin extends Component {
 
 
 const mapStateToProps = (state) => ({
-  state,
+    state,
 });
 
 export default connect(mapStateToProps)(WishListAdmin);
