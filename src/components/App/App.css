@@ -10,14 +10,14 @@ body {
   margin: 50px;
 }
 
-/* form {
+form {
   background-color: #dbd5d5;
   width: 30%;
   height: 250px;
   margin: 20px auto;
   padding: 25px;
   border-radius: 2px;
-} */
+}
 
 /* input {
   margin: 5px;
@@ -54,19 +54,4 @@ body {
   cursor: pointer;
 }
 
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
