@@ -77,8 +77,8 @@ class WishListAdmin extends Component {
           <thead>
             <tr>
               <th>Item</th>
+              <th>Select Priority</th>
               <th>Edit</th>
-              <th>Select High Priority</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -97,6 +97,13 @@ class WishListAdmin extends Component {
                         onChange={this.trackEdit}
                       ></input>
                     </td>
+                    <input
+                      onChange={() => {
+                        this.updatePriority(item);
+                      }}
+                      type="checkbox"
+                      checked={item.priority}
+                    />
                     <td className="buttonRow">
                       <StyledButton
                         className="editButtons"
@@ -106,9 +113,7 @@ class WishListAdmin extends Component {
                         Save
                       </StyledButton>
                     </td>
-                    <td>
-                      <input type="checkbox" value="true" />
-                    </td>
+
                     <td>
                       <RemoveButton
                         className="editButtons"
@@ -125,14 +130,6 @@ class WishListAdmin extends Component {
                   <tr key={item.id}>
                     <td>{item.item}</td>
                     <td>
-                      <StyledButton
-                        value={item.id}
-                        onClick={() => this.editItem(item.id, item.item)}
-                      >
-                        Edit
-                      </StyledButton>
-                    </td>
-                    <td>
                       <input
                         onChange={() => {
                           this.updatePriority(item);
@@ -140,6 +137,14 @@ class WishListAdmin extends Component {
                         type="checkbox"
                         checked={item.priority}
                       />
+                    </td>
+                    <td>
+                      <StyledButton
+                        value={item.id}
+                        onClick={() => this.editItem(item.id, item.item)}
+                      >
+                        Edit
+                      </StyledButton>
                     </td>
 
                     <td>
