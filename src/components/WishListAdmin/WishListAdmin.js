@@ -20,6 +20,12 @@ class WishListAdmin extends Component {
             payload: data,
         });
     };
+    deleteItem = (id) => {
+        this.props.dispatch({
+            type: 'DELETE_ITEM', payload: id,
+        })
+        console.log('payload', id)
+    }
 
     render() {
         return (
@@ -53,7 +59,7 @@ class WishListAdmin extends Component {
                                     />
                                 </td>
                                 <td>
-                                    <td><button onClick={() => this.deleteItem(item.id)}>Delete</button></td>
+                                    <td><RemoveButton onClick={() => this.deleteItem(item.id)}>Delete</RemoveButton></td>
                                     {/* <RemoveButton value={item.id}>Delete</RemoveButton> */}
                                 </td>
                             </tr>

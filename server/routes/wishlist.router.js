@@ -80,7 +80,7 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 //DELETE ITEM
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   let reqId = req.params.id;
   console.log('Delete request for id', reqId);
   let queryText = `DELETE FROM items WHERE id=$1`;

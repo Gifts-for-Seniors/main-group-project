@@ -44,8 +44,8 @@ function* updateItem(action) {
 function* deleteItem(action) {
     // console.log(action.payload)
     try {
-        yield axios.delete(`/api/wishlist/edit/${action.payload}`)
-        yield put({ type: 'SET_LIST' })
+        yield axios.delete(`/api/wishlist/delete/${action.payload}`)
+        yield put({ type: 'FETCH_LIST' })
     } catch (error) {
         console.log(error);
     }
