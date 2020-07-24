@@ -12,7 +12,7 @@
 }
 .nav {
   padding-top: 1%;
-  display: flexbox;
+  display: inline-flex;
   padding-bottom: 3%;
 }
 
