@@ -33,3 +33,8 @@
 .nav-right {
   float: left;
 }
+
+.srcLogo {
+  max-width: 15%;
+  height: auto;
+}
