@@ -1,6 +1,24 @@
 table > td {
   display: inline;
 }
-.colorMe{
+.colorMe {
   background-color: red;
+}
+
+.adminView {
+  margin-top: 1.5%;
+  max-width: 100%;
+}
+
+.editInput {
+  width: 98%;
+}
+.editButtons {
+  max-width: 100%;
+  display: inline-flex;
+}
+
+.buttonRow {
+  display: inline-flexbox;
+  max-width: 100%;
 }
