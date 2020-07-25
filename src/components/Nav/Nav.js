@@ -41,7 +41,7 @@ const Nav = (props) => (
         Wishlist
       </Link>
       <Link className="nav-link" to="/barrels">
-        Barrels
+        Donation Locations
       </Link>
     </div>
   </div>
