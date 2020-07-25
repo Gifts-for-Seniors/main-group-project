@@ -19,6 +19,16 @@ router.get("/", (req, res) => {
     .catch((error) => res.sendStatus(500));
 });
 
+router.get("/admin", (req, res) => {
+  queryText = `SELECT * FROM barrels ORDER BY city ASC`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => res.sendStatus(500));
+});
+
 /**
  * POST NEW BARREL LOCATION
  */
