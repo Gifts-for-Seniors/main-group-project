@@ -10,6 +10,15 @@ function* getBarrels(action) {
   }
 }
 
+function* getAdminBarrels(action) {
+  try {
+    const response = yield axios.get(`/api/barrel-locations/admin`);
+    yield put({ type: "SET_ADMIN_BARRELS", payload: response.data });
+  } catch (error) {
+    console.log("CLIENT GET BARREL-LOCATION ERR", error);
+  }
+}
+
 function* newBarrel(action) {
   console.log(action.payload);
   try {
@@ -25,6 +34,7 @@ function* newBarrel(action) {
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
+  yield takeEvery("GET_ADMIN_BARRELS", getAdminBarrels);
 }
 
 export default newBarrelSaga;

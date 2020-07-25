@@ -7,6 +7,9 @@ import { Input } from "@material-ui/core";
 import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_ADMIN_BARRELS" });
+  }
   state = {
     item: "",
     itemToEdit: 0,
