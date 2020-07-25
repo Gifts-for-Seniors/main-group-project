@@ -11,9 +11,16 @@ class BarrelAdmin extends Component {
     zipcode: "",
     description: "",
     hours: "",
-    status: "",
   };
   addBarrel = (event) => {
+    const barrelData = Object.values(this.state);
+    for (let i = 0; i < barrelData.length; i++) {
+      console.log(barrelData[i]);
+      if (barrelData[i] == "") {
+        console.log("bump");
+        return alert("Please fill all form fields");
+      }
+    }
     event.preventDefault();
     this.props.dispatch({ type: "ADD_TO_LIST", payload: this.state });
     // alert('added!')
@@ -102,16 +109,7 @@ class BarrelAdmin extends Component {
                 onChange={this.handleInput}
               />
             </div>
-            {/* <div className="addBarrelInput">
-              <TextField
-                name="status"
-                type="text"
-                label="Status"
-                variant="outlined"
-                value={this.state.status}
-                onChange={this.handleInput}
-              />
-            </div> */}
+
             <StyledButton
               id="theSubmitButtonForCarolyn"
               className="addBarrelButton"
@@ -119,13 +117,6 @@ class BarrelAdmin extends Component {
             >
               Submit
             </StyledButton>
-            {/* <button
-          onClick={() => {
-            this.addBarrel;
-          }}
-        >
-          Add Location
-        </button> */}
           </div>
         </form>
       </div>
