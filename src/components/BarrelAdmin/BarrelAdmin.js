@@ -9,7 +9,7 @@ class BarrelAdmin extends Component {
     street: "",
     city: "",
     zipcode: "",
-    directions: "",
+    description: "",
     hours: "",
     status: "",
   };
@@ -75,11 +75,11 @@ class BarrelAdmin extends Component {
             </div>
             <div className="addBarrelInput">
               <TextField
-                label="Directions"
-                name="directions"
+                label="Description"
+                name="description"
                 type="text"
                 variant="outlined"
-                value={this.state.directions}
+                value={this.state.description}
                 onChange={this.handleInput}
               />
             </div>
