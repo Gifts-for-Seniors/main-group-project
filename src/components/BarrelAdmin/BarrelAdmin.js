@@ -17,6 +17,15 @@ class BarrelAdmin extends Component {
     event.preventDefault();
     this.props.dispatch({ type: "ADD_TO_LIST", payload: this.state });
     // alert('added!')
+    this.setState({
+      host: "",
+      street: "",
+      city: "",
+      zipcode: "",
+      description: "",
+      hours: "",
+      status: "",
+    });
   };
   handleInput = (event) => {
     this.setState({
