@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
+import { connect } from "react-redux";
 
 class searchBarrels extends Component {
   state = {
@@ -11,21 +12,31 @@ class searchBarrels extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(this.state.search);
+    console.log(this.state);
+  };
+
+  toggle = () => {
+    this.setState({
+      toggler: !this.state.toggler,
+    });
   };
 
   search = () => {
     console.log("click");
-    this.setState({
-      toggler: !this.state.toggler,
+    console.log(this.state);
+    this.props.dispatch({
+      type: "SEARCH_ALL_BARRELS",
+      payload: this.state.search,
     });
-    console.log(this.state.toggler);
   };
   render() {
     return (
       <div>
         {this.state.toggler ? (
           <div>
+            <h3 onClick={this.toggle} id="searchDisplay" className="tableTitle">
+              Hide Search Bar
+            </h3>
             <h3 id="addDonationH3" className="tableTitle">
               Search Current Donation Sites
             </h3>
@@ -52,7 +63,7 @@ class searchBarrels extends Component {
           </div>
         ) : (
           <div>
-            <h3 onClick={this.search} id="searchDisplay" className="tableTitle">
+            <h3 onClick={this.toggle} id="searchDisplay" className="tableTitle">
               Display Search Bar
             </h3>
           </div>
@@ -61,4 +72,8 @@ class searchBarrels extends Component {
     );
   }
 }
-export default searchBarrels;
+
+const mapStateToProps = (state) => ({
+  state,
+});
+export default connect(mapStateToProps)(searchBarrels);
