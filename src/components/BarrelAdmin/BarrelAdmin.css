@@ -56,6 +56,10 @@
 
 #searchDisplay {
   width: 20%;
-
+  text-decoration: underline;
   color: #2483d0;
+  opacity: 80%;
+}
+#searchDisplay:hover {
+  cursor: pointer;
 }

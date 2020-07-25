@@ -4,7 +4,6 @@ import { put, takeEvery } from "redux-saga/effects";
 function* searchTheBarrels(action) {
   console.log(action.payload);
 
-  let data = { key: action.payload };
   try {
     const response = yield axios.get(
       `/api/barrel-locations/search/${action.payload}`
