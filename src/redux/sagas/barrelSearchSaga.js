@@ -3,10 +3,13 @@ import { put, takeEvery } from "redux-saga/effects";
 
 function* searchTheBarrels(action) {
   console.log(action.payload);
+
   let data = { key: action.payload };
   try {
-    yield axios.get(`/api/barrel-locations/search/${action.payload}`);
-    yield put({ type: "SET_SEARCH_BARRELS" });
+    const response = yield axios.get(
+      `/api/barrel-locations/search/${action.payload}`
+    );
+    yield put({ type: "SET_SEARCH_BARRELS", payload: response.data });
   } catch (error) {
     console.log(error);
   }
