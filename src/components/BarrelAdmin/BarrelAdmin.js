@@ -31,7 +31,6 @@ class BarrelAdmin extends Component {
       zipcode: "",
       description: "",
       hours: "",
-      status: "",
     });
   };
   handleInput = (event) => {
