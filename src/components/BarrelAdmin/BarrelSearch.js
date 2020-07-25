@@ -40,6 +40,8 @@ class searchBarrels extends Component {
             <h3 id="addDonationH3" className="tableTitle">
               Search Current Donation Sites
             </h3>
+            <p className="searchLabel">Search "*all" for All locations</p>
+
             <form>
               <div className="searchBarrels">
                 <div className="addBarrelInput">
