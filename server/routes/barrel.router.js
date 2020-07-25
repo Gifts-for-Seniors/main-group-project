@@ -4,6 +4,7 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 const { query } = require("../modules/pool");
+
 const router = express.Router();
 
 /**
@@ -72,15 +73,16 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.get("/search", rejectUnauthenticated, (req, res) => {
-  let searchQuery = req.body.search;
+router.get("/search/:search", rejectUnauthenticated, (req, res) => {
+  let searchQuery = req.params.search;
   console.log(searchQuery);
 
-  const queryText = `SELECT * FROM barrels WHERE LIKE '%$1%';`;
+  const queryText = `SELECT * FROM barrels WHERE city ~ '^${searchQuery}' OR hosts ~ '^${searchQuery}' OR hours ~ '^${searchQuery}';`;
   pool
-    .query(queryText, [searchQuery])
+    .query(queryText)
     .then((result) => {
-      res.sendStatus(200);
+      console.log(result.rows);
+      res.send(result.rows);
     })
     .catch((error) => {
       console.log("ERROR IN SERVER SEARCH GET", error);
