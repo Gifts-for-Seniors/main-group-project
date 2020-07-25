@@ -5,7 +5,7 @@ import user from "./userReducer";
 import list from "./itemReducer";
 import barrels from "./barrelReducer";
 import adminBarrels from "./adminBarrelsReducer";
-
+import searchBarrels from "./searchBarrelReducer";
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
   list,
   barrels,
   adminBarrels,
+  searchBarrels,
 });
 
 export default rootReducer;

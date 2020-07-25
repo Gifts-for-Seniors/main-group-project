@@ -8,7 +8,7 @@ function* searchTheBarrels(action) {
     const response = yield axios.get(
       `/api/barrel-locations/search/${action.payload}`
     );
-    yield put({ type: "SET_SEARCH_BARRELS", payload: response.data });
+    yield put({ type: "SET_SEARCH_TERM_BARRELS", payload: response.data });
   } catch (error) {
     console.log(error);
   }
