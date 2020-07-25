@@ -22,6 +22,7 @@ class BarrelAdmin extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    console.log(this.state);
   };
   render() {
     return (
@@ -34,11 +35,11 @@ class BarrelAdmin extends Component {
           <div className="addBarrels">
             <div className="addBarrelInput">
               <TextField
-                label="Name"
+                label="Host Name"
                 variant="outlined"
-                name="name"
+                name="host"
                 type="text"
-                value={this.state.name}
+                value={this.state.host}
                 onChange={this.handleInput}
               />
             </div>
@@ -105,7 +106,7 @@ class BarrelAdmin extends Component {
             <StyledButton
               id="theSubmitButtonForCarolyn"
               className="addBarrelButton"
-              onClick={() => this.addBarrel}
+              onClick={this.addBarrel}
             >
               Submit
             </StyledButton>

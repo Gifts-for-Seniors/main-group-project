@@ -23,7 +23,8 @@ router.get("/", (req, res) => {
  * POST NEW BARREL LOCATION
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  let hosts = req.body.hosts;
+  console.log(req.body);
+  let hosts = req.body.host;
   let street = req.body.street;
   let city = req.body.city;
   let zipcode = req.body.zipcode;
@@ -59,6 +60,7 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
       console.log("ERROR IN SERVER PUT", error);
       res.sendStatus(500);
     });
-});9
+});
+9;
 
 module.exports = router;
