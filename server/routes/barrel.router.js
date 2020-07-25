@@ -71,6 +71,19 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
-9;
 
+router.get("/search", rejectUnauthenticated, (req, res) => {
+  let searchQuery = req.body.search;
+  console.log(searchQuery);
+
+  const queryText = `SELECT * FROM barrels WHERE LIKE '%$1%';`;
+  pool
+    .query(queryText, [searchQuery])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER SEARCH GET", error);
+    });
+});
 module.exports = router;
