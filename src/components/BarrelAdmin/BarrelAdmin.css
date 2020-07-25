@@ -39,5 +39,17 @@
 
 #theSubmitButtonForCarolyn {
   background-color: plum;
-margin-bottom: 2%;
+  margin-bottom: 2%;
+}
+
+#searchButton {
+  display: flexbox;
+  background-color: plum;
+  margin: 2%;
+}
+
+#searchField {
+  display: inline-flex;
+  text-align: left;
+  float: left;
 }

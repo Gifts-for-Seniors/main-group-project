@@ -24,7 +24,7 @@ function* newBarrel(action) {
   try {
     yield axios.post("/api/barrel-locations", action.payload);
     console.log("from newBarrel", action.payload);
-    yield put({ type: "GET_BARRELS" });
+    yield put({ type: "GET_ADMIN_BARRELS" });
     // yield put({ type: 'FETCH_LIST' })
   } catch (error) {
     console.log(error);

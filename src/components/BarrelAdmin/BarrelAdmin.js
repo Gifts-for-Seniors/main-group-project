@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import "./BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
+import { Alert, AlertTitle } from "@material-ui/lab";
+import BarrelSearch from "./BarrelSearch";
 class BarrelAdmin extends Component {
   state = {
     host: "",
@@ -16,9 +18,12 @@ class BarrelAdmin extends Component {
     const barrelData = Object.values(this.state);
     for (let i = 0; i < barrelData.length; i++) {
       console.log(barrelData[i]);
-      if (barrelData[i] == "") {
+      if (barrelData[i] === "") {
         console.log("bump");
-        return alert("Please fill all form fields");
+
+        return (
+          <Alert severity="error">This is an error alert — check it out!</Alert>
+        );
       }
     }
     event.preventDefault();
@@ -37,11 +42,11 @@ class BarrelAdmin extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(this.state);
   };
   render() {
     return (
       <div className="barrelForm">
+        <BarrelSearch></BarrelSearch>
         <h3 id="addDonationH3" className="tableTitle">
           Add a Donation Location
         </h3>
