@@ -7,6 +7,9 @@ import { Input } from "@material-ui/core";
 import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
+  componentDidMount() {
+    this.props.dispatch({ type: "GET_ADMIN_BARRELS" });
+  }
   state = {
     item: "",
     itemToEdit: 0,
@@ -97,7 +100,7 @@ class WishListAdmin extends Component {
         <table className="wishListAdminTable">
           <thead>
             <tr>
-              <th>Item</th>
+              <th className="tableTitle">Current Wishlist</th>
               <th>Select Priority</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -142,7 +145,7 @@ class WishListAdmin extends Component {
                       </StyledButton>
                     </td>
 
-                    <td>
+                    <td className="buttonRow">
                       <RemoveButton
                         className="editButtons"
                         value={item.id}
@@ -156,7 +159,9 @@ class WishListAdmin extends Component {
               } else
                 return (
                   <tr key={item.id}>
-                    <td>{item.item}</td>
+                    <td onDoubleClick={() => this.editItem(item.id, item.item)}>
+                      {item.item}
+                    </td>
                     <td className="checkBox">
                       <StyledCheckbox
                         onChange={() => {
@@ -166,8 +171,9 @@ class WishListAdmin extends Component {
                         checked={item.priority}
                       />
                     </td>
-                    <td>
+                    <td className="buttonRow">
                       <StyledButton
+                        className="editButtons"
                         value={item.id}
                         onClick={() => this.editItem(item.id, item.item)}
                       >
@@ -175,7 +181,7 @@ class WishListAdmin extends Component {
                       </StyledButton>
                     </td>
 
-                    <td>
+                    <td className="buttonRow">
                       <RemoveButton onClick={() => this.deleteItem(item.id)}>
                         Delete
                       </RemoveButton>
@@ -187,7 +193,7 @@ class WishListAdmin extends Component {
         </table>
         <br></br>
         <br></br>
-        <h2>Insert new item</h2>
+        <h2 className="wishHeader">Add to Wishlist</h2>
 
         <table>
           <thead>
@@ -204,7 +210,7 @@ class WishListAdmin extends Component {
                 onChange={(event) => {
                   this.trackEdit(event, "newItemDescription");
                 }}
-                placeholder="Add item description please"
+                placeholder="Add item description please.."
                 type="text"
               ></Input>
             </td>
@@ -214,8 +220,13 @@ class WishListAdmin extends Component {
                 onChange={this.trackNewItemPriority}
               />
             </td>
-            <td>
-              <StyledButton onClick={() => this.addItem()}>Add</StyledButton>
+            <td className="buttonRow">
+              <StyledButton
+                className="addButton"
+                onClick={() => this.addItem()}
+              >
+                Add
+              </StyledButton>
             </td>
           </tr>
         </table>

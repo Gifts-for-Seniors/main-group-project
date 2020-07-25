@@ -1,0 +1,73 @@
+/* .addBarrels {
+  margin: 0 auto;
+  height: 100%;
+  align-content: center;
+}
+
+.addBarrels input {
+  display: inline-block;
+  padding: 0%;
+}
+
+.addBarrelInput {
+  display: inline-flexbox;
+  flex-wrap: wrap-reverse;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding: 1%;
+}
+
+.addBarrelButton {
+  float: right;
+} */
+.addBarrelInput {
+  padding: 2%;
+}
+.addBarrels {
+  /* background-color: antiquewhite; */
+  border: blueviolet 7px;
+  justify-content: center;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 22px;
+}
+
+#addDonationH3 {
+  text-align: center;
+}
+
+#theSubmitButtonForCarolyn {
+  background-color: plum;
+  margin-bottom: 2%;
+}
+
+#searchButton {
+  display: flexbox;
+  background-color: plum;
+  margin: 2%;
+}
+
+#searchField {
+  display: inline-flex;
+  text-align: left;
+  float: left;
+}
+
+#searchDisplay {
+  width: 20%;
+  text-decoration: underline;
+  color: #2483d0;
+  opacity: 80%;
+}
+#searchDisplay:hover {
+  cursor: pointer;
+}
+
+.searchLabel {
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-style: italic;
+  font-weight: bolder;
+}

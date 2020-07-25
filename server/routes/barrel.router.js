@@ -4,10 +4,11 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 const { query } = require("../modules/pool");
+
 const router = express.Router();
 
 /**
- * GET ALL BARRELS
+ * GET SMALL LIST OF BARRELS
  */
 router.get("/", (req, res) => {
   queryText = `SELECT * FROM barrels ORDER BY city ASC LIMIT 7`;
@@ -20,10 +21,24 @@ router.get("/", (req, res) => {
 });
 
 /**
+ * GET ALL BARRELS
+ */
+router.get("/admin", (req, res) => {
+  queryText = `SELECT * FROM barrels ORDER BY city ASC`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => res.sendStatus(500));
+});
+
+/**
  * POST NEW BARREL LOCATION
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  let hosts = req.body.hosts;
+  console.log(req.body);
+  let hosts = req.body.host;
   let street = req.body.street;
   let city = req.body.city;
   let zipcode = req.body.zipcode;
@@ -61,4 +76,36 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+/**
+ * SEARCH BARRELS
+ */
+router.get("/search/:search", rejectUnauthenticated, (req, res) => {
+  let searchQuery = req.params.search;
+  if (searchQuery === "*all") {
+    console.log("hello");
+    let queryText = `SELECT * FROM barrels ORDER BY city ASC`;
+    pool
+      .query(queryText)
+      .then((result) => {
+        console.log(result.rows);
+        res.send(result.rows);
+      })
+      .catch((error) => {
+        console.log("ERROR IN SERVER SEARCH GET", error);
+      });
+  } else {
+    console.log(searchQuery);
+
+    const queryText = `SELECT * FROM barrels WHERE city ~ '^${searchQuery}' OR hosts ~ '^${searchQuery}' OR hours ~ '^${searchQuery}' OR description ~ '^${searchQuery}' OR zipcode ~'^${searchQuery}';`;
+    pool
+      .query(queryText)
+      .then((result) => {
+        console.log(result.rows);
+        res.send(result.rows);
+      })
+      .catch((error) => {
+        console.log("ERROR IN SERVER SEARCH GET", error);
+      });
+  }
+});
 module.exports = router;
