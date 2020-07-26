@@ -96,7 +96,7 @@ router.get("/search/:search", rejectUnauthenticated, (req, res) => {
   } else {
     console.log(searchQuery);
 
-    const queryText = `SELECT * FROM barrels WHERE city ~ '^${searchQuery}' OR hosts ~ '^${searchQuery}' OR hours ~ '^${searchQuery}' OR description ~ '^${searchQuery}' OR zipcode ~'^${searchQuery}';`;
+    const queryText = `SELECT * FROM barrels WHERE city LIKE '%${searchQuery}%' OR hosts LIKE '%${searchQuery}' OR hours LIKE '%${searchQuery}' OR description LIKE '%${searchQuery}' OR zipcode LIKE '%${searchQuery}';`;
     pool
       .query(queryText)
       .then((result) => {
