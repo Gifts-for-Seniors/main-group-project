@@ -13,7 +13,7 @@ class WishList extends Component {
         <h1 id="wishListHeader">WishList</h1>
 
         <div className="highPriorityItems">
-          <div className="priorityHeader">
+          <div id="highPriority" className="priorityHeader">
             <h2>High Priority Items</h2>
           </div>
 
@@ -25,10 +25,11 @@ class WishList extends Component {
           })}
         </div>
 
-        <div className="priorityHeader">
-          <h2>Other Items</h2>
-        </div>
         <div className="regularItems">
+          <div className="priorityHeader">
+            <h2>Other Items</h2>
+          </div>
+
           {/* Mapping through our item reducer to display remaining items */}
           {this.props.state.list.map((item) => {
             if (item.priority === false) {
@@ -40,9 +41,7 @@ class WishList extends Component {
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations
           </SearchButton>
-          <SearchButton className="links">
-           Amazon WishList
-          </SearchButton>
+          <SearchButton className="links">Amazon WishList</SearchButton>
         </div>
       </div>
     );
