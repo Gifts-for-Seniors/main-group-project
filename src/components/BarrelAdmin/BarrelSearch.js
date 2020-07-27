@@ -24,14 +24,11 @@ class searchBarrels extends Component {
   search = () => {
     console.log("click");
     console.log(this.state);
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-    capitalizeFirstLetter(this.state.search);
+    let search = this.state.search;
     console.log(this.state.search);
     this.props.dispatch({
       type: "SEARCH_ALL_BARRELS",
-      payload: capitalizeFirstLetter(this.state.search),
+      payload: search,
     });
   };
   render() {
