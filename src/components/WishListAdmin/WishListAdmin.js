@@ -15,6 +15,7 @@ class WishListAdmin extends Component {
     itemToEdit: 0,
     itemDescription: "",
     newItemPriority: false,
+    newItemDescription: "",
   };
 
   editItem = (id, description) => {
@@ -39,6 +40,7 @@ class WishListAdmin extends Component {
       ...this.state,
       [type]: event.target.value,
     });
+    console.log(this.state);
   };
 
   trackNewItemPriority = (event) => {
@@ -89,6 +91,10 @@ class WishListAdmin extends Component {
     this.props.dispatch({
       type: "ADD_ITEM",
       payload: this.state,
+    });
+    this.setState({
+      newItemPriority: false,
+      newItemDescription: "",
     });
   };
 
