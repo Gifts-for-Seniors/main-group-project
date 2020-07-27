@@ -35,4 +35,26 @@ const RemoveButton = withStyles({
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
 })(Button);
-export { StyledButton, RemoveButton };
+const SearchButton = withStyles({
+  root: {
+    boxShadow: "0 3px 2px black",
+    justifySelf: "center",
+
+    "&:hover": {
+      background: "#2483d0",
+      color: "white",
+      boxShadow: "0 4px 3px w",
+    },
+    background: "black",
+    borderRadius: 16,
+    color: "white",
+    padding: ".09%",
+    // padding: "2%",
+    margin: ".2%",
+    // height: ".2%",
+    // padding: "2%",
+    width: "10%",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+  },
+})(Button);
+export { StyledButton, RemoveButton, SearchButton };
