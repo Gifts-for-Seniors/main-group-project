@@ -21,9 +21,7 @@ class BarrelAdmin extends Component {
       if (barrelData[i] === "") {
         console.log("bump");
 
-        return (
-          <Alert severity="error">This is an error alert — check it out!</Alert>
-        );
+        return alert("All form fields must be filled out.");
       }
     }
     event.preventDefault();
@@ -46,7 +44,7 @@ class BarrelAdmin extends Component {
   render() {
     return (
       <div className="barrelForm">
-        <BarrelSearch/>
+        <BarrelSearch />
         <h3 id="addDonationH3" className="tableTitle">
           Add a Donation Location
         </h3>

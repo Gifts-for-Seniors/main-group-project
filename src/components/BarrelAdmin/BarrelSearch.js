@@ -24,9 +24,11 @@ class searchBarrels extends Component {
   search = () => {
     console.log("click");
     console.log(this.state);
+    let search = this.state.search;
+    console.log(this.state.search);
     this.props.dispatch({
       type: "SEARCH_ALL_BARRELS",
-      payload: this.state.search,
+      payload: search,
     });
   };
   render() {
