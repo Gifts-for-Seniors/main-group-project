@@ -92,10 +92,7 @@ class WishListAdmin extends Component {
       type: "ADD_ITEM",
       payload: this.state,
     });
-    this.setState({
-      newItemPriority: false,
-      newItemDescription: "",
-    });
+    this.setState({});
   };
 
   render() {
