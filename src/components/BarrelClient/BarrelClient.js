@@ -12,9 +12,10 @@ class BarrelClient extends Component {
 
                 <ul>
                     <div>
-                        {/* {this.props.state.newBarrelReducer.map(barrel => {
-                            <li>barrel.hosts</li> 
-                        })} */}
+                        {this.props.state.barrels.map(barrel => {
+                            return <li>
+                                {barrel.hosts} - {barrel.street}, {barrel.city} {barrel.zipcode} {barrel.description} {barrel.hours}</li> 
+                        })}
                     </div>
                 </ul>
 
