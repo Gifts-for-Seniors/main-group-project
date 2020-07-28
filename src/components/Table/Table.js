@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input } from "@material-ui/core";
+import "./Table.css";
 
 class BarrelTable extends Component {
   state = {
@@ -46,7 +47,7 @@ class BarrelTable extends Component {
   render() {
     return (
       <div>
-        <table className="">
+        <table className="barrelTable">
           <thead>
             <tr>
               <th>Host</th>

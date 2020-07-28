@@ -2,7 +2,10 @@
   border-collapse: separate;
 }
 
-/* .names {
-  max-width: 25%;
-} */
-
+table {
+  overflow-y: scroll;
+  height: 600px;
+  display: block;
+  border: 1px solid block;
+  margin-top: 50px;
+}
