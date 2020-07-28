@@ -7,30 +7,6 @@ import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input } from "@material-ui/core";
 
 class BarrelTable extends Component {
-  state = {
-    itemToEdit: 0,
-    hosts: "",
-    street: " ",
-    city: "",
-    description: "",
-    zipcode: " ",
-    status: true,
-  };
-
-  editItem = (item) => {
-    this.setState({
-      ...this.state,
-      itemToEdit: item.id,
-      hosts: item.hosts,
-      street: item.street,
-      city: item.city,
-      description: item.description,
-      zipcode: item.zipcode,
-      status: item.status,
-    });
-    console.log(this.state);
-  };
-
   render() {
     return (
       <div>
@@ -57,13 +33,7 @@ class BarrelTable extends Component {
                   <td>{item.description}</td>
                   <td>{item.status ? "Active" : "Deactivated"}</td>
                   <td>
-                    <StyledButton
-                      onClick={() => {
-                        this.editItem(item);
-                      }}
-                    >
-                      Edit
-                    </StyledButton>
+                    <StyledButton>Edit</StyledButton>
                   </td>
                 </tr>
               );
