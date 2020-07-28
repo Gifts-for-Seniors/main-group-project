@@ -47,4 +47,4 @@ const mapStateToProps = (state) => ({
   state,
 });
 
-export default connect(mapStateToProps)(BarrelTable);
+export default BarrelTable;
