@@ -30,7 +30,7 @@ class BarrelTable extends Component {
                   <td>{item.city}</td>
                   <td>{item.zipcode}</td>
                   <td>{item.description}</td>
-                  <td>{String(item.status)}</td>
+                  <td>{item.status? 'Active' : 'Deactivated'}</td>
                 </tr>
               );
             })}
