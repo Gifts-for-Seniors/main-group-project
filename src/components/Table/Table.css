@@ -13,6 +13,12 @@
   margin: auto;
 }
 
+.barrelTable th {
+  background-color: lightblue;
+  margin: auto;
+  display: inline-flex;
+}
+
 .barrelTable th,
 td {
   max-width: 100%;
