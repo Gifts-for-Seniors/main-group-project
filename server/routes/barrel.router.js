@@ -79,7 +79,7 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
 /**
  * SEARCH BARRELS
  */
-router.get("/search/:search", rejectUnauthenticated, (req, res) => {
+router.get("/search/:search", (req, res) => {
   let searchQuery = req.params.search;
   if (searchQuery === "*all") {
     console.log("hello");

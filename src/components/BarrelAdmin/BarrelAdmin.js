@@ -5,6 +5,7 @@ import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import BarrelSearch from "./BarrelSearch";
+import BarrelTable from "../Table/Table";
 class BarrelAdmin extends Component {
   state = {
     host: "",
@@ -121,6 +122,7 @@ class BarrelAdmin extends Component {
             </StyledButton>
           </div>
         </form>
+        <BarrelTable></BarrelTable>
       </div>
     );
   }
