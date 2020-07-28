@@ -24,16 +24,14 @@ class BarrelTable extends Component {
           <tbody>
             {this.props.state.searchBarrels.map((item) => {
               return (
-                <div>
-                  <tr className="insertItem">
-                    <td>{item.hosts}</td>
-                    <td>{item.street}</td>
-                    <td>{item.city}</td>
-                    <td>{item.zipcode}</td>
-                    <td>{item.description}</td>
-                    <td>{String(item.status)}</td>
-                  </tr>
-                </div>
+                <tr className="insertItem">
+                  <td>{item.hosts}</td>
+                  <td>{item.street}</td>
+                  <td>{item.city}</td>
+                  <td>{item.zipcode}</td>
+                  <td>{item.description}</td>
+                  <td>{String(item.status)}</td>
+                </tr>
               );
             })}
           </tbody>
