@@ -16,14 +16,20 @@ class BarrelClient extends Component {
         <ul>
           <div>
             {this.props.state.searchBarrels.map((barrel) => {
-                if (barrel.status === true){
-                    return (
-                        <li key={barrel.id}>
-                        {barrel.hosts} - {barrel.street}, {barrel.city}{" "}
-                        {barrel.zipcode} {barrel.description} {barrel.hours}
-                        </li>               
-                    )
-                }
+              if (barrel.status === true) {
+                return (
+                  <li key={barrel.id}>
+                    {barrel.hosts} - {barrel.street},
+                    <ul>
+                      <li>
+                        {barrel.city} {barrel.zipcode}
+                      </li>
+                      <li>{barrel.description}</li>
+                      <li>{barrel.hours}</li>
+                    </ul>
+                  </li>
+                );
+              }
             })}
           </div>
         </ul>

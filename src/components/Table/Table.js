@@ -31,6 +31,18 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  updatePriority = (item) => {
+    console.log(item);
+    let data = {
+      id: item.id,
+      priority: item.priority,
+    };
+    this.props.dispatch({
+      type: "UPDATE_PRIORITY",
+      payload: data,
+    });
+  };
+
   render() {
     return (
       <div>
