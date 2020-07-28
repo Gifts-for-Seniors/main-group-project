@@ -9,9 +9,14 @@ const Nav = (props) => (
     {/* <Link to="/home">
       <h2 className="nav-title">Gifts for Seniors</h2>
     </Link> */}
-    <img className="srcLogo" src={logo} />
+    <a href="https://www.giftsforseniors.org/">
+      <img className="srcLogo" src={logo} />
+    </a>
     {/* <h2 className="nav-title">Gifts for Seniors</h2> */}
     <div className="nav-left">
+      <a href="https://www.giftsforseniors.org/" className="nav-link">
+        Home
+      </a>
       {/* <Link className="nav-link" to="/home"> */}
       {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
@@ -37,6 +42,7 @@ const Nav = (props) => (
       {/* <Link className="nav-link" to="/about">
         About
       </Link> */}
+
       <Link className="nav-link" to="/wishlist">
         Wishlist
       </Link>

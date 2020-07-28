@@ -28,6 +28,7 @@ class App extends Component {
     this.props.dispatch({ type: "FETCH_LIST" });
     this.props.dispatch({ type: "GET_BARRELS" });
     this.props.dispatch({ type: "GET_ADMIN_BARRELS" });
+    this.props.dispatch({ type: "SEARCH_ALL_BARRELS", payload: "*all" });
   }
 
   render() {
@@ -65,7 +66,7 @@ class App extends Component {
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     );

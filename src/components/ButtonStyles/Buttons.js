@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core";
 import { withTheme } from "emotion-theming";
 import { red } from "@material-ui/core/colors";
 import transitions from "@material-ui/core/styles/transitions";
+
+// RETURN A STYLED BUTTON
 const StyledButton = withStyles({
   root: {
     background: "#2483d0",
@@ -24,6 +26,8 @@ const StyledButton = withStyles({
     },
   },
 })(Button);
+
+// RETURN REMOVE BUTTON
 const RemoveButton = withStyles({
   root: {
     background: "#bd0f32",
@@ -35,11 +39,12 @@ const RemoveButton = withStyles({
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
 })(Button);
+
+// RETURN SEARCHBUTTON
 const SearchButton = withStyles({
   root: {
     boxShadow: "0 3px 2px black",
     justifySelf: "center",
-
     "&:hover": {
       background: "#2483d0",
       color: "white",
@@ -57,4 +62,6 @@ const SearchButton = withStyles({
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
 })(Button);
+
+// OBJECT STRUCTURING
 export { StyledButton, RemoveButton, SearchButton };
