@@ -47,7 +47,7 @@ class WishList extends Component {
             {/* Mapping through our item reducer to display remaining items */}
             {this.props.state.list.map((item) => {
               if (item.priority === false) {
-                return <ul key={item.id}>{item.item}</ul>;
+                return <ul key={item.id}>{item.item}{item.url}</ul>;
               }
             })}
           </div>
