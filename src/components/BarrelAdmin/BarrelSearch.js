@@ -31,6 +31,12 @@ class searchBarrels extends Component {
       payload: search,
     });
   };
+
+ keyPress = (event) => {
+   if (event.keyCode == 13) {
+     this.search()
+   }
+ }
   render() {
     return (
       <div>
@@ -44,7 +50,7 @@ class searchBarrels extends Component {
             </h3>
             <p className="searchLabel">Search "*all" for All locations</p>
 
-            <form>
+            <form onSubmit={e => { e.preventDefault(); }}>
               <div className="searchBarrels">
                 <div className="addBarrelInput">
                   <span>
@@ -56,6 +62,7 @@ class searchBarrels extends Component {
                       variant="outlined"
                       value={this.state.search}
                       onChange={this.handleInput}
+                      onKeyDown={this.keyPress}
                     />
                     <StyledButton onClick={this.search} id="searchButton">
                       Search
