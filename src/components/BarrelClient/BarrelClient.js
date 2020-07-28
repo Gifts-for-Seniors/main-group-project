@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import BarrelSearch from "../BarrelAdmin/BarrelSearch";
-
+import "./BarrelClient.css";
 class BarrelClient extends Component {
   render() {
     return (
@@ -13,19 +13,27 @@ class BarrelClient extends Component {
           may also browse our Wish List for gift ideas.
         </p>
         <BarrelSearch />
-        <ul>
+        <ul className="locationLists">
           <div>
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true) {
                 return (
-                  <li key={barrel.id}>
-                    {barrel.hosts} - {barrel.street},
+                  <li className="boldIt" key={barrel.id}>
+                    {barrel.hosts}
                     <ul>
                       <li>
-                        {barrel.city} {barrel.zipcode}
+                        {barrel.street}, {barrel.city} {barrel.zipcode}
                       </li>
-                      <li>{barrel.description}</li>
-                      <li>{barrel.hours}</li>
+                      {barrel.description !== null ? (
+                        <li>{barrel.description}</li>
+                      ) : (
+                        <div></div>
+                      )}
+                      {barrel.hours !== null ? (
+                        <li>{barrel.hours}</li>
+                      ) : (
+                        <div></div>
+                      )}
                     </ul>
                   </li>
                 );
