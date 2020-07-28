@@ -9,7 +9,7 @@ const Nav = (props) => (
     {/* <Link to="/home">
       <h2 className="nav-title">Gifts for Seniors</h2>
     </Link> */}
-    <a href="https://www.giftsforseniors.org/">
+    <a className="srcLink" href="https://www.giftsforseniors.org/">
       <img className="srcLogo" src={logo} />
     </a>
     {/* <h2 className="nav-title">Gifts for Seniors</h2> */}
