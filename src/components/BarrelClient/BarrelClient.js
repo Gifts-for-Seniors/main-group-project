@@ -15,9 +15,9 @@ class BarrelClient extends Component {
         <BarrelSearch />
         <ul>
           <div>
-            {this.props.state.barrels.map((barrel) => {
+            {this.props.state.searchBarrels.map((barrel) => {
               return (
-                <li>
+                <li key={barrel.id}>
                   {barrel.hosts} - {barrel.street}, {barrel.city}{" "}
                   {barrel.zipcode} {barrel.description} {barrel.hours}
                 </li>
