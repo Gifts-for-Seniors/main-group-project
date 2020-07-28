@@ -56,7 +56,13 @@ class WishList extends Component {
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations
           </SearchButton>
-          <SearchButton className="links">Amazon WishList</SearchButton>
+          {/* <SearchButton className="links"> <a href="https://smile.amazon.com/?_encoding=UTF8&pldnNewCustomer=1&ref_=smi_ge2_cnf_cnf_smi#/"></a>Amazon WishList</SearchButton> */}
+          <SearchButton className="links">
+            {" "}
+            <a href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create">
+              Amazon Smile Wishlist
+            </a>
+          </SearchButton>
         </div>
       </div>
     );
