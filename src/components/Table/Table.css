@@ -2,27 +2,31 @@
   width: 100%;
   text-align: center;
   justify-self: center;
+  padding-top: 2%;
 }
 
-table {
+.barrelTable {
+  padding: 1.2%;
+
   border: 2px solid black;
   max-width: 100%;
+  margin: auto;
 }
 
-th,
+.barrelTable th,
 td {
   max-width: 100%;
   border: 1.5px solid darkgray;
 }
 
-thead > tr {
+.barrelTable thead > tr {
   width: auto;
   position: relative;
   display: block;
 }
 
-tbody {
+.barrelTable tbody {
   display: block;
-  height: 300px;
+  height: 500px;
   overflow: auto;
 }
