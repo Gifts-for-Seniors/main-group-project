@@ -46,7 +46,7 @@ class BarrelTable extends Component {
 
   render() {
     return (
-      <div>
+      <div id="wrapper">
         <table className="barrelTable">
           <thead>
             <tr>
