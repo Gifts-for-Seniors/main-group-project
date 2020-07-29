@@ -7,16 +7,14 @@
 
 .barrelTable {
   padding: 1.2%;
-
-  /* border: 2px solid black; */
   max-width: 100%;
   margin: auto;
 }
 
 .barrelTable th {
   background-color: lightblue;
+  width: 17%;
   margin: auto;
-  display: inline-flex;
 }
 
 .barrelTable th,
@@ -26,7 +24,7 @@ td {
 }
 
 .barrelTable thead > tr {
-  width: auto;
+  width: 100%;
   position: relative;
   display: block;
 }
