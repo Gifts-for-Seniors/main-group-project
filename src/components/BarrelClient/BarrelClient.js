@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import BarrelSearch from "../BarrelAdmin/BarrelSearch";
+import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
 class BarrelClient extends Component {
   render() {
@@ -19,10 +19,10 @@ class BarrelClient extends Component {
               if (barrel.status === true) {
                 return (
                   <li className="boldIt" key={barrel.id}>
-                    {barrel.hosts}
+                    {barrel.hosts} ,
                     <ul>
                       <li>
-                        {barrel.street}, {barrel.city} {barrel.zipcode}
+                        {barrel.street} {barrel.city} {barrel.zipcode}
                       </li>
                       {barrel.description !== null ? (
                         <li>{barrel.description}</li>

@@ -37,6 +37,13 @@
   text-align: center;
 }
 
+.barrelSearch {
+  text-align: left;
+  display: flexbox;
+  float: left;
+  width: 100%;
+}
+
 #theSubmitButtonForCarolyn {
   background-color: plum;
   margin-bottom: 2%;
