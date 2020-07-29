@@ -53,6 +53,14 @@ class BarrelTable extends Component {
     });
   };
 
+  trackEdit = (event, type) => {
+    this.setState({
+      ...this.state,
+      [type]: event.target.value,
+    });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div id="wrapper">
@@ -67,6 +75,7 @@ class BarrelTable extends Component {
               <th>Description</th>
               <th>Status</th>
               <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -90,6 +99,19 @@ class BarrelTable extends Component {
                         onChange={(event) => this.trackEdit(event, "date")}
                       ></Input>
                     </td>
+                    <td>
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.description}
+                        value={this.state.description}
+                        variant="filled"
+                        onChange={(event) =>
+                          this.trackEdit(event, "description")
+                        }
+                      ></Input>
+                    </td>
                   </tr>
                 );
               } else {
@@ -110,6 +132,9 @@ class BarrelTable extends Component {
                       >
                         Edit
                       </StyledButton>
+                    </td>
+                    <td>
+                      <RemoveButton>Delete</RemoveButton>
                     </td>
                   </tr>
                 );
