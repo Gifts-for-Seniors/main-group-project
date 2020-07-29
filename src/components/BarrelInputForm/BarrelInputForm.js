@@ -12,6 +12,7 @@ class BarrelInput extends Component {
     city: "",
     zipcode: "",
     description: "",
+    dates: "",
     hours: "",
   };
 
@@ -33,6 +34,7 @@ class BarrelInput extends Component {
       city: "",
       zipcode: "",
       description: "",
+      dates: "",
       hours: "",
     });
   };
@@ -98,6 +100,16 @@ class BarrelInput extends Component {
                 type="text"
                 variant="outlined"
                 value={this.state.description}
+                onChange={this.handleInput}
+              />
+            </div>
+            <div className="addBarrelInput">
+              <TextField
+                label="Dates"
+                variant="outlined"
+                name="dates"
+                type="text"
+                value={this.state.dates}
                 onChange={this.handleInput}
               />
             </div>

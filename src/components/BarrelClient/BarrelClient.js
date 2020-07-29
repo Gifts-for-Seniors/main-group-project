@@ -31,6 +31,11 @@ class BarrelClient extends Component {
                       ) : (
                         <div></div>
                       )}
+                      {barrel.dates !== null ? (
+                        <li>{barrel.dates}</li>
+                        ) : (
+                        <div></div>
+                      )}
                       {barrel.hours !== null ? (
                         <li>{barrel.hours}</li>
                       ) : (
