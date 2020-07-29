@@ -4,7 +4,7 @@ import "./BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { Alert, AlertTitle } from "@material-ui/lab";
-import BarrelSearch from "./BarrelSearch";
+import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import BarrelTable from "../Table/Table";
 import BarrelInput from "../BarrelInputForm/BarrelInputForm";
 class BarrelAdmin extends Component {
@@ -13,8 +13,7 @@ class BarrelAdmin extends Component {
       <div className="barrelForm">
         <BarrelInput />
         <BarrelSearch />
-
-        <BarrelTable></BarrelTable>
+        <BarrelTable />
       </div>
     );
   }
