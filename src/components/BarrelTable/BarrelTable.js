@@ -34,6 +34,13 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  cancelEdit = () => {
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   updatePriority = (item) => {
     console.log(item);
     let data = {
@@ -63,27 +70,50 @@ class BarrelTable extends Component {
             </tr>
           </thead>
           <tbody>
+            {/* Display data based on whether editing or not */}
             {this.props.state.searchBarrels.map((item) => {
-              return (
-                <tr className="insertItem">
-                  <td>{item.hosts}</td>
-                  <td>{item.street}</td>
-                  <td>{item.city}</td>
-                  <td>{item.zipcode}</td>
-                  <td>{item.date}</td>
-                  <td>{item.description}</td>
-                  <td>{item.status ? "Active" : "Deactivated"}</td>
-                  <td>
-                    <StyledButton
-                      onClick={() => {
-                        this.editItem(item);
-                      }}
-                    >
-                      Edit
-                    </StyledButton>
-                  </td>
-                </tr>
-              );
+              if (item.id === this.state.itemToEdit) {
+                return (
+                  <tr>
+                    <td>{item.hosts}</td>
+                    <td>{item.street}</td>
+                    <td>{item.city}</td>
+                    <td>{item.zipcode}</td>
+                    <td>
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.date}
+                        value={this.state.date}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "date")}
+                      ></Input>
+                    </td>
+                  </tr>
+                );
+              } else {
+                return (
+                  <tr className="insertItem">
+                    <td>{item.hosts}</td>
+                    <td>{item.street}</td>
+                    <td>{item.city}</td>
+                    <td>{item.zipcode}</td>
+                    <td>{item.date}</td>
+                    <td>{item.description}</td>
+                    <td>{item.status ? "Active" : "Deactivated"}</td>
+                    <td>
+                      <StyledButton
+                        onClick={() => {
+                          this.editItem(item);
+                        }}
+                      >
+                        Edit
+                      </StyledButton>
+                    </td>
+                  </tr>
+                );
+              }
             })}
           </tbody>
         </table>

@@ -98,8 +98,7 @@ class WishListAdmin extends Component {
   render() {
     return (
       <div className="adminView">
-        {/* <h1>Admin WishList</h1> */}
-
+        {/* Table Headers */}
         <table className="wishListAdminTable">
           <thead>
             <tr>
@@ -115,6 +114,7 @@ class WishListAdmin extends Component {
             {this.props.state.list.map((item) => {
               if (item.id === this.state.itemToEdit) {
                 return (
+                  // Renders an editable item.
                   <tr key={item.id}>
                     <td>
                       <Input
@@ -147,7 +147,6 @@ class WishListAdmin extends Component {
                         Save
                       </StyledButton>
                     </td>
-
                     <td className="buttonRow">
                       <RemoveButton
                         className="editButtons"
@@ -161,6 +160,7 @@ class WishListAdmin extends Component {
                 );
               } else
                 return (
+                  // Returns table data with Edit/Delete buttons.
                   <tr key={item.id}>
                     <td onDoubleClick={() => this.editItem(item.id, item.item)}>
                       {item.item}

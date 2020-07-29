@@ -125,4 +125,8 @@ class BarrelInput extends Component {
     );
   }
 }
-export default BarrelInput;
+const mapStateToProps = (state) => ({
+  state,
+});
+
+export default connect(mapStateToProps)(BarrelInput);
