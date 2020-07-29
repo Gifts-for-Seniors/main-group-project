@@ -61,6 +61,19 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  deleteItem = (id) => {
+    let dataObject = {
+      id: id,
+      previousSearch: this.props.state.searchBarrels,
+    };
+
+    console.log(dataObject);
+    this.props.dispatch({
+      type: "DELETE_BARREL",
+      payload: dataObject,
+    });
+    // console.log("payload", id);
+  };
   render() {
     return (
       <div id="wrapper">
@@ -134,7 +147,9 @@ class BarrelTable extends Component {
                       </StyledButton>
                     </td>
                     <td>
-                      <RemoveButton>Delete</RemoveButton>
+                      <RemoveButton onClick={() => this.deleteItem(item.id)}>
+                        Delete
+                      </RemoveButton>
                     </td>
                   </tr>
                 );
