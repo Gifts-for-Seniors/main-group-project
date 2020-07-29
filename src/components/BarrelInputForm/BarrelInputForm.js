@@ -4,7 +4,7 @@ import "../BarrelAdmin/BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { Alert, AlertTitle } from "@material-ui/lab";
-
+import "./BarrelInputForm.css";
 class BarrelInput extends Component {
   state = {
     host: "",
@@ -14,6 +14,7 @@ class BarrelInput extends Component {
     description: "",
     hours: "",
   };
+
   addBarrel = (event) => {
     const barrelData = Object.values(this.state);
     for (let i = 0; i < barrelData.length; i++) {
@@ -26,7 +27,6 @@ class BarrelInput extends Component {
     }
     event.preventDefault();
     this.props.dispatch({ type: "ADD_TO_LIST", payload: this.state });
-    // alert('added!')
     this.setState({
       host: "",
       street: "",

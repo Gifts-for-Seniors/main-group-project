@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
-
+import "./BarrelSearch.css";
 class BarrelSearch extends Component {
   state = {
     search: "",
