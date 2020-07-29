@@ -79,8 +79,6 @@ function* ItemSaga() {
     yield takeLatest("DELETE_ITEM", deleteItem);
     yield takeLatest("EDIT_ITEM", editItem);
     yield takeLatest("UPDATE_PRIORITY", updatePriority);
-    // yield takeLatest("ADD_ITEM", addItem);
-    // yield takeLatest("FETCH_LIST", addItem);
 }
 
 export default ItemSaga;

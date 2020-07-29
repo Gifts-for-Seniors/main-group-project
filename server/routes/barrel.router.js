@@ -44,10 +44,11 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   let zipcode = req.body.zipcode;
   let description = req.body.description;
   let hours = req.body.hours;
-  let queryText = `INSERT INTO barrels (hosts, street, city, zipcode, description, hours) VALUES ($1, $2, $3, $4, $5, $6);`;
+  let dates = req.body.dates;
+  let queryText = `INSERT INTO barrels (hosts, street, city, zipcode, description, hours, dates) VALUES ($1, $2, $3, $4, $5, $6, $7);`;
 
   pool
-    .query(queryText, [hosts, street, city, zipcode, description, hours])
+    .query(queryText, [hosts, street, city, zipcode, description, hours, dates])
     .then((result) => {
       res.sendStatus(200);
     })
@@ -96,7 +97,7 @@ router.get("/search/:search", (req, res) => {
   } else {
     console.log(searchQuery);
 
-    const queryText = `SELECT * FROM barrels WHERE city ILIKE '%${searchQuery}%' OR hosts ILIKE '%${searchQuery}%' OR hours ILIKE '%${searchQuery}%' OR description ILIKE '%${searchQuery}%' OR zipcode LIKE '%${searchQuery}%';`;
+    const queryText = `SELECT * FROM barrels WHERE city ILIKE '%${searchQuery}%' OR hosts ILIKE '%${searchQuery}%' OR hours ILIKE '%${searchQuery}%' OR description ILIKE '%${searchQuery}%' OR zipcode LIKE '%${searchQuery}%' OR dates ILIKE '%${searchQuery}%;'`;
     pool
       .query(queryText)
       .then((result) => {
@@ -108,4 +109,19 @@ router.get("/search/:search", (req, res) => {
       });
   }
 });
+// DELETE ITEM FROM BARREL
+router.delete('/delete/:id', (req, res) => {
+  let reqId = req.params.id;
+  console.log('Delete request for id', reqId);
+  let queryText = `DELETE FROM barrels WHERE id=$1`;
+  pool.query(queryText, [reqId])
+    .then((result) => {
+      console.log('Item deleted');
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`Error making database query ${queryText}`, error);
+      res.sendStatus(500);
+    })
+})
 module.exports = router;
