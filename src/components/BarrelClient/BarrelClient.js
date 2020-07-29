@@ -12,7 +12,9 @@ class BarrelClient extends Component {
           distanced and honor CDC guidelines. Other drop locations below! You
           may also browse our Wish List for gift ideas.
         </p>
-        <BarrelSearch />
+        <div className="clientSearch">
+          <BarrelSearch />
+        </div>
         <ul className="locationLists">
           <div>
             {this.props.state.searchBarrels.map((barrel) => {
