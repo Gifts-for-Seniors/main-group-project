@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import BarrelSearch from "../BarrelAdmin/BarrelSearch";
-
+import BarrelSearch from "../BarrelSearch/BarrelSearch";
+import "./BarrelClient.css";
 class BarrelClient extends Component {
   render() {
     return (
@@ -12,18 +12,34 @@ class BarrelClient extends Component {
           distanced and honor CDC guidelines. Other drop locations below! You
           may also browse our Wish List for gift ideas.
         </p>
-        <BarrelSearch />
-        <ul>
+        <div className="clientSearch">
+          <BarrelSearch />
+        </div>
+        <ul className="locationLists">
           <div>
             {this.props.state.searchBarrels.map((barrel) => {
-                if (barrel.status === true){
-                    return (
-                        <li key={barrel.id}>
-                        {barrel.hosts} - {barrel.street}, {barrel.city}{" "}
-                        {barrel.zipcode} {barrel.description} {barrel.hours}
-                        </li>               
-                    )
-                }
+              if (barrel.status === true) {
+                return (
+                  <li className="boldIt" key={barrel.id}>
+                    {barrel.hosts} ,
+                    <ul>
+                      <li>
+                        {barrel.street} {barrel.city} {barrel.zipcode}
+                      </li>
+                      {barrel.description !== null ? (
+                        <li>{barrel.description}</li>
+                      ) : (
+                        <div></div>
+                      )}
+                      {barrel.hours !== null ? (
+                        <li>{barrel.hours}</li>
+                      ) : (
+                        <div></div>
+                      )}
+                    </ul>
+                  </li>
+                );
+              }
             })}
           </div>
         </ul>
