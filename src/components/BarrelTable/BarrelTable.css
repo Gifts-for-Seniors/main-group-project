@@ -7,14 +7,18 @@
 
 .barrelTable {
   padding: 1.2%;
+  width: 100%;
   max-width: 100%;
-  margin: auto;
+  /* margin: auto; */
 }
 
 .barrelTable th {
+  justify-self: center;
   background-color: lightblue;
-  object-fit: contain;
-  margin: auto;
+  display: inline-flex;
+  /* padding-inline: 10%; */
+
+  text-align: center;
 }
 
 .barrelTable th,
@@ -25,12 +29,26 @@ td {
 
 .barrelTable thead > tr {
   width: 100%;
+  align-self: start;
+  text-align: center;
+  justify-self: center;
   position: relative;
-  display: block;
 }
 
 .barrelTable tbody {
-  display: block;
+  display: inline-block;
   height: 400px;
   overflow: auto;
+}
+
+.deleteRow {
+  background-color: darkblue;
+}
+
+.coolTableTr {
+  display: inline-block;
+}
+
+.barrelItem td {
+  object-fit: contain;
 }

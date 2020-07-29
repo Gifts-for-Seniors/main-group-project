@@ -79,7 +79,7 @@ class BarrelTable extends Component {
       <div id="wrapper">
         <table className="barrelTable">
           <thead>
-            <tr>
+            <tr className="coolTableTr">
               <th>Host</th>
               <th>Street Number</th>
               <th>City</th>
@@ -87,8 +87,6 @@ class BarrelTable extends Component {
               <th>Date</th>
               <th>Description</th>
               <th>Status</th>
-              <th>Edit</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -125,11 +123,29 @@ class BarrelTable extends Component {
                         }
                       ></Input>
                     </td>
+                    <td className="checkBox">
+                      <StyledCheckbox
+                        onChange={() => {
+                          this.updatePriority(item);
+                        }}
+                        type="checkbox"
+                        checked={item.priority}
+                      />
+                    </td>
+                    <td>
+                      <StyledButton>Save</StyledButton>
+                    </td>
+                    <td>
+                      <RemoveButton
+                        class="trash"
+                        onClick={() => this.deleteItem(item.id)}
+                      ></RemoveButton>
+                    </td>
                   </tr>
                 );
               } else {
                 return (
-                  <tr className="insertItem">
+                  <tr className="barrelItem">
                     <td>{item.hosts}</td>
                     <td>{item.street}</td>
                     <td>{item.city}</td>
@@ -138,18 +154,12 @@ class BarrelTable extends Component {
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
                     <td>
-                      <StyledButton
+                      <i
+                        class="edit icon"
                         onClick={() => {
                           this.editItem(item);
                         }}
-                      >
-                        Edit
-                      </StyledButton>
-                    </td>
-                    <td>
-                      <RemoveButton onClick={() => this.deleteItem(item.id)}>
-                        Delete
-                      </RemoveButton>
+                      ></i>
                     </td>
                   </tr>
                 );
