@@ -1,14 +1,29 @@
 .priorityHeader {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  padding-left: 2%;
   font-style: italic;
   font-weight: bolder;
+  text-align: left;
 }
 
 #highPriority {
   text-align: left;
   display: inline-block;
+
   /* float: right; */
+}
+
+.highPriorityItems {
+  background-color: red;
+  max-width: 50%;
+  border: 10px solid black;
+  margin: 0.08%;
+  border-radius: 17px;
+
+  box-shadow: black 10px;
+
+  margin-top: 2%;
 }
 #wishListHeader {
   font-weight: bolder;
@@ -23,12 +38,11 @@
 .sentimentalMessage {
   display: flexbox;
   float: right;
-  margin: .08%;
+  margin: 0.08%;
   flex-direction: column-reverse;
-    border: 10px solid black;
+  border: 10px solid black;
 
   box-shadow: black 10px;
-  background-color: red;
   /* max-width: 40%;
   padding: 2%;
   border-radius: 12px;

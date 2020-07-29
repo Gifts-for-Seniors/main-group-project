@@ -32,10 +32,11 @@ function* newBarrel(action) {
 }
 //DELETE ITEM
 function* deleteBarrel(action) {
-  // console.log(action.payload)
+  console.log(action.payload);
+  console.log(action.payload.id);
   try {
-    yield axios.delete(`/api/barrel-locations/delete/${action.payload}`)
-    yield put({ type: 'FETCH_LIST' })
+    yield axios.delete(`/api/barrel-locations/delete/${action.payload.id}`);
+    yield put({ type: "SEARCH_ALL_BARRELS", payload: "*all" });
   } catch (error) {
     console.log(error);
   }
@@ -45,7 +46,7 @@ function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
   yield takeEvery("GET_ADMIN_BARRELS", getAdminBarrels);
-  yield takeEvery("DELETE_ITEM", deleteBarrel);
+  yield takeEvery("DELETE_BARREL", deleteBarrel);
 }
 
 export default newBarrelSaga;

@@ -13,7 +13,7 @@
 
 .barrelTable th {
   background-color: lightblue;
-  width: 17%;
+  object-fit: contain;
   margin: auto;
 }
 
@@ -31,6 +31,6 @@ td {
 
 .barrelTable tbody {
   display: block;
-  height: 500px;
+  height: 400px;
   overflow: auto;
 }

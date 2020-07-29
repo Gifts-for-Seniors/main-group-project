@@ -1,0 +1,15 @@
+#addDonationH3 {
+  margin-top: -5%;
+  text-align: center;
+}
+.addBarrelInput {
+  padding: 2%;
+}
+.addBarrels {
+  /* background-color: antiquewhite; */
+  border: solid lightblue 3px;
+  justify-content: center;
+  text-align: center;
+  background-color: aliceblue;
+  border-radius: 22px;
+}
