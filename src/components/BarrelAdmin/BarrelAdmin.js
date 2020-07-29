@@ -5,7 +5,7 @@ import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
-import BarrelTable from "../Table/Table";
+import BarrelTable from "../BarrelTable/BarrelTable";
 import BarrelInput from "../BarrelInputForm/BarrelInputForm";
 class BarrelAdmin extends Component {
   render() {

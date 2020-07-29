@@ -108,4 +108,8 @@ router.get("/search/:search", (req, res) => {
       });
   }
 });
+
+/**
+ * DELETE BARREL
+ */
 module.exports = router;

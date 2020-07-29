@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input } from "@material-ui/core";
-import "./Table.css";
+import "./BarrelTable.css";
 
 class BarrelTable extends Component {
   state = {
@@ -16,6 +16,7 @@ class BarrelTable extends Component {
     description: "",
     zipcode: " ",
     status: true,
+    date: "",
   };
 
   editItem = (item) => {
@@ -28,6 +29,7 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
+      date: item.date,
     });
     console.log(this.state);
   };
@@ -54,6 +56,7 @@ class BarrelTable extends Component {
               <th>Street Number</th>
               <th>City</th>
               <th>Zipcode</th>
+              <th>Date</th>
               <th>Description</th>
               <th>Status</th>
               <th>Edit</th>
@@ -67,6 +70,7 @@ class BarrelTable extends Component {
                   <td>{item.street}</td>
                   <td>{item.city}</td>
                   <td>{item.zipcode}</td>
+                  <td>{item.date}</td>
                   <td>{item.description}</td>
                   <td>{item.status ? "Active" : "Deactivated"}</td>
                   <td>
