@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input } from "@material-ui/core";
+import "./Table.css";
 
 class BarrelTable extends Component {
   state = {
@@ -31,10 +32,22 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  updatePriority = (item) => {
+    console.log(item);
+    let data = {
+      id: item.id,
+      priority: item.priority,
+    };
+    this.props.dispatch({
+      type: "UPDATE_PRIORITY",
+      payload: data,
+    });
+  };
+
   render() {
     return (
-      <div>
-        <table className="">
+      <div id="wrapper">
+        <table className="barrelTable">
           <thead>
             <tr>
               <th>Host</th>

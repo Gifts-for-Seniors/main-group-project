@@ -1,8 +1,36 @@
-.barrelOverlay {
-  border-collapse: separate;
+#wrapper {
+  width: 100%;
+  text-align: center;
+  justify-self: center;
+  padding-top: 2%;
 }
 
-/* .names {
-  max-width: 25%;
-} */
+.barrelTable {
+  padding: 1.2%;
+  max-width: 100%;
+  margin: auto;
+}
 
+.barrelTable th {
+  background-color: lightblue;
+  width: 17%;
+  margin: auto;
+}
+
+.barrelTable th,
+td {
+  max-width: 100%;
+  border: 1.5px solid darkgray;
+}
+
+.barrelTable thead > tr {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.barrelTable tbody {
+  display: block;
+  height: 500px;
+  overflow: auto;
+}
