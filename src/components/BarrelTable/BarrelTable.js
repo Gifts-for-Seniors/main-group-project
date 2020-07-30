@@ -16,7 +16,7 @@ class BarrelTable extends Component {
     description: "Add Description",
     zipcode: "Add Zipcode",
     status: true,
-    date: "Add Dates Open",
+    dates: "Add Dates Open",
   };
 
   editItem = (item) => {
@@ -29,7 +29,7 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
-      date: item.date,
+      dates: item.dates,
     });
     console.log(this.state);
   };
@@ -84,7 +84,7 @@ class BarrelTable extends Component {
               <th>Street Number</th>
               <th>City</th>
               <th>Zipcode</th>
-              <th>Date</th>
+              <th>Dates</th>
               <th>Description</th>
               <th>Status</th>
             </tr>
@@ -148,10 +148,10 @@ class BarrelTable extends Component {
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.date}
-                        value={this.state.date}
+                        label={this.state.dates}
+                        value={this.state.dates}
                         variant="filled"
-                        onChange={(event) => this.trackEdit(event, "date")}
+                        onChange={(event) => this.trackEdit(event, "dates")}
                       ></Input>
                     </td>
                     <td>
@@ -200,7 +200,7 @@ class BarrelTable extends Component {
                     <td>{item.street}</td>
                     <td>{item.city}</td>
                     <td>{item.zipcode}</td>
-                    <td>{item.date}</td>
+                    <td>{item.dates}</td>
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
                     <td>
