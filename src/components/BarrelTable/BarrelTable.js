@@ -4,7 +4,7 @@ import ObjectList from "react-object-list";
 import { connect } from "react-redux";
 import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
-import { Input } from "@material-ui/core";
+import { Input, TextField } from "@material-ui/core";
 import "./BarrelTable.css";
 
 class BarrelTable extends Component {
@@ -121,89 +121,92 @@ class BarrelTable extends Component {
                 return (
                   <tr>
                     <td>
-                      {" "}
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.hosts}
+                        multiline
+                        rowsMax={10}
                         value={this.state.hosts}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "hosts")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      {" "}
-                      <Input
+                      <TextField
+                        multiline
+                        rowsMax={10}
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.street}
                         value={this.state.street}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "street")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      {" "}
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.city}
+                        rowsMax={10}
+                        multiline
                         value={this.state.city}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "city")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      {" "}
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.zipcode}
+                        rowsMax={10}
+                        multiline
                         value={this.state.zipcode}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "zipcode")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.date}
+                        rowsMax={10}
+                        multiline
                         value={this.state.date}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "date")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.hours}
+                        rowsMax={10}
+                        multiline
                         value={this.state.hours}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) => this.trackEdit(event, "hours")}
-                      ></Input>
+                      ></TextField>
                     </td>
                     <td>
-                      <Input
+                      <TextField
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.description}
+                        rowsMax={10}
+                        multiline
                         value={this.state.description}
-                        variant="filled"
+                        variant="outlined"
                         onChange={(event) =>
                           this.trackEdit(event, "description")
                         }
-                      ></Input>
+                      ></TextField>
                     </td>
-                    <td className="">
+                    <td>
                       <div class="ui slider checkbox">
                         <input
                           type="checkbox"
