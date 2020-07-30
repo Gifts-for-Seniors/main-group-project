@@ -102,11 +102,11 @@ class BarrelTable extends Component {
     return (
       <div id="wrapper">
         <table className="barrelTable">
-          <thead>
+          <thead className="tableHeader">
             <tr className="coolTableTr">
-              <th>Host</th>
+              <th className="hostTag">Host</th>
               <th>Street Number</th>
-              <th>City</th>
+              <th className="cityTag">City</th>
               <th>Zipcode</th>
               <th>Dates</th>
               <th>Hours</th>
@@ -207,7 +207,10 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
-                      <div class="ui slider checkbox">
+                      <div
+                        className="sliderCheckbox"
+                        class="ui slider checkbox"
+                      >
                         <input
                           type="checkbox"
                           onChange={() => {
@@ -216,18 +219,10 @@ class BarrelTable extends Component {
                           checked={item.status}
                           name="newsletter"
                         />
-                        <label>Active</label>
+                        <label className="sliderLabel">
+                          {item.status ? "Active" : "Not Active"}
+                        </label>
                       </div>
-                      {/* <i>
-                        <StyledCheckbox
-                          onChange={() => {
-                            this.updatePriority(item);
-                          }}
-                          type="checkbox"
-                          checked={item.priority}
-                        />
-                        <p>Active?</p>
-                      </i> */}
                     </td>
                     <td>
                       <i
