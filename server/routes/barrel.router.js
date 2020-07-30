@@ -159,4 +159,24 @@ router.delete("/delete/:id", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+//UPDATE THE "STATUS" OF A BARREL
+router.put("/update/:id", rejectUnauthenticated, (req, res) => {
+  let id = req.body.id;
+  let status = req.body.status;
+  console.log(req.body.status);
+  let changeHelper = !status;
+  let queryText = `UPDATE items SET status = $2 WHERE id=$1`;
+  pool
+    .query(queryText, [id, changeHelper])
+    .then((result) => {
+      res.sendStatus(200);
+      console.log("success", result);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
