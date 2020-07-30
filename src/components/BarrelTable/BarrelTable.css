@@ -46,7 +46,3 @@ td {
 .coolTableTr {
   display: inline-block;
 }
-
-.barrelItem td {
-  object-fit: contain;
-}

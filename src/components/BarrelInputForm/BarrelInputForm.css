@@ -24,4 +24,9 @@
 .addBarrelInput .MuiFormControl-root {
   width: 100%;
   background-color: lightblue;
+  margin: -1%;
 }
+/* 
+.addBarrelInput .MuiFormControl-root:hover {
+  color: lightsalmon;
+} */

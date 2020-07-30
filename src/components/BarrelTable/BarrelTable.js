@@ -10,13 +10,13 @@ import "./BarrelTable.css";
 class BarrelTable extends Component {
   state = {
     itemToEdit: 0,
-    hosts: "",
-    street: " ",
-    city: "",
-    description: "",
-    zipcode: " ",
+    hosts: "Add Host Name",
+    street: "Add Street",
+    city: "Add City",
+    description: "Add Description",
+    zipcode: "Add Zipcode",
     status: true,
-    date: "",
+    date: "Add Dates Open",
   };
 
   editItem = (item) => {
@@ -45,10 +45,10 @@ class BarrelTable extends Component {
     console.log(item);
     let data = {
       id: item.id,
-      priority: item.priority,
+      status: item.status,
     };
     this.props.dispatch({
-      type: "UPDATE_PRIORITY",
+      type: "UPDATE_STATUS",
       payload: data,
     });
   };
@@ -64,7 +64,7 @@ class BarrelTable extends Component {
   deleteItem = (id) => {
     let dataObject = {
       id: id,
-      previousSearch: this.props.state.searchBarrels,
+      previousSearch: this.props.state.searchTerm,
     };
 
     console.log(dataObject);
@@ -95,10 +95,54 @@ class BarrelTable extends Component {
               if (item.id === this.state.itemToEdit) {
                 return (
                   <tr>
-                    <td>{item.hosts}</td>
-                    <td>{item.street}</td>
-                    <td>{item.city}</td>
-                    <td>{item.zipcode}</td>
+                    <td>
+                      {" "}
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.hosts}
+                        value={this.state.hosts}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "hosts")}
+                      ></Input>
+                    </td>
+                    <td>
+                      {" "}
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.street}
+                        value={this.state.street}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "street")}
+                      ></Input>
+                    </td>
+                    <td>
+                      {" "}
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.city}
+                        value={this.state.city}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "city")}
+                      ></Input>
+                    </td>
+                    <td>
+                      {" "}
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.zipcode}
+                        value={this.state.zipcode}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "zipcode")}
+                      ></Input>
+                    </td>
                     <td>
                       <Input
                         autoFocus="true"
