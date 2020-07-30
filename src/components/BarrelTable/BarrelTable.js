@@ -19,13 +19,6 @@ class BarrelTable extends Component {
     date: "Add Dates Open",
   };
 
-  cancelEdit = () => {
-    this.setState({
-      ...this.state,
-      itemToEdit: 0,
-    });
-  };
-
   editItem = (item) => {
     this.setState({
       ...this.state,
