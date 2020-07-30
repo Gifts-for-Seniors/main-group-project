@@ -1,5 +1,7 @@
 .locationLists {
   list-style: none;
+  overflow: scroll;
+  height: 1000px;
 }
 
 .locationLists li {
