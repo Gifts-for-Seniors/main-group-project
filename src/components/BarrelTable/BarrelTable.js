@@ -19,6 +19,13 @@ class BarrelTable extends Component {
     date: "Add Dates Open",
   };
 
+  cancelEdit = () => {
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   editItem = (item) => {
     this.setState({
       ...this.state,
@@ -180,7 +187,10 @@ class BarrelTable extends Component {
                       <i class="archive icon"></i>
                     </td>
                     <td>
-                      <i class="ban icon"></i>
+                      <i class="ban icon"
+                        onClick={this.cancelEdit}>
+                      </i>
+                      
                     </td>
                     <td>
                       <i
