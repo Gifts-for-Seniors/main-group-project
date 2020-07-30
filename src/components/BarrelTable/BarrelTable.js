@@ -18,6 +18,7 @@ class BarrelTable extends Component {
     hours: "",
     status: true,
     date: "",
+    barrelStatus: false,
   };
 
   editItem = (item) => {
@@ -30,7 +31,7 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
-      date: item.date,
+      date: item.dates,
       hours: item.hours,
       searchTerm: this.props.state.searchTerm,
     });
@@ -44,15 +45,16 @@ class BarrelTable extends Component {
     });
   };
 
-  updatePriority = (item) => {
+  updateStatus = (item) => {
     console.log(item);
     let data = {
       id: item.id,
       status: item.status,
+      previousSearch: this.props.state.searchTerm
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
-      payload: data,
+      payload: data
     });
   };
 
@@ -204,10 +206,10 @@ class BarrelTable extends Component {
                     <td className="checkBox">
                       <StyledCheckbox
                         onChange={() => {
-                          this.updatePriority(item);
+                          this.updateStatus(item);
                         }}
                         type="checkbox"
-                        checked={item.priority}
+                        checked={item.status}
                       />
                     </td>
                     <td>
