@@ -1,75 +1,37 @@
-#wrapper {
+.table-container {
+  height: 40em;
+}
+table {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
   width: 100%;
-  text-align: center;
-  justify-self: center;
-  padding-top: 2%;
 }
-
-.barrelTable {
-  padding: 1.2%;
+table thead {
+  /* head takes the height it requires, 
+    and it's not scaled when table is resized */
+  flex: 0 0 auto;
+  width: calc(100% - 0.9em);
+}
+table tbody {
+  /* body takes all the remaining available space */
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: scroll;
+}
+table tbody tr {
   width: 100%;
-  max-width: 100%;
-  margin: auto;
 }
-
-/* .cityTag {
-  margin-right: -4%;
-} */
-.coolTableTr th {
-  text-align: left;
-  width: 11.5%;
-  margin-right: 0.2%;
-  justify-self: center;
-  background-color: lightblue;
-  display: inline-block;
-}
-
-/* .hostTag {
-  margin-left: -10%;
-} */
-
-/* head takes the height it requires,
-and it’s not scaled when table is resized /
-flex: 0 0 auto;
-width: calc(100% - 1.05em);
-}
-
-/* .barrelTable th,
-td {
-  max-width: 100%;
-  border: 1.5px solid darkgray;
-} */
-
-/* .barrelTable thead > tr {
-  width: 100%;
-  align-self: start;
-  text-align: center;
-  justify-self: center;
-  position: relative;
-} */
-
-.barrelTable thead,
-tbody,
-tr {
+table thead,
+table tbody tr {
   display: table;
-  width: 100%;
   table-layout: fixed;
 }
-.barrelTable tbody {
-  display: inline-block;
-  height: 400px;
-  overflow: auto;
+
+table td {
+  font-size: calc(0.6vmin + 0.6vmax);
 }
 
-.deleteRow {
-  background-color: darkblue;
+table th {
+  font-size: calc(0.6vmin + 0.6vmax);
 }
-
-.coolTableTr {
-  display: inline-block;
-}
-
-/* table thead {
-  flex: 0 0 auto;
-  width: calc(100% - 1.05em);
-} */

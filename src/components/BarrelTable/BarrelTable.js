@@ -100,7 +100,7 @@ class BarrelTable extends Component {
 
   render() {
     return (
-      <div id="wrapper">
+      <div className="table-container">
         <table className="barrelTable">
           <thead className="tableHeader">
             <tr className="coolTableTr">
@@ -112,6 +112,7 @@ class BarrelTable extends Component {
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -218,7 +219,7 @@ class BarrelTable extends Component {
                           }}
                           checked={item.status}
                           name="newsletter"
-                        />
+                        />{" "}
                         <label className="sliderLabel">
                           {item.status ? "Active" : "Not Active"}
                         </label>
