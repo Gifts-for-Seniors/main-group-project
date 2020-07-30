@@ -50,11 +50,11 @@ class BarrelTable extends Component {
     let data = {
       id: item.id,
       status: item.status,
-      previousSearch: this.props.state.searchTerm
+      previousSearch: this.props.state.searchTerm,
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
-      payload: data
+      payload: data,
     });
   };
 
@@ -203,30 +203,50 @@ class BarrelTable extends Component {
                         }
                       ></Input>
                     </td>
-                    <td className="checkBox">
-                      <StyledCheckbox
-                        onChange={() => {
-                          this.updateStatus(item);
-                        }}
-                        type="checkbox"
-                        checked={item.status}
-                      />
+                    <td className="">
+                      <div class="ui slider checkbox">
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            this.updateStatus(item);
+                          }}
+                          checked={item.status}
+                          name="newsletter"
+                        />
+                        <label>Active</label>
+                      </div>
+                      {/* <i>
+                        <StyledCheckbox
+                          onChange={() => {
+                            this.updatePriority(item);
+                          }}
+                          type="checkbox"
+                          checked={item.priority}
+                        />
+                        <p>Active?</p>
+                      </i> */}
                     </td>
                     <td>
                       <i
                         class="archive icon"
                         value={item.id}
                         onClick={() => this.saveChanges()}
-                      ></i>
+                      >
+                        <p>Save</p>
+                      </i>
                     </td>
                     <td>
-                      <i class="ban icon" onClick={this.cancelEdit}></i>
+                      <i class="ban icon" onClick={this.cancelEdit}>
+                        <p>Cancel</p>
+                      </i>
                     </td>
                     <td>
                       <i
                         class="trash icon"
                         onClick={() => this.deleteItem(item.id)}
-                      ></i>
+                      >
+                        <p>Delete</p>
+                      </i>
                     </td>
                   </tr>
                 );
