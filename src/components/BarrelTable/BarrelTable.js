@@ -10,14 +10,14 @@ import "./BarrelTable.css";
 class BarrelTable extends Component {
   state = {
     itemToEdit: 0,
-    hosts: "Add Host Name",
-    street: "Add Street",
-    city: "Add City",
-    description: "Add Description",
-    zipcode: "Add Zipcode",
+    hosts: "",
+    street: "",
+    city: "",
+    description: "",
+    zipcode: "",
     hours: "",
     status: true,
-    date: "Add Dates Open",
+    date: "",
   };
 
   editItem = (item) => {
@@ -106,7 +106,7 @@ class BarrelTable extends Component {
               <th>Street Number</th>
               <th>City</th>
               <th>Zipcode</th>
-              <th>Date</th>
+              <th>Dates</th>
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
