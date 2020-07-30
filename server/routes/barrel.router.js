@@ -78,6 +78,37 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
 });
 
 /**
+ * EDIT BARREL
+ */
+router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
+  let itemToEdit = req.body.itemToEdit;
+  let hosts = req.body.hosts;
+  let street = req.body.street;
+  let city = req.body.city;
+  let description = req.body.description;
+  let zipcode = req.body.zipcode;
+  let date = req.body.date;
+
+  const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, date) VALUES ($1, $2, $3, $4, $5, $6) WHERE id = $7`;
+  pool
+    .query(queryText, [
+      hosts,
+      street,
+      city,
+      description,
+      zipcode,
+      date,
+      itemToEdit,
+    ])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER UPDATE", error);
+    });
+});
+
+/**
  * SEARCH BARRELS
  */
 router.get("/search/:search", (req, res) => {
@@ -110,18 +141,19 @@ router.get("/search/:search", (req, res) => {
   }
 });
 // DELETE ITEM FROM BARREL
-router.delete('/delete/:id', (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   let reqId = req.params.id;
-  console.log('Delete request for id', reqId);
+  console.log("Delete request for id", reqId);
   let queryText = `DELETE FROM barrels WHERE id=$1`;
-  pool.query(queryText, [reqId])
+  pool
+    .query(queryText, [reqId])
     .then((result) => {
-      console.log('Item deleted');
+      console.log("Item deleted");
       res.sendStatus(200);
     })
     .catch((error) => {
       console.log(`Error making database query ${queryText}`, error);
       res.sendStatus(500);
-    })
-})
+    });
+});
 module.exports = router;

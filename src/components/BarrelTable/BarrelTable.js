@@ -61,6 +61,13 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  cancelEdit = () => {
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   deleteItem = (id) => {
     let dataObject = {
       id: id,
@@ -74,6 +81,18 @@ class BarrelTable extends Component {
     });
     // console.log("payload", id);
   };
+
+  saveChanges = () => {
+    this.props.dispatch({
+      type: "UPDATE_BARREL",
+      payload: this.state,
+    });
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   render() {
     return (
       <div id="wrapper">
@@ -177,10 +196,14 @@ class BarrelTable extends Component {
                       />
                     </td>
                     <td>
-                      <i class="archive icon"></i>
+                      <i
+                        class="archive icon"
+                        value={item.id}
+                        onClick={() => this.saveChanges()}
+                      ></i>
                     </td>
                     <td>
-                      <i class="ban icon"></i>
+                      <i class="ban icon" onClick={this.cancelEdit}></i>
                     </td>
                     <td>
                       <i

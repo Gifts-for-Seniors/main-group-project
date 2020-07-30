@@ -48,11 +48,21 @@ function* deleteBarrel(action) {
   }
 }
 
+function* updateBarrel(action) {
+  console.log(action.payload);
+  try {
+    yield axios.put(`api/barrel-location/`);
+  } catch (error) {
+    console.log("error");
+  }
+}
+
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
   yield takeEvery("GET_ADMIN_BARRELS", getAdminBarrels);
   yield takeEvery("DELETE_BARREL", deleteBarrel);
+  yield takeEvery("UPDATE_BARREL", updateBarrel);
 }
 
 export default newBarrelSaga;
