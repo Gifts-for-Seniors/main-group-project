@@ -136,10 +136,10 @@ class BarrelTable extends Component {
                       <StyledButton>Save</StyledButton>
                     </td>
                     <td>
-                      <RemoveButton
-                        class="trash"
+                      <i
+                        class="trash icon"
                         onClick={() => this.deleteItem(item.id)}
-                      ></RemoveButton>
+                      ></i>
                     </td>
                   </tr>
                 );
