@@ -106,7 +106,7 @@ class BarrelTable extends Component {
               <th>Street Number</th>
               <th>City</th>
               <th>Zipcode</th>
-              <th>Date</th>
+              <th>Dates</th>
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
