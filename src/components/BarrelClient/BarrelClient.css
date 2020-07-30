@@ -5,21 +5,29 @@
 }
 
 .locationLists li {
+  margin: auto;
   list-style: none;
   padding: 0.8%;
 }
 
 .boldIt {
+  display: flexbox;
   background-color: #2483d0;
   border: 3px solid black;
   border-radius: 17px;
+  margin: auto;
   text-align: center;
   color: white;
-  margin: .05%;
+  margin: 0.05%;
+  max-width: 80%;
 }
 
 .covid19Response {
   font-style: italic;
   text-align: left;
   max-width: 35%;
+}
+
+.barrelMap {
+  margin: auto;
 }
