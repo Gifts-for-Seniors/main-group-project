@@ -66,12 +66,38 @@ function* updateBarrel(action) {
   }
 }
 
+//UPDATE THE STATUS
+function* updateStatus(action) {
+  let data = {
+    id: action.payload.id,
+    status: action.payload.status,
+  };
+  console.log(data);
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.put(`api/barrel-locations/update/${data}`, data);
+    if (action.payload.previousSearch === Array(0)) {
+      console.log("pooter");
+    }
+    yield put({
+      type: "SEARCH_ALL_BARRELS",
+      payload: action.payload.previousSearch,
+    });
+  } catch (error) {
+    console.log("UPDATE STATUS FAILED", error);
+  }
+}
+
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
   yield takeEvery("GET_ADMIN_BARRELS", getAdminBarrels);
   yield takeEvery("DELETE_BARREL", deleteBarrel);
   yield takeEvery("UPDATE_BARREL", updateBarrel);
+  yield takeEvery("UPDATE_STATUS", updateStatus);
 }
 
 export default newBarrelSaga;

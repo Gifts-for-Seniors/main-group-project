@@ -18,6 +18,7 @@ class BarrelTable extends Component {
     hours: "",
     status: true,
     date: "",
+    barrelStatus: false,
   };
 
   editItem = (item) => {
@@ -44,11 +45,12 @@ class BarrelTable extends Component {
     });
   };
 
-  updatePriority = (item) => {
+  updateStatus = (item) => {
     console.log(item);
     let data = {
       id: item.id,
       status: item.status,
+      previousSearch: this.props.state.searchTerm,
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
@@ -203,7 +205,14 @@ class BarrelTable extends Component {
                     </td>
                     <td className="">
                       <div class="ui slider checkbox">
-                        <input type="checkbox" name="newsletter" />
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            this.updateStatus(item);
+                          }}
+                          checked={item.status}
+                          name="newsletter"
+                        />
                         <label>Active</label>
                       </div>
                       {/* <i>
