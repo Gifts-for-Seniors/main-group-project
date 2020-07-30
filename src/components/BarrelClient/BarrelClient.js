@@ -16,7 +16,7 @@ class BarrelClient extends Component {
           <BarrelSearch />
         </div>
         <ul className="locationLists">
-          <div>
+          <div className="barrelMap">
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true) {
                 return (

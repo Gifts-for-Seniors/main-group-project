@@ -115,7 +115,7 @@ class WishListAdmin extends Component {
               if (item.id === this.state.itemToEdit) {
                 return (
                   // Renders an editable item.
-                  <tr key={item.id}>
+                  <tr className="itemDescription" key={item.id}>
                     <td>
                       <Input
                         autoFocus="true"
@@ -161,7 +161,7 @@ class WishListAdmin extends Component {
               } else
                 return (
                   // Returns table data with Edit/Delete buttons.
-                  <tr key={item.id}>
+                  <tr className="itemDescription" key={item.id}>
                     <td onDoubleClick={() => this.editItem(item.id, item.item)}>
                       {item.item}
                     </td>

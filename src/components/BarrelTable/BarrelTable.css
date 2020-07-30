@@ -19,11 +19,11 @@
   text-align: center;
 }
 
-.barrelTable th,
+/* .barrelTable th,
 td {
   max-width: 100%;
   border: 1.5px solid darkgray;
-}
+} */
 
 .barrelTable thead > tr {
   width: 100%;
@@ -33,6 +33,13 @@ td {
   position: relative;
 }
 
+.barrelTable thead,
+tbody,
+tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
 .barrelTable tbody {
   display: inline-block;
   height: 400px;

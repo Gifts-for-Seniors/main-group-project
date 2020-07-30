@@ -18,6 +18,7 @@ class BarrelTable extends Component {
     hours: "",
     status: true,
     date: "",
+    barrelStatus: false,
   };
 
   editItem = (item) => {
@@ -30,7 +31,7 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
-      date: item.date,
+      date: item.dates,
       hours: item.hours,
       searchTerm: this.props.state.searchTerm,
     });
@@ -44,11 +45,12 @@ class BarrelTable extends Component {
     });
   };
 
-  updatePriority = (item) => {
+  updateStatus = (item) => {
     console.log(item);
     let data = {
       id: item.id,
       status: item.status,
+      previousSearch: this.props.state.searchTerm,
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
@@ -201,30 +203,50 @@ class BarrelTable extends Component {
                         }
                       ></Input>
                     </td>
-                    <td className="checkBox">
-                      <StyledCheckbox
-                        onChange={() => {
-                          this.updatePriority(item);
-                        }}
-                        type="checkbox"
-                        checked={item.priority}
-                      />
+                    <td className="">
+                      <div class="ui slider checkbox">
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            this.updateStatus(item);
+                          }}
+                          checked={item.status}
+                          name="newsletter"
+                        />
+                        <label>Active</label>
+                      </div>
+                      {/* <i>
+                        <StyledCheckbox
+                          onChange={() => {
+                            this.updatePriority(item);
+                          }}
+                          type="checkbox"
+                          checked={item.priority}
+                        />
+                        <p>Active?</p>
+                      </i> */}
                     </td>
                     <td>
                       <i
                         class="archive icon"
                         value={item.id}
                         onClick={() => this.saveChanges()}
-                      ></i>
+                      >
+                        <p>Save</p>
+                      </i>
                     </td>
                     <td>
-                      <i class="ban icon" onClick={this.cancelEdit}></i>
+                      <i class="ban icon" onClick={this.cancelEdit}>
+                        <p>Cancel</p>
+                      </i>
                     </td>
                     <td>
                       <i
                         class="trash icon"
                         onClick={() => this.deleteItem(item.id)}
-                      ></i>
+                      >
+                        <p>Delete</p>
+                      </i>
                     </td>
                   </tr>
                 );
