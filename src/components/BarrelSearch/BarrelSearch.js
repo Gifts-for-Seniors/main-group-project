@@ -3,6 +3,7 @@ import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import "./BarrelSearch.css";
+import searchTerm from "../../redux/reducers/searchTermReducer";
 class BarrelSearch extends Component {
   state = {
     search: "",
@@ -28,6 +29,10 @@ class BarrelSearch extends Component {
     console.log(this.state.search);
     this.props.dispatch({
       type: "SEARCH_ALL_BARRELS",
+      payload: search,
+    });
+    this.props.dispatch({
+      type: "SET_SEARCH_TERM",
       payload: search,
     });
   };

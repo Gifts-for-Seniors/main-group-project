@@ -6,8 +6,8 @@ class BarrelClient extends Component {
   render() {
     return (
       <div>
-        <p>
-          Covid 19 Notice: Please click here to deliver gift donations at our
+        <p className="covid19Response">
+          Covid 19 Response: Please click here to deliver gift donations at our
           operations center in Minneapolis. Individual appointments are socially
           distanced and honor CDC guidelines. Other drop locations below! You
           may also browse our Wish List for gift ideas.
@@ -33,7 +33,7 @@ class BarrelClient extends Component {
                       )}
                       {barrel.dates !== null ? (
                         <li>{barrel.dates}</li>
-                        ) : (
+                      ) : (
                         <div></div>
                       )}
                       {barrel.hours !== null ? (

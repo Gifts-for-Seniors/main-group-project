@@ -36,7 +36,10 @@ function* deleteBarrel(action) {
   console.log(action.payload.id);
   try {
     yield axios.delete(`/api/barrel-locations/delete/${action.payload.id}`);
-    yield put({ type: "SEARCH_ALL_BARRELS", payload: "*all" });
+    yield put({
+      type: "SEARCH_ALL_BARRELS",
+      payload: action.payload.previousSearch,
+    });
   } catch (error) {
     console.log(error);
   }

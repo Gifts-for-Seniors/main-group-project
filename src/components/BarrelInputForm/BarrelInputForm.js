@@ -46,7 +46,7 @@ class BarrelInput extends Component {
 
   render() {
     return (
-      <div>
+      <div className="barrelForm">
         <h3 id="addDonationH3" className="tableTitle">
           Add a Donation Location
         </h3>
