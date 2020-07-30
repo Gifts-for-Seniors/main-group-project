@@ -31,12 +31,21 @@ const StyledButton = withStyles({
 const RemoveButton = withStyles({
   root: {
     background: "#bd0f32",
-    borderRadius: 22,
+    borderRadius: 17,
     color: "white",
-    height: ".2%",
-    padding: "2%",
-    width: ".2%",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    padding: ".5%",
+    boxShadow: "0 3px 2px black",
+    justifySelf: "center",
+    size: "small",
+    "&:hover": {
+      background: "black",
+      color: "white",
+      boxShadow: "0 4px 3px black",
+    },
+    "&:active": {
+      background: "#0352fc",
+      boxShadow: "0 1px 1px 1px black",
+    },
   },
 })(Button);
 

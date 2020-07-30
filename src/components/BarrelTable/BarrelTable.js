@@ -201,30 +201,43 @@ class BarrelTable extends Component {
                         }
                       ></Input>
                     </td>
-                    <td className="checkBox">
-                      <StyledCheckbox
-                        onChange={() => {
-                          this.updatePriority(item);
-                        }}
-                        type="checkbox"
-                        checked={item.priority}
-                      />
+                    <td className="">
+                      <div class="ui slider checkbox">
+                        <input type="checkbox" name="newsletter" />
+                        <label>Active</label>
+                      </div>
+                      {/* <i>
+                        <StyledCheckbox
+                          onChange={() => {
+                            this.updatePriority(item);
+                          }}
+                          type="checkbox"
+                          checked={item.priority}
+                        />
+                        <p>Active?</p>
+                      </i> */}
                     </td>
                     <td>
                       <i
                         class="archive icon"
                         value={item.id}
                         onClick={() => this.saveChanges()}
-                      ></i>
+                      >
+                        <p>Save</p>
+                      </i>
                     </td>
                     <td>
-                      <i class="ban icon" onClick={this.cancelEdit}></i>
+                      <i class="ban icon" onClick={this.cancelEdit}>
+                        <p>Cancel</p>
+                      </i>
                     </td>
                     <td>
                       <i
                         class="trash icon"
                         onClick={() => this.deleteItem(item.id)}
-                      ></i>
+                      >
+                        <p>Delete</p>
+                      </i>
                     </td>
                   </tr>
                 );

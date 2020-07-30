@@ -6,6 +6,7 @@
 
 .locationLists li {
   margin: auto;
+  margin-top: .2%;
   list-style: none;
   padding: 0.8%;
 }
