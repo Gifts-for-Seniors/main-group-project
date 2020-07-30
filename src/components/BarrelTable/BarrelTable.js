@@ -133,7 +133,10 @@ class BarrelTable extends Component {
                       />
                     </td>
                     <td>
-                      <StyledButton>Save</StyledButton>
+                      <i class="archive icon"></i>
+                    </td>
+                    <td>
+                      <i class="ban icon"></i>
                     </td>
                     <td>
                       <i
