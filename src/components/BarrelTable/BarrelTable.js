@@ -15,8 +15,9 @@ class BarrelTable extends Component {
     city: "Add City",
     description: "Add Description",
     zipcode: "Add Zipcode",
+    hours: "",
     status: true,
-    dates: "Add Dates Open",
+    date: "Add Dates Open",
   };
 
   editItem = (item) => {
@@ -29,7 +30,9 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
-      dates: item.dates,
+      date: item.date,
+      hours: item.hours,
+      searchTerm: this.props.state.searchTerm,
     });
     console.log(this.state);
   };
@@ -61,6 +64,13 @@ class BarrelTable extends Component {
     console.log(this.state);
   };
 
+  cancelEdit = () => {
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   deleteItem = (id) => {
     let dataObject = {
       id: id,
@@ -74,6 +84,18 @@ class BarrelTable extends Component {
     });
     // console.log("payload", id);
   };
+
+  saveChanges = () => {
+    this.props.dispatch({
+      type: "UPDATE_BARREL",
+      payload: this.state,
+    });
+    this.setState({
+      ...this.state,
+      itemToEdit: 0,
+    });
+  };
+
   render() {
     return (
       <div id="wrapper">
@@ -84,7 +106,8 @@ class BarrelTable extends Component {
               <th>Street Number</th>
               <th>City</th>
               <th>Zipcode</th>
-              <th>Dates</th>
+              <th>Date</th>
+              <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
             </tr>
@@ -148,10 +171,21 @@ class BarrelTable extends Component {
                         autoFocus="true"
                         className="editInput"
                         type="text"
-                        label={this.state.dates}
-                        value={this.state.dates}
+                        label={this.state.date}
+                        value={this.state.date}
                         variant="filled"
-                        onChange={(event) => this.trackEdit(event, "dates")}
+                        onChange={(event) => this.trackEdit(event, "date")}
+                      ></Input>
+                    </td>
+                    <td>
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.hours}
+                        value={this.state.hours}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "hours")}
                       ></Input>
                     </td>
                     <td>
@@ -177,13 +211,14 @@ class BarrelTable extends Component {
                       />
                     </td>
                     <td>
-                      <i class="archive icon"></i>
+                      <i
+                        class="archive icon"
+                        value={item.id}
+                        onClick={() => this.saveChanges()}
+                      ></i>
                     </td>
                     <td>
-                      <i class="ban icon"
-                        onClick={this.cancelEdit}>
-                      </i>
-                      
+                      <i class="ban icon" onClick={this.cancelEdit}></i>
                     </td>
                     <td>
                       <i
@@ -201,6 +236,7 @@ class BarrelTable extends Component {
                     <td>{item.city}</td>
                     <td>{item.zipcode}</td>
                     <td>{item.dates}</td>
+                    <td>{item.hours}</td>
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
                     <td>
