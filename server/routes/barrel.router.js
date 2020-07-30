@@ -81,15 +81,17 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
  * EDIT BARREL
  */
 router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
+  console.log(req.body);
   let itemToEdit = req.body.itemToEdit;
   let hosts = req.body.hosts;
   let street = req.body.street;
   let city = req.body.city;
   let description = req.body.description;
   let zipcode = req.body.zipcode;
-  let date = req.body.date;
+  let dates = req.body.date;
+  let hours = req.body.hours;
 
-  const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, date) VALUES ($1, $2, $3, $4, $5, $6) WHERE id = $7`;
+  const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, hours, dates) = ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8`;
   pool
     .query(queryText, [
       hosts,
@@ -97,7 +99,8 @@ router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
       city,
       description,
       zipcode,
-      date,
+      hours,
+      dates,
       itemToEdit,
     ])
     .then((result) => {

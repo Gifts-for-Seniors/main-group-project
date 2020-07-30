@@ -15,6 +15,7 @@ class BarrelTable extends Component {
     city: "Add City",
     description: "Add Description",
     zipcode: "Add Zipcode",
+    hours: "",
     status: true,
     date: "Add Dates Open",
   };
@@ -30,6 +31,8 @@ class BarrelTable extends Component {
       zipcode: item.zipcode,
       status: item.status,
       date: item.date,
+      hours: item.hours,
+      searchTerm: this.props.state.searchTerm,
     });
     console.log(this.state);
   };
@@ -104,6 +107,7 @@ class BarrelTable extends Component {
               <th>City</th>
               <th>Zipcode</th>
               <th>Date</th>
+              <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
             </tr>
@@ -171,6 +175,17 @@ class BarrelTable extends Component {
                         value={this.state.date}
                         variant="filled"
                         onChange={(event) => this.trackEdit(event, "date")}
+                      ></Input>
+                    </td>
+                    <td>
+                      <Input
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        label={this.state.hours}
+                        value={this.state.hours}
+                        variant="filled"
+                        onChange={(event) => this.trackEdit(event, "hours")}
                       ></Input>
                     </td>
                     <td>

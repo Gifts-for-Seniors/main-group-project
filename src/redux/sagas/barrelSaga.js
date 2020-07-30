@@ -21,8 +21,9 @@ function* getAdminBarrels(action) {
 
 function* newBarrel(action) {
   console.log(action.payload);
+  let dataObject = { payload: action.payload };
   try {
-    yield axios.post("/api/barrel-locations", action.payload);
+    yield axios.post("/api/barrel-locations", dataObject);
     console.log("from newBarrel", action.payload);
     yield put({ type: "GET_ADMIN_BARRELS" });
     // yield put({ type: 'FETCH_LIST' })
@@ -51,7 +52,15 @@ function* deleteBarrel(action) {
 function* updateBarrel(action) {
   console.log(action.payload);
   try {
-    yield axios.put(`api/barrel-location/`);
+    let searchTerm = action.payload.searchTerm;
+    yield axios.put(
+      `api/barrel-locations/edit/${action.payload.itemToEdit}`,
+      action.payload
+    );
+    yield put({
+      type: "SEARCH_ALL_BARRELS",
+      payload: searchTerm,
+    });
   } catch (error) {
     console.log("error");
   }
