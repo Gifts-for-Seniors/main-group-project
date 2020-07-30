@@ -8,29 +8,7 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibmFpbGFqIiwiYSI6ImNrY3V6bXlpaDJkanYycHFycmE2eTlxNnAifQ.xYg_U7x-hAed6a0YpVPIFw';
 
-// const map = new mapboxgl.Map({
-//   container: this.mapContainer,
-//   style: "mapbox://styles/mapbox/streets-v11",
-//   center: [long, lat],
-//   zoom: 9,
-// });
-// new mapboxgl.Marker().setLngLat([long, lat]).addTo(map);
-// this.setState({
-//   host: host,
-//   description: description,
-//   street: street,
-//   city: city,
-//   zipcode: zipcode,
-//   state: state,
-//   type: type,
-//   lat: lat,
-//   long: long,
-//   startDate: startDate,
-//   endDate: endDate,
-//   // userId: userId,
-//   opacity: 100
-// });
-// console.log("clicked!", this.state.BarrelSearch);
+
 
 
 class BarrelSearch extends Component {
