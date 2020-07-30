@@ -21,8 +21,9 @@ function* getAdminBarrels(action) {
 
 function* newBarrel(action) {
   console.log(action.payload);
+  let dataObject = { payload: action.payload };
   try {
-    yield axios.post("/api/barrel-locations", action.payload);
+    yield axios.post("/api/barrel-locations", dataObject);
     console.log("from newBarrel", action.payload);
     yield put({ type: "GET_ADMIN_BARRELS" });
     // yield put({ type: 'FETCH_LIST' })
@@ -36,6 +37,9 @@ function* deleteBarrel(action) {
   console.log(action.payload.id);
   try {
     yield axios.delete(`/api/barrel-locations/delete/${action.payload.id}`);
+    if (action.payload.previousSearch === Array(0)) {
+      console.log("pooter");
+    }
     yield put({
       type: "SEARCH_ALL_BARRELS",
       payload: action.payload.previousSearch,
@@ -45,11 +49,29 @@ function* deleteBarrel(action) {
   }
 }
 
+function* updateBarrel(action) {
+  console.log(action.payload);
+  try {
+    let searchTerm = action.payload.searchTerm;
+    yield axios.put(
+      `api/barrel-locations/edit/${action.payload.itemToEdit}`,
+      action.payload
+    );
+    yield put({
+      type: "SEARCH_ALL_BARRELS",
+      payload: searchTerm,
+    });
+  } catch (error) {
+    console.log("error");
+  }
+}
+
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
   yield takeEvery("GET_ADMIN_BARRELS", getAdminBarrels);
   yield takeEvery("DELETE_BARREL", deleteBarrel);
+  yield takeEvery("UPDATE_BARREL", updateBarrel);
 }
 
 export default newBarrelSaga;

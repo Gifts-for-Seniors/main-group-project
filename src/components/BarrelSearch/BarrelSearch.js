@@ -40,13 +40,13 @@ class BarrelSearch extends Component {
     // showDetails: false,
     // opacity: 0
   };
+
   componentDidMount() {
     this.props.dispatch({
-      type: "SEARCH_ALL_BARRELS",
+      type: "SET_SEARCH_TERM",
+      payload: "*all",
     });
-    console.log(this.props.searchResults);
   }
-
   handleInput = (event) => {
     this.setState({
       [event.target.name]: event.target.value,

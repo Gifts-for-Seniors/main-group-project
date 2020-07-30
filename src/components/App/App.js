@@ -29,6 +29,7 @@ class App extends Component {
     this.props.dispatch({ type: "GET_BARRELS" });
     this.props.dispatch({ type: "GET_ADMIN_BARRELS" });
     this.props.dispatch({ type: "SEARCH_ALL_BARRELS", payload: "*all" });
+    this.props.dispatch({ type: "SET_SEARCH_TERM", payload: "*all" });
   }
 
   render() {
@@ -36,7 +37,6 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/admin" />
