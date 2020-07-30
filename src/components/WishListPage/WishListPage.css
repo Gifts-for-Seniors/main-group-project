@@ -10,7 +10,8 @@
 #highPriority {
   text-align: left;
   display: inline-block;
-
+  float: left;
+  margin-top: -20%;
   /* float: right; */
 }
 
@@ -36,23 +37,18 @@
 }
 
 .sentimentalMessage {
-  display: flexbox;
+  display: inline-flex;
   float: right;
   margin: 0.08%;
-  flex-direction: column-reverse;
-  border: 10px solid black;
-
-  box-shadow: black 10px;
-  /* max-width: 40%;
-  padding: 2%;
-  border-radius: 12px;
-  box-shadow: black 10px;
-  margin: 0.8%;
-  /* float: right; */
+  /* border: 10px solid black; */
+  max-width: 50%;
+  /* box-shadow: black 10px; */
+  font-size: medium;
+  font-style: italic;
 }
 
 .regularItems {
-  display: inline-flexbox;
+  display: inline-box;
   float: right;
   text-align: right;
   padding-right: 10%;
@@ -64,6 +60,7 @@
 }
 
 .buttons {
-  display: inline-flexbox;
+  display: inline-box;
   text-align: right;
+  flex-wrap: wrap-reverse;
 }
