@@ -30,7 +30,7 @@ class BarrelTable extends Component {
       description: item.description,
       zipcode: item.zipcode,
       status: item.status,
-      date: item.date,
+      date: item.dates,
       hours: item.hours,
       searchTerm: this.props.state.searchTerm,
     });
