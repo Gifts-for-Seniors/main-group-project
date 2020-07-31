@@ -1,5 +1,8 @@
 .table-container {
   height: 40em;
+  margin-top: 11%;
+}
+.barrelTable {
 }
 table {
   display: flex;
@@ -32,6 +35,7 @@ table td {
   font-size: calc(0.6vmin + 0.6vmax);
 }
 
-table th {
+table th,
+i {
   font-size: calc(0.6vmin + 0.6vmax);
 }

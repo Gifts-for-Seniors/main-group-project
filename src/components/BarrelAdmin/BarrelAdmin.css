@@ -18,12 +18,17 @@
   padding: 1%;
 }
 
+
+
 .addBarrelButton {
   float: right;
 } */
 
 
-
+#adminSearch{
+  /* margin-bottom: 12%; */
+  /* padding-bottom: 2%; */
+}
 
 #theSubmitButtonForCarolyn {
   background-color: plum;
