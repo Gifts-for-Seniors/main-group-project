@@ -19,12 +19,6 @@ class BarrelSearch extends Component {
     // opacity: 0
   };
 
-  componentDidMount() {
-    this.props.dispatch({
-      type: "SET_SEARCH_TERM",
-      payload: "*all",
-    });
-  }
   handleInput = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
