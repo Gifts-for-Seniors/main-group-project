@@ -12,8 +12,8 @@ class BarrelAdmin extends Component {
     return (
       <div className="barrelForm">
         <BarrelInput />
-        <div className="barrelSearch">
-          <BarrelSearch id="adminSearch" />
+        <div id="adminSearch" className="barrelSearch">
+          <BarrelSearch />
         </div>
         <BarrelTable />
       </div>
