@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
+import happy from './happiness.jpg'
+
 class WishList extends Component {
   goToBarrelPage = () => {
     this.props.history.push("/barrels");
@@ -13,6 +15,7 @@ class WishList extends Component {
       <div>
         <h1 id="wishListHeader">WishList</h1>
         <div className="sentimentalMessage">
+
           <p>
             Older people are especially vulnerable to loneliness and social
             isolation – and it can have a serious effect on health. But there
@@ -34,6 +37,7 @@ class WishList extends Component {
               }
             })}
           </div>
+          <img className="happy-image" src={happy}></img>
         </Card>
 
         <Card>
@@ -48,16 +52,16 @@ class WishList extends Component {
                 return <ul key={item.id}>{item.item}</ul>;
               }
             })}
+
           </div>
         </Card>
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations
           </SearchButton>
-          {/* <SearchButton className="links"> <a href="https://smile.amazon.com/?_encoding=UTF8&pldnNewCustomer=1&ref_=smi_ge2_cnf_cnf_smi#/"></a>Amazon WishList</SearchButton> */}
           <SearchButton className="links">
             <a href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create">
-              Amazon Smile Wishlist
+              Amazon Wishlist
             </a>
           </SearchButton>
         </div>

@@ -5,28 +5,25 @@
   font-style: italic;
   font-weight: bolder;
   text-align: left;
+  
 }
 
 #highPriority {
   text-align: left;
   display: inline-block;
-  float: left;
-  margin-top: -20%;
-  /* float: right; */
 }
 
 .highPriorityItems {
-  background-color: red;
+  background-color: red; 
   max-width: 50%;
-  border: 10px solid black;
+  /* border: 10px solid black; */
   margin: 0.08%;
   border-radius: 17px;
-
+  color:white;
   box-shadow: black 10px;
-
-  margin-top: 2%;
 }
 #wishListHeader {
+  text-align: center;
   font-weight: bolder;
   /* padding-top: -10%;
   padding-bottom: 2%;
@@ -37,8 +34,9 @@
 }
 
 .sentimentalMessage {
-  display: inline-flex;
-  float: right;
+  text-align: center;
+  /* display: center; */
+  float: center;
   margin: 0.08%;
   /* border: 10px solid black; */
   max-width: 50%;
@@ -55,12 +53,25 @@
   max-width: 50%;
   border-radius: 17px;
   background-color: #2483d0;
-  border: 10px solid black;
+  /* border: 10px solid black; */
   margin-top: 2%;
+  color:white;
+  shape-outside: circle(50%); /* content will flow around the circle*/
 }
 
 .buttons {
   display: inline-box;
-  text-align: right;
+  text-align: center;
   flex-wrap: wrap-reverse;
 }
+
+a{
+  color:white;
+  display: inline-box;
+  text-align: center;
+  flex-wrap: wrap-reverse;
+}
+img{
+  border-radius: 50%;
+  /* shape-outside: circle(50%); /* content will flow around the circle*/
+} 
