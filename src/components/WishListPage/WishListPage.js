@@ -39,13 +39,11 @@ class WishList extends Component {
           </div>
           <img className="happy-image" src={happy}></img>
         </Card>
-
         <Card>
           <div className="regularItems">
             <div className="priorityHeader">
               <h2>Other Items</h2>
             </div>
-
             {/* Mapping through our item reducer to display remaining items */}
             {this.props.state.list.map((item) => {
               if (item.priority === false) {
