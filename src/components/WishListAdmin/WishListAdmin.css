@@ -30,3 +30,18 @@ tbody tr {
 .tableTitle {
   width: 85%;
 }
+
+/* .tableColumns {
+  max-width: 15%;
+} */
+
+.tColumn {
+  width: 5%;
+}
+/* .tableSection {
+  width: 7.5%;
+} */
+
+.tableSelectOperators {
+  width: 7.5%;
+}
