@@ -4,6 +4,17 @@ import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
 import GoogleMap from "../GoogleMap/GoogleMap";
 class BarrelClient extends Component {
+  componentDidMount() {
+    let homeBase = {
+      street: "2300 Kennedy Street",
+      zipcode: "55413",
+    };
+    this.props.dispatch({
+      type: "SET_MAP_TO_SEARCH",
+      payload: homeBase,
+    });
+  }
+
   setMapToDisplay = (barrel) => {
     console.log(barrel);
     let data = {
@@ -44,19 +55,9 @@ class BarrelClient extends Component {
                         </li>
                         {barrel.description !== null ? (
                           <li>{barrel.description}</li>
-                        ) : (
-                          <div></div>
-                        )}
-                        {barrel.dates !== null ? (
-                          <li>{barrel.dates}</li>
-                        ) : (
-                          <div></div>
-                        )}
-                        {barrel.hours !== null ? (
-                          <li>{barrel.hours}</li>
-                        ) : (
-                          <div></div>
-                        )}
+                        ) : null}
+                        {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
+                        {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
                       </ul>
                     </li>
                   </div>
