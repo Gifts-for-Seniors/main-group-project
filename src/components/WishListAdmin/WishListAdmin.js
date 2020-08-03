@@ -4,7 +4,7 @@ import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { Input } from "@material-ui/core";
-import "./WishListAdmin.css";
+// import "./WishListAdmin.css";
 
 class WishListAdmin extends Component {
   componentDidMount() {
@@ -97,9 +97,9 @@ class WishListAdmin extends Component {
 
   render() {
     return (
-      <div className="adminView">
+      <div className="">
         {/* Table Headers */}
-        <table className="wishListAdminTable">
+        <table class="ui celled table">
           <thead>
             <tr>
               <th className="tableTitle">Current Wishlist</th>
@@ -198,7 +198,7 @@ class WishListAdmin extends Component {
         <br></br>
         <h2 className="wishHeader">Add to Wishlist</h2>
 
-        <table>
+        <table class="ui celled table">
           <thead>
             <tr>
               <th>Item</th>
