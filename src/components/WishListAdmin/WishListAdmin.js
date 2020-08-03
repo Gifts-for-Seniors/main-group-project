@@ -116,7 +116,10 @@ class WishListAdmin extends Component {
                 return (
                   // Renders an editable item.
                   <tr key={item.id}>
-                    <td className="itemDescription">
+                    <td
+                      data-label="Current Wishlist"
+                      className="itemDescription"
+                    >
                       <Input
                         width="120%"
                         autoFocus="true"
@@ -129,7 +132,7 @@ class WishListAdmin extends Component {
                         }
                       />
                     </td>
-                    <td className="checkBox">
+                    <td data-label="Select Priority" className="checkBox">
                       <StyledCheckbox
                         onChange={() => {
                           this.updatePriority(item);
@@ -138,7 +141,7 @@ class WishListAdmin extends Component {
                         checked={item.priority}
                       />
                     </td>
-                    <td className="buttonRow">
+                    <td data-label="Edit" className="buttonRow">
                       <StyledButton
                         className="editButtons"
                         value={item.id}
@@ -147,7 +150,7 @@ class WishListAdmin extends Component {
                         Save
                       </StyledButton>
                     </td>
-                    <td className="buttonRow">
+                    <td data-label="Delete" className="buttonRow">
                       <RemoveButton
                         className="editButtons"
                         value={item.id}
