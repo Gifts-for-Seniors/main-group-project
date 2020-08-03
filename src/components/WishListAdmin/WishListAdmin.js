@@ -103,9 +103,9 @@ class WishListAdmin extends Component {
           <thead>
             <tr>
               <th className="tableTitle">Current Wishlist</th>
-              <th className="">Select Priority</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th className="tColumn">Select Priority</th>
+              <th className="tColumn">Edit</th>
+              <th className="tColumn">Delete</th>
             </tr>
           </thead>
 

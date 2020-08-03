@@ -13,7 +13,7 @@ class WishList extends Component {
   render() {
     return (
       <div>
-        <h1 id="wishListHeader">WishList</h1>
+        {/* <h1 id="wishListHeader">WishList</h1> */}
         <div className="sentimentalMessage">
 
           <p>
