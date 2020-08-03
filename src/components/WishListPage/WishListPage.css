@@ -11,9 +11,6 @@
 #highPriority {
   text-align: left;
   display: inline-block;
-  float: left;
-  margin-top: -20%;
-  /* float: right; */
 }
 
 .highPriorityItems {
@@ -23,10 +20,7 @@
   margin: 0.08%;
   border-radius: 17px;
   color:white;
-
   box-shadow: black 10px;
-
-  margin-top: 2%;
 }
 #wishListHeader {
   text-align: center;
