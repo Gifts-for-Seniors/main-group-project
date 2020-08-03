@@ -4,8 +4,8 @@ import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import LogOutButton from "../LogOutButton/LogOutButton";
 import { Input } from "@material-ui/core";
-// import "./WishListAdmin.css";
-
+import "./WishListAdmin.css";
+import { sizing } from "@material-ui/system";
 class WishListAdmin extends Component {
   componentDidMount() {
     this.props.dispatch({ type: "GET_ADMIN_BARRELS" });
@@ -97,13 +97,13 @@ class WishListAdmin extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className="table-container2">
         {/* Table Headers */}
         <table class="ui celled table">
           <thead>
             <tr>
               <th className="tableTitle">Current Wishlist</th>
-              <th>Select Priority</th>
+              <th className="">Select Priority</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -115,11 +115,11 @@ class WishListAdmin extends Component {
               if (item.id === this.state.itemToEdit) {
                 return (
                   // Renders an editable item.
-                  <tr className="itemDescription" key={item.id}>
-                    <td>
+                  <tr key={item.id}>
+                    <td className="itemDescription">
                       <Input
+                        width="120%"
                         autoFocus="true"
-                        className="editInput"
                         type="text"
                         label={this.state.itemDescription}
                         value={this.state.itemDescription}
@@ -161,8 +161,11 @@ class WishListAdmin extends Component {
               } else
                 return (
                   // Returns table data with Edit/Delete buttons.
-                  <tr className="itemDescription" key={item.id}>
-                    <td onDoubleClick={() => this.editItem(item.id, item.item)}>
+                  <tr key={item.id}>
+                    <td
+                      className="itemDescription"
+                      onDoubleClick={() => this.editItem(item.id, item.item)}
+                    >
                       {item.item}
                     </td>
                     <td className="checkBox">
