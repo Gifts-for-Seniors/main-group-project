@@ -197,44 +197,38 @@ class WishListAdmin extends Component {
             })}
           </tbody>
         </table>
-        <br></br>
-        <br></br>
-        <h2 className="wishHeader">Add to Wishlist</h2>
 
-        <table class="ui celled table">
+        <h2 className="wishHeader">Add to Wishlist</h2>
+        <table class="ui celled striped table">
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Select Priority</th>
-              <th>Add Item</th>
+              <th className="itemDescription">Item</th>
+              <th className="tableSelectOperators">Select Priority</th>
+              <th className="tableSelectOperators">Add Item</th>
             </tr>
           </thead>
-          <tr className="insertItem">
-            <td>
-              <Input
-                className="addItemInput"
-                onChange={(event) => {
-                  this.trackEdit(event, "newItemDescription");
-                }}
-                placeholder="Add item description please.."
-                type="text"
-              ></Input>
-            </td>
-            <td className="checkBox">
-              <StyledCheckbox
-                type="checkbox"
-                onChange={this.trackNewItemPriority}
-              />
-            </td>
-            <td className="buttonRow">
-              <StyledButton
-                className="addButton"
-                onClick={() => this.addItem()}
-              >
-                Add
-              </StyledButton>
-            </td>
-          </tr>
+          <tbody>
+            <tr className="">
+              <td data-label="Item" className="itemDescription">
+                <Input
+                  onChange={(event) => {
+                    this.trackEdit(event, "newItemDescription");
+                  }}
+                  placeholder="Add item description please.."
+                  type="text"
+                ></Input>
+              </td>
+              <td data-label="Select Priority">
+                <StyledCheckbox
+                  type="checkbox"
+                  onChange={this.trackNewItemPriority}
+                />
+              </td>
+              <td data-label="Add Item">
+                <StyledButton onClick={() => this.addItem()}>Add</StyledButton>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
