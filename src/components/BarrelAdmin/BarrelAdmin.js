@@ -7,6 +7,7 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import BarrelTable from "../BarrelTable/BarrelTable";
 import BarrelInput from "../BarrelInputForm/BarrelInputForm";
+import NewerBarrelTable from "../BarrelTable/NewerBarrelTable";
 class BarrelAdmin extends Component {
   render() {
     return (
@@ -15,7 +16,7 @@ class BarrelAdmin extends Component {
         <div id="adminSearch" className="barrelSearch">
           <BarrelSearch />
         </div>
-        <BarrelTable />
+        <NewerBarrelTable />
       </div>
     );
   }

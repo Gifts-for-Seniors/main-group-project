@@ -4,7 +4,8 @@
   overflow: auto;
 }
 
-.table-container thead,
+.table-container 
+thead,
 tbody tr {
   display: table;
   width: 100%;
