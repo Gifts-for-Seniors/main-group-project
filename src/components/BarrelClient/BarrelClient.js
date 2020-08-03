@@ -2,8 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
-import GoogleMap from '../GoogleMap/GoogleMap';
+import GoogleMap from "../GoogleMap/GoogleMap";
 class BarrelClient extends Component {
+  setMapToDisplay = (barrel) => {
+    console.log(barrel);
+    let data = {
+      hosts: barrel.hosts,
+      street: barrel.street,
+      zipcode: barrel.zipcode,
+    };
+    this.props.dispatch({
+      type: "SET_MAP_TO_SEARCH",
+      payload: data,
+    });
+  };
   render() {
     return (
       <div>
@@ -23,29 +35,31 @@ class BarrelClient extends Component {
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true) {
                 return (
-                  <li className="boldIt" key={barrel.id}>
-                    {barrel.hosts} ,
-                    <ul>
-                      <li>
-                        {barrel.street} {barrel.city} {barrel.zipcode}
-                      </li>
-                      {barrel.description !== null ? (
-                        <li>{barrel.description}</li>
-                      ) : (
+                  <div onClick={() => this.setMapToDisplay(barrel)}>
+                    <li className="boldIt" key={barrel.id}>
+                      {barrel.hosts} ,
+                      <ul>
+                        <li>
+                          {barrel.street} {barrel.city} {barrel.zipcode}
+                        </li>
+                        {barrel.description !== null ? (
+                          <li>{barrel.description}</li>
+                        ) : (
                           <div></div>
                         )}
-                      {barrel.dates !== null ? (
-                        <li>{barrel.dates}</li>
-                      ) : (
+                        {barrel.dates !== null ? (
+                          <li>{barrel.dates}</li>
+                        ) : (
                           <div></div>
                         )}
-                      {barrel.hours !== null ? (
-                        <li>{barrel.hours}</li>
-                      ) : (
+                        {barrel.hours !== null ? (
+                          <li>{barrel.hours}</li>
+                        ) : (
                           <div></div>
                         )}
-                    </ul>
-                  </li>
+                      </ul>
+                    </li>
+                  </div>
                 );
               }
             })}

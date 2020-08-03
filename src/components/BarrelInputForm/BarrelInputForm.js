@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import "../BarrelAdmin/BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
 import TextField from "@material-ui/core/TextField";
-import { Alert, AlertTitle } from "@material-ui/lab";
 import "./BarrelInputForm.css";
 class BarrelInput extends Component {
   state = {
@@ -38,6 +37,7 @@ class BarrelInput extends Component {
       hours: "",
     });
   };
+  
   handleInput = (event) => {
     this.setState({
       [event.target.name]: event.target.value,

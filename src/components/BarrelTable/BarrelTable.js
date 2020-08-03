@@ -127,6 +127,7 @@ class BarrelTable extends Component {
                       <TextField
                         autoFocus="true"
                         className="editInput"
+                        placeholder="Host Name"
                         type="text"
                         multiline
                         rowsMax={10}
@@ -141,6 +142,7 @@ class BarrelTable extends Component {
                         rowsMax={10}
                         autoFocus="true"
                         className="editInput"
+                        placeholder="Street Address"
                         type="text"
                         value={this.state.street}
                         variant="outlined"
@@ -154,6 +156,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="City"
                         value={this.state.city}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "city")}
@@ -166,6 +169,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Zipcode"
                         value={this.state.zipcode}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "zipcode")}
@@ -181,6 +185,7 @@ class BarrelTable extends Component {
                         value={this.state.date}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "date")}
+                        placeholder="Dates Available"
                       ></TextField>
                     </td>
                     <td>
@@ -190,6 +195,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Hours Open"
                         value={this.state.hours}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "hours")}
@@ -202,6 +208,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Description"
                         value={this.state.description}
                         variant="outlined"
                         onChange={(event) =>
@@ -275,24 +282,6 @@ class BarrelTable extends Component {
               }
             })}
           </tbody>
-          {/* <tfoot>
-            <tr>
-              <th colspan="5">
-                <div class="ui right floated pagination menu">
-                  <a class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                  <a class="item">1</a>
-                  <a class="item">2</a>
-                  <a class="item">3</a>
-                  <a class="item">4</a>
-                  <a class="icon item">
-                    <i class="right chevron icon"></i>
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot> */}
         </table>
       </div>
     );
