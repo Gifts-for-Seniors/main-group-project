@@ -6,8 +6,8 @@
 
 #searchField {
   display: inline-flex;
-  text-align: left;
-  float: left;
+  text-align: center;
+  float: center;
 }
 
 #searchDisplay {
@@ -21,9 +21,9 @@
 }
 
 .barrelSearch {
-  text-align: left;
+  text-align: center;
   display: flexbox;
-  float: left;
+  float: center;
   width: 100%;
 }
 .searchLabel {

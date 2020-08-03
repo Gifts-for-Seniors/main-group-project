@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
+import GoogleMap from '../GoogleMap/GoogleMap';
 class BarrelClient extends Component {
   render() {
     return (
       <div>
+        <GoogleMap />
         <p className="covid19Response">
           Covid 19 Response: Please click here to deliver gift donations at our
           operations center in Minneapolis. Individual appointments are socially
           distanced and honor CDC guidelines. Other drop locations below! You
           may also browse our Wish List for gift ideas.
         </p>
+
         <div className="clientSearch">
           <BarrelSearch />
         </div>
@@ -29,18 +32,18 @@ class BarrelClient extends Component {
                       {barrel.description !== null ? (
                         <li>{barrel.description}</li>
                       ) : (
-                        <div></div>
-                      )}
+                          <div></div>
+                        )}
                       {barrel.dates !== null ? (
                         <li>{barrel.dates}</li>
                       ) : (
-                        <div></div>
-                      )}
+                          <div></div>
+                        )}
                       {barrel.hours !== null ? (
                         <li>{barrel.hours}</li>
                       ) : (
-                        <div></div>
-                      )}
+                          <div></div>
+                        )}
                     </ul>
                   </li>
                 );
