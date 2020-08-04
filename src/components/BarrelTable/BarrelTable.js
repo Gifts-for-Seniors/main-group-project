@@ -38,7 +38,7 @@ class BarrelTable extends Component {
       hours: item.hours,
       searchTerm: this.props.state.searchTerm,
     });
-    console.log(this.state);
+    console.log("ITEM IS", item.public);
   };
 
   cancelEdit = () => {
@@ -306,7 +306,7 @@ class BarrelTable extends Component {
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
                     <td>{item.public ? "Public" : "Private"}</td>
-                    {console.log(item.public)}
+
                     <td>
                       <i
                         class="edit icon"
