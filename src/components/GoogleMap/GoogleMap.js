@@ -12,7 +12,7 @@ class GoogleMap extends Component {
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
     &q=${street}+${zipcode}+${host}`;
     let homeBase = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=2300 Kennedy Street NE Suite 40 Mpls MN 55413`;
+    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=8`;
     switch (mapToSearch.street) {
       case "2300 Kennedy Street":
         console.log("RETURNED", searchTerm, mapToSearch);
@@ -22,6 +22,7 @@ class GoogleMap extends Component {
               className="maperoo"
               width="600"
               height="450"
+              zoom="2"
               frameborder="0"
               src={homeBase}
               allowfullscreen
