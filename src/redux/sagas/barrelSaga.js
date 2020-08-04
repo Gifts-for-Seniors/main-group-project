@@ -1,6 +1,9 @@
 import axios from "axios";
 import { put, takeEvery } from "redux-saga/effects";
 
+/**
+ * GET BARRELS
+ */
 function* getBarrels(action) {
   try {
     const response = yield axios.get(`/api/barrel-locations`);
@@ -10,20 +13,26 @@ function* getBarrels(action) {
   }
 }
 
+/**
+ * GET ADMIN BARRELS
+ */
 function* getAdminBarrels(action) {
   try {
-    const response = yield axios.get(`/api/barrel-locations/admin`);
+    const response = yield axios.get(`/api/barrel-select/admin`);
     yield put({ type: "SET_ADMIN_BARRELS", payload: response.data });
   } catch (error) {
     console.log("CLIENT GET BARREL-LOCATION ERR", error);
   }
 }
 
+/**
+ * ADD A NEW BARREL
+ */
 function* newBarrel(action) {
   console.log(action.payload);
   let dataObject = { payload: action.payload };
   try {
-    yield axios.post("/api/barrel-locations", dataObject);
+    yield axios.post("/api/barrel-create", dataObject);
     console.log("from newBarrel", action.payload);
     yield put({ type: "GET_ADMIN_BARRELS" });
     // yield put({ type: 'FETCH_LIST' })
@@ -31,12 +40,15 @@ function* newBarrel(action) {
     console.log(error);
   }
 }
-//DELETE ITEM
+
+/**
+ * DELETE A BARREL
+ */
 function* deleteBarrel(action) {
   console.log(action.payload);
   console.log(action.payload.id);
   try {
-    yield axios.delete(`/api/barrel-locations/delete/${action.payload.id}`);
+    yield axios.delete(`/api/barrel-edit/delete/${action.payload.id}`);
     yield put({
       type: "SEARCH_ALL_BARRELS",
       payload: action.payload.previousSearch,
@@ -46,13 +58,15 @@ function* deleteBarrel(action) {
   }
 }
 
+/**
+ * EDIT A BARREL
+ */
 function* updateBarrel(action) {
   console.log(action.payload);
-
   try {
     let searchTerm = action.payload.searchTerm;
     yield axios.put(
-      `api/barrel-locations/edit/${action.payload.itemToEdit}`,
+      `api/barrel-edit/${action.payload.itemToEdit}`,
       action.payload
     );
     yield put({
@@ -64,7 +78,9 @@ function* updateBarrel(action) {
   }
 }
 
-//UPDATE THE STATUS
+/**
+ * UPDATE IF BARREL IS ACTIVE OR NOT
+ */
 function* updateStatus(action) {
   let data = {
     id: action.payload.id,
@@ -76,7 +92,7 @@ function* updateStatus(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    yield axios.put(`api/barrel-locations/update/${data}`, data);
+    yield axios.put(`/api/barrel-update/update/${data}`, data);
     if (action.payload.previousSearch === Array(0)) {
       console.log("pooter");
     }
@@ -89,7 +105,9 @@ function* updateStatus(action) {
   }
 }
 
-// Update PUBLIC/PRIVATE
+/**
+ * UPDATE IF LOCATION IS PUBLIC OR PRIVATE
+ */
 function* updatePublic(action) {
   let data = {
     id: action.payload.id,
@@ -101,7 +119,7 @@ function* updatePublic(action) {
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     };
-    yield axios.put(`api/barrel-locations/update/barrel-status/${data}`, data);
+    yield axios.put(`/api/barrel-update/barrel-status/${data}`, data);
 
     yield put({
       type: "SEARCH_ALL_BARRELS",
@@ -112,6 +130,9 @@ function* updatePublic(action) {
   }
 }
 
+/**
+ * BARREL ROOT SAGA(S)
+ */
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
