@@ -6,14 +6,37 @@
 
 .locationLists li {
   margin: auto;
-  margin-top: .2%;
+  margin-top: 0.2%;
   list-style: none;
   padding: 0.8%;
 }
 
+.privateBarrels {
+  background-color: red;
+  display: flexbox;
+  border: 3px solid black;
+  border-radius: 17px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  margin: 0.05%;
+  max-width: 80%;
+}
 .boldIt {
   display: flexbox;
   background-color: #2483d0;
+  border: 3px solid black;
+  border-radius: 17px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  margin: 0.05%;
+  max-width: 80%;
+}
+
+.privateBarrels{
+  display: flexbox;
+  background-color: teal;
   border: 3px solid black;
   border-radius: 17px;
   margin: auto;
