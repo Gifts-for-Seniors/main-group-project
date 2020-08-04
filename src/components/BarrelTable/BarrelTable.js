@@ -29,7 +29,7 @@ class BarrelTable extends Component {
       itemToEdit: item.id,
       hosts: item.hosts,
       street: item.street,
-      // public: item.public,
+      public: item.public,
       city: item.city,
       description: item.description,
       zipcode: item.zipcode,
