@@ -10,34 +10,20 @@ class GoogleMap extends Component {
     let street = this.props.state.mapToSearch.street;
     let zipcode = this.props.state.mapToSearch.zipcode;
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=${street}+${zipcode}`;
+    &q=${street}+${zipcode}+${host}`;
 
-    if (searchTerm === "*all") {
-      return (
-        <div className="map">
-          <iframe
-            width="600"
-            height="450"
-            frameborder="0"
-            src={mapSource}
-            allowfullscreen
-          ></iframe>
-        </div>
-      );
-    } else {
-      return (
-        <div className="map">
-          <iframe
-            width="600"
-            height="450"
-            frameborder="0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=2300+Kennedy+Street+NE+Minneapolis+MN+55413"
-            allowfullscreen
-          ></iframe>
-        </div>
-      );
-    }
+    return (
+      <div className="map">
+        <iframe
+          className="maperoo"
+          width="600"
+          height="450"
+          frameborder="0"
+          src={mapSource}
+          allowfullscreen
+        ></iframe>
+      </div>
+    );
   }
 }
 

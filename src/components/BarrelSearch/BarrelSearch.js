@@ -6,10 +6,8 @@ import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
 import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibmFpbGFqIiwiYSI6ImNrY3V6bXlpaDJkanYycHFycmE2eTlxNnAifQ.xYg_U7x-hAed6a0YpVPIFw';
-
-
-
+mapboxgl.accessToken =
+  "pk.eyJ1IjoibmFpbGFqIiwiYSI6ImNrY3V6bXlpaDJkanYycHFycmE2eTlxNnAifQ.xYg_U7x-hAed6a0YpVPIFw";
 
 class BarrelSearch extends Component {
   state = {
@@ -56,8 +54,9 @@ class BarrelSearch extends Component {
                 <span>
                   <TextField
                     id="searchField"
-                    label="Search"
+                    label="Search by City or Zipcode"
                     name="search"
+                    // placeholder="Search by City or Zipcode"
                     type="text"
                     variant="outlined"
                     value={this.state.search}
