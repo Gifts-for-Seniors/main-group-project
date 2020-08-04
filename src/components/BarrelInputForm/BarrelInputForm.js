@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../BarrelAdmin/BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
+import { FormControl } from "@material-ui/core";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+
 import TextField from "@material-ui/core/TextField";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import "./BarrelInputForm.css";
@@ -112,8 +118,8 @@ class BarrelInput extends Component {
                 value={this.state.dates}
                 onChange={this.handleInput}
 
-              //   {moment(this.props.startDate).format("MMM Do, YYYY")} -{" "}
-              // {moment(this.props.endDate).format("MMM Do, YYYY")}
+                //   {moment(this.props.startDate).format("MMM Do, YYYY")} -{" "}
+                // {moment(this.props.endDate).format("MMM Do, YYYY")}
               />
             </div>
             <div className="addBarrelInput">
@@ -125,6 +131,31 @@ class BarrelInput extends Component {
                 value={this.state.hours}
                 onChange={this.handleInput}
               />
+            </div>
+            <div className="addBarrelInput">
+              <FormControl component="fieldset">
+                <FormLabel component="legend"></FormLabel>
+                <RadioGroup
+                  row
+                  aria-label="gender"
+                  name="gender1"
+                  // value={value}
+                  // onChange={}
+                >
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Public"
+                    labelPlacement="Top"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Private"
+                    labelPlacement="Top"
+                  />
+                </RadioGroup>
+              </FormControl>
             </div>
 
             <StyledButton

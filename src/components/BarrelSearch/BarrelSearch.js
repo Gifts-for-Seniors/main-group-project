@@ -4,9 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
-import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibmFpbGFqIiwiYSI6ImNrY3V6bXlpaDJkanYycHFycmE2eTlxNnAifQ.xYg_U7x-hAed6a0YpVPIFw';
+
 
 
 
