@@ -13,6 +13,7 @@ class BarrelInput extends Component {
     description: "",
     dates: "",
     hours: "",
+    public: true
   };
 
   addBarrel = (event) => {
@@ -35,9 +36,10 @@ class BarrelInput extends Component {
       description: "",
       dates: "",
       hours: "",
+      public: true
     });
   };
-  
+
   handleInput = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -126,7 +128,16 @@ class BarrelInput extends Component {
                 onChange={this.handleInput}
               />
             </div>
-
+            <div className="addBarrelInput">
+              <TextField
+                label="Public"
+                variant="outlined"
+                name="public"
+                type="boolean"
+                value={this.state.public}
+                onChange={this.handleInput}
+              ></TextField>
+            </div>
             <StyledButton
               id="theSubmitButtonForCarolyn"
               className="addBarrelButton"
@@ -134,6 +145,8 @@ class BarrelInput extends Component {
             >
               Submit
             </StyledButton>
+
+
           </div>
         </form>
       </div>
