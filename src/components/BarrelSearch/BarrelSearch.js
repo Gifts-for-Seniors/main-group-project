@@ -43,6 +43,10 @@ class BarrelSearch extends Component {
       type: "SET_SEARCH_TERM",
       payload: search,
     });
+    this.props.dispatch({
+      type: "NEW_MAP_QUERY",
+      payload: search,
+    });
   };
   render() {
     return (
