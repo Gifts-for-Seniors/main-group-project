@@ -49,7 +49,6 @@ class BarrelClient extends Component {
               if (barrel.status === true && barrel.public === false) {
                 return (
                   <div
-                    id="privateBarrel"
                     onClick={() => this.setMapToDisplay(barrel)}
                   >
                     <li className="privateBarrels" key={barrel.id}>

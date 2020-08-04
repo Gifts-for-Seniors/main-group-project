@@ -34,6 +34,18 @@
   max-width: 80%;
 }
 
+.privateBarrels{
+  display: flexbox;
+  background-color: teal;
+  border: 3px solid black;
+  border-radius: 17px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  margin: 0.05%;
+  max-width: 80%;
+}
+
 .covid19Response {
   font-style: italic;
   text-align: left;
