@@ -10,7 +10,6 @@ const passport = require("./strategies/user.strategy");
 // Route includes
 const userRouter = require("./routes/user.router");
 const wishlistRouter = require("./routes/wishlist.router");
-// const barrelLocations = require("./routes/barrel.router");
 const barrelCreate = require("./routes/barrel-create.router");
 const barrelEdit = require("./routes/barrel-edit.router");
 const barrelUpdate = require("./routes/barrel-update.router");
@@ -30,7 +29,6 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use("/api/wishlist", wishlistRouter);
-// app.use("/api/barrel-locations", barrelLocations);
 app.use("/api/barrel-update", barrelUpdate);
 app.use("/api/barrel-select", barrelSelect);
 app.use("/api/barrel-edit", barrelEdit);

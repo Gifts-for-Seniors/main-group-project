@@ -306,6 +306,7 @@ class BarrelTable extends Component {
                   </tr>
                 );
               } else {
+                // RETURN A TABLE WITH DATA
                 return (
                   <tr className="barrelItem">
                     <td>{item.hosts}</td>
