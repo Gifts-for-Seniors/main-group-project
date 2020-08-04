@@ -10,7 +10,7 @@ class GoogleMap extends Component {
     let street = this.props.state.mapToSearch.street;
     let zipcode = this.props.state.mapToSearch.zipcode;
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=${street}+${zipcode}+${host}`;
+    &q=${street}+${zipcode}+${host}&zoom=12`;
     let homeBase = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
     &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=8`;
     switch (mapToSearch.street) {
