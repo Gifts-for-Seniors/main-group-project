@@ -87,21 +87,21 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put("/update/:id", rejectUnauthenticated, (req, res) => {
-  let status = req.body.status;
-  let id = req.body.id;
-  let statusUpdater = !status;
-  const queryText = `UPDATE barrels set status = $2 WHERE id = $1;`;
-  pool
-    .query(queryText, [id, statusUpdater])
-    .then((result) => {
-      res.sendStatus(200);
-    })
-    .catch((error) => {
-      console.log("ERROR IN SERVER PUT", error);
-      res.sendStatus(500);
-    });
-});
+// router.put("/update/:id", rejectUnauthenticated, (req, res) => {
+//   let status = req.body.status;
+//   let id = req.body.id;
+//   let statusUpdater = !status;
+//   const queryText = `UPDATE barrels set status = $2 WHERE id = $1;`;
+//   pool
+//     .query(queryText, [id, statusUpdater])
+//     .then((result) => {
+//       res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//       console.log("ERROR IN SERVER PUT", error);
+//       res.sendStatus(500);
+//     });
+// });
 
 router.put("/update/barrel-status/:id", rejectUnauthenticated, (req, res) => {
   let public = req.body.public;
@@ -127,7 +127,7 @@ router.put("/update/barrel-status/:id", rejectUnauthenticated, (req, res) => {
 router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
   // console.log(req.body);
   console.log(req.body.public);
-  console.log(req.body);
+  // console.log(req.body);
   let itemToEdit = req.body.itemToEdit;
   let hosts = req.body.hosts;
   let street = req.body.street;
@@ -136,8 +136,8 @@ router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
   let zipcode = req.body.zipcode;
   let dates = req.body.date;
   let hours = req.body.hours;
-  let public = req.body.public;
-  const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, hours, dates, public) = ($1, $2, $3, $4, $5, $6, $7, $8) WHERE id = $9`;
+  // let public = req.body.public;
+  const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, hours, dates) = ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8`;
   pool
     .query(queryText, [
       hosts,
@@ -147,7 +147,7 @@ router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
       zipcode,
       hours,
       dates,
-      public,
+      // public,
       itemToEdit,
     ])
     .then((result) => {
@@ -189,6 +189,7 @@ router.get("/search/:search", (req, res) => {
       });
   }
 });
+
 // DELETE ITEM FROM BARREL
 router.delete("/delete/:id", (req, res) => {
   let reqId = req.params.id;
@@ -206,23 +207,23 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-//UPDATE THE "STATUS" OF A BARREL
-router.put("/update/:id", rejectUnauthenticated, (req, res) => {
-  let id = req.body.id;
-  let status = req.body.status;
-  console.log(req.body.status);
-  let changeHelper = !status;
-  let queryText = `UPDATE items SET status = $2 WHERE id=$1`;
-  pool
-    .query(queryText, [id, changeHelper])
-    .then((result) => {
-      res.sendStatus(200);
-      console.log("success", result);
-    })
-    .catch((error) => {
-      console.log("ERROR IN SERVER PUT", error);
-      res.sendStatus(500);
-    });
-});
+// //UPDATE THE "STATUS" OF A BARREL
+// router.put("/update/:id", rejectUnauthenticated, (req, res) => {
+//   let id = req.body.id;
+//   let status = req.body.status;
+//   console.log(req.body.status);
+//   let changeHelper = !status;
+//   let queryText = `UPDATE items SET status = $2 WHERE id=$1`;
+//   pool
+//     .query(queryText, [id, changeHelper])
+//     .then((result) => {
+//       res.sendStatus(200);
+//       console.log("success", result);
+//     })
+//     .catch((error) => {
+//       console.log("ERROR IN SERVER PUT", error);
+//       res.sendStatus(500);
+//     });
+// });
 
 module.exports = router;
