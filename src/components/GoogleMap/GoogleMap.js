@@ -42,18 +42,6 @@ class GoogleMap extends Component {
           </div>
         );
     }
-    return (
-      <div className="map">
-        <iframe
-          className="maperoo"
-          width="600"
-          height="450"
-          frameborder="0"
-          src={mapSource}
-          allowfullscreen
-        ></iframe>
-      </div>
-    );
   }
 }
 

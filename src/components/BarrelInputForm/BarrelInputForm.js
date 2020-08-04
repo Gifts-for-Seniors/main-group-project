@@ -43,7 +43,10 @@ class BarrelInput extends Component {
       dates: "",
       hours: "",
       public: true
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
     });
   };
 
@@ -153,6 +156,7 @@ class BarrelInput extends Component {
               />
             </div>
             <div className="addBarrelInput">
+<<<<<<< HEAD
               <FormControl component="fieldset">
                 <FormLabel component="legend"></FormLabel>
                 <RadioGroup
@@ -179,6 +183,17 @@ class BarrelInput extends Component {
               </FormControl>
             </div>
 
+=======
+              <TextField
+                label="Public"
+                variant="outlined"
+                name="public"
+                type="boolean"
+                value={this.state.public}
+                onChange={this.handleInput}
+              ></TextField>
+            </div>
+>>>>>>> master
             <StyledButton
               id="theSubmitButtonForCarolyn"
               className="addBarrelButton"
@@ -186,6 +201,8 @@ class BarrelInput extends Component {
             >
               Submit
             </StyledButton>
+
+
           </div>
         </form>
       </div>

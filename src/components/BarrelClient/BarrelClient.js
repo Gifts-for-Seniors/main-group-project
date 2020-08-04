@@ -27,6 +27,8 @@ class BarrelClient extends Component {
       payload: data,
     });
   };
+
+  /// }
   render() {
     return (
       <div>
@@ -44,7 +46,27 @@ class BarrelClient extends Component {
         <ul className="locationLists">
           <div className="barrelMap">
             {this.props.state.searchBarrels.map((barrel) => {
-              if (barrel.status === true) {
+              if (barrel.status === true && barrel.public === false) {
+                return (
+                  <div
+                    onClick={() => this.setMapToDisplay(barrel)}
+                  >
+                    <li className="privateBarrels" key={barrel.id}>
+                      {barrel.hosts} ,
+                      <ul>
+                        <li>
+                          {barrel.street} {barrel.city} {barrel.zipcode}
+                        </li>
+                        {barrel.description !== null ? (
+                          <li>{barrel.description}</li>
+                        ) : null}
+                        {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
+                        {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
+                      </ul>
+                    </li>
+                  </div>
+                );
+              } else {
                 return (
                   <div onClick={() => this.setMapToDisplay(barrel)}>
                     <li className="boldIt" key={barrel.id}>

@@ -30,7 +30,7 @@ function* getAdminBarrels(action) {
  */
 function* newBarrel(action) {
   console.log(action.payload);
-  let dataObject = { payload: action.payload };
+  let dataObject = action.payload;
   try {
     yield axios.post("/api/barrel-create", dataObject);
     console.log("from newBarrel", action.payload);
