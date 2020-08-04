@@ -107,10 +107,12 @@ router.put("/update/barrel-status/:id", rejectUnauthenticated, (req, res) => {
   let public = req.body.public;
   let id = req.body.id;
   let statusUpdater = !public;
+  console.log(!public);
   const queryText = `UPDATE barrels set public = $2 WHERE id = $1;`;
   pool
     .query(queryText, [id, statusUpdater])
     .then((result) => {
+      console.log(result);
       res.sendStatus(200);
     })
     .catch((error) => {
@@ -123,6 +125,8 @@ router.put("/update/barrel-status/:id", rejectUnauthenticated, (req, res) => {
  * EDIT BARREL
  */
 router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
+  // console.log(req.body);
+  console.log(req.body.public);
   console.log(req.body);
   let itemToEdit = req.body.itemToEdit;
   let hosts = req.body.hosts;
@@ -165,7 +169,6 @@ router.get("/search/:search", (req, res) => {
     pool
       .query(queryText)
       .then((result) => {
-        console.log(result.rows);
         res.send(result.rows);
       })
       .catch((error) => {

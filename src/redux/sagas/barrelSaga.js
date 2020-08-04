@@ -48,6 +48,7 @@ function* deleteBarrel(action) {
 
 function* updateBarrel(action) {
   console.log(action.payload);
+
   try {
     let searchTerm = action.payload.searchTerm;
     yield axios.put(
@@ -101,9 +102,7 @@ function* updatePublic(action) {
       withCredentials: true,
     };
     yield axios.put(`api/barrel-locations/update/barrel-status/${data}`, data);
-    // if (action.payload.previousSearch === Array(0)) {
-    //   console.log("pooter");
-    // }
+
     yield put({
       type: "SEARCH_ALL_BARRELS",
       payload: action.payload.previousSearch,

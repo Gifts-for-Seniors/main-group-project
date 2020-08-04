@@ -20,6 +20,7 @@ class BarrelTable extends Component {
     date: "",
     barrelStatus: false,
     toggleEvent: false,
+    public: true,
   };
 
   editItem = (item) => {
@@ -28,6 +29,7 @@ class BarrelTable extends Component {
       itemToEdit: item.id,
       hosts: item.hosts,
       street: item.street,
+      // public: item.public,
       city: item.city,
       description: item.description,
       zipcode: item.zipcode,
@@ -55,6 +57,19 @@ class BarrelTable extends Component {
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
+      payload: data,
+    });
+  };
+
+  updatePublic = (item) => {
+    console.log(item);
+    let data = {
+      id: item.id,
+      public: item.public,
+      previousSearch: this.props.state.searchTerm,
+    };
+    this.props.dispatch({
+      type: "UPDATE_PUBLIC",
       payload: data,
     });
   };
@@ -93,6 +108,7 @@ class BarrelTable extends Component {
       type: "UPDATE_BARREL",
       payload: this.state,
     });
+    console.log(this.state);
     this.setState({
       ...this.state,
       itemToEdit: 0,
@@ -114,6 +130,7 @@ class BarrelTable extends Component {
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Public/Private</th>
               <th>Edit</th>
             </tr>
           </thead>
@@ -235,6 +252,25 @@ class BarrelTable extends Component {
                       </div>
                     </td>
                     <td>
+                      <div
+                        className="sliderCheckbox"
+                        class="ui slider checkbox"
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            console.log(item.public);
+                            this.updatePublic(item);
+                          }}
+                          checked={item.public}
+                          name="newsletter"
+                        />{" "}
+                        <label className="sliderLabel">
+                          {item.public ? "Public" : "Private"}
+                        </label>
+                      </div>
+                    </td>
+                    <td>
                       <i
                         class="archive icon"
                         value={item.id}
@@ -269,6 +305,8 @@ class BarrelTable extends Component {
                     <td>{item.hours}</td>
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
+                    <td>{item.public ? "Public" : "Private"}</td>
+                    {console.log(item.public)}
                     <td>
                       <i
                         class="edit icon"
