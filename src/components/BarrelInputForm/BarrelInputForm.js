@@ -19,7 +19,9 @@ class BarrelInput extends Component {
     description: "",
     dates: "",
     hours: "",
-    public: true
+    public: true,
+    searchTerm: this.props.state.searchTerm,
+    // searchTerm: this.props.state.searchTerm,
   };
 
   addBarrel = (event) => {
@@ -28,7 +30,6 @@ class BarrelInput extends Component {
       console.log(barrelData[i]);
       if (barrelData[i] === "") {
         console.log("bump");
-
         return alert("All form fields must be filled out.");
       }
     }
@@ -42,7 +43,7 @@ class BarrelInput extends Component {
       description: "",
       dates: "",
       hours: "",
-      public: true
+      public: true,
     });
   };
 
@@ -185,8 +186,6 @@ class BarrelInput extends Component {
             >
               Submit
             </StyledButton>
-
-
           </div>
         </form>
       </div>
