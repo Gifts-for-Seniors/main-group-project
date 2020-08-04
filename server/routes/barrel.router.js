@@ -37,7 +37,7 @@ router.get("/admin", (req, res) => {
  * POST NEW BARREL LOCATION
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  console.log(req.body);
+  console.log('Server is receiving:', req.body);
   let hosts = req.body.host;
   let street = req.body.street;
   let city = req.body.city;

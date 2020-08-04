@@ -4,12 +4,6 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> master
 
 
 

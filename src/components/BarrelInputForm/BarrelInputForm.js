@@ -19,6 +19,7 @@ class BarrelInput extends Component {
     description: "",
     dates: "",
     hours: "",
+    public: true
   };
 
   addBarrel = (event) => {
@@ -41,14 +42,33 @@ class BarrelInput extends Component {
       description: "",
       dates: "",
       hours: "",
+      public: true
+
     });
   };
 
   handleInput = (event) => {
+    console.log('state:',this.state)
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
+
+  handleRadioButton = event => {
+    if (event.target.value === "true") {
+      this.setState({
+        ...this.state,
+        public: true
+      })
+    }
+    else {
+      this.setState({
+        ...this.state,
+        public: false
+      })
+    }
+    console.log("public",this.state.public)
+  }
 
   render() {
     return (
@@ -138,18 +158,19 @@ class BarrelInput extends Component {
                 <RadioGroup
                   row
                   aria-label="gender"
-                  name="gender1"
-                  // value={value}
-                  // onChange={}
+                  name="public"
+                  value={this.state.public}
+                  onChange={this.handleRadioButton}
+                  classes="label"
                 >
                   <FormControlLabel
-                    value="female"
+                    value="true"
                     control={<Radio />}
                     label="Public"
-                    labelPlacement="Top"
+                    labelPlacement="Top"                   
                   />
                   <FormControlLabel
-                    value="male"
+                    value="false"
                     control={<Radio />}
                     label="Private"
                     labelPlacement="Top"
