@@ -6,7 +6,7 @@ import { put, takeEvery } from "redux-saga/effects";
  */
 function* getBarrels(action) {
   try {
-    const response = yield axios.get(`/api/barrel-locations`);
+    const response = yield axios.get(`/api/barrel-select`);
     yield put({ type: "SET_BARRELS", payload: response.data });
   } catch (error) {
     console.log("CLIENT GET BARREL-LOCATION ERR", error);
@@ -34,7 +34,7 @@ function* newBarrel(action) {
   try {
     yield axios.post("/api/barrel-create", dataObject);
     console.log("from newBarrel", action.payload);
-    yield put({ type: "GET_ADMIN_BARRELS" });
+    yield put({ type: "SEARCH_ALL_BARRELS", payload: "*all" });
     // yield put({ type: 'FETCH_LIST' })
   } catch (error) {
     console.log(error);
