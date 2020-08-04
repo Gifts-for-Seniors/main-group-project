@@ -114,8 +114,8 @@ class BarrelInput extends Component {
                 value={this.state.dates}
                 onChange={this.handleInput}
 
-              //   {moment(this.props.startDate).format("MMM Do, YYYY")} -{" "}
-              // {moment(this.props.endDate).format("MMM Do, YYYY")}
+                //   {moment(this.props.startDate).format("MMM Do, YYYY")} -{" "}
+                // {moment(this.props.endDate).format("MMM Do, YYYY")}
               />
             </div>
             <div className="addBarrelInput">
