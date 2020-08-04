@@ -119,7 +119,7 @@ class BarrelTable extends Component {
     return (
       <div className="table-container">
         <table class="ui celled table">
-          {" "}
+          {/* TABLE HEADERS */}
           <thead className="tableHeader">
             <tr className="coolTableTr">
               <th className="hostTag">Host</th>
@@ -135,12 +135,14 @@ class BarrelTable extends Component {
             </tr>
           </thead>
           <tbody>
-            {/* Display data based on whether editing or not */}
+            {/* IF EDITING, DISPLAY THIS */}
             {this.props.state.searchBarrels.map((item) => {
               if (item.id === this.state.itemToEdit) {
                 return (
                   <tr>
                     <td>
+                      {/* INPUT FIELDS */}
+                      {/* HOSTS */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -154,6 +156,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* STREET */}
                       <TextField
                         multiline
                         rowsMax={10}
@@ -167,6 +170,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* CITY */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -180,6 +184,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* ZIPCODE */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -193,6 +198,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* DATES */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -206,6 +212,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* HOURS */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -219,6 +226,7 @@ class BarrelTable extends Component {
                       ></TextField>
                     </td>
                     <td>
+                      {/* DESCRIPTION */}
                       <TextField
                         autoFocus="true"
                         className="editInput"
@@ -233,7 +241,9 @@ class BarrelTable extends Component {
                         }
                       ></TextField>
                     </td>
+                    {/* ENDS INPUT FIELDS */}
                     <td>
+                      {/* TOGGLES */}
                       <div
                         className="sliderCheckbox"
                         class="ui slider checkbox"
@@ -270,6 +280,7 @@ class BarrelTable extends Component {
                         </label>
                       </div>
                     </td>
+                    {/* ENDS TOGGLES */}
                     <td>
                       <i
                         class="archive icon"

@@ -3,7 +3,10 @@ import { put, takeEvery } from "redux-saga/effects";
 
 function* searchTheBarrels(action) {
   console.log(action.payload);
-
+  let searchStarter = "*all"
+  if(action.payload.length < 1){
+    console.log("gottem");
+  }
   try {
     const response = yield axios.get(`/api/barrel-search/${action.payload}`);
     yield put({ type: "SET_SEARCH_TERM_BARRELS", payload: response.data });
