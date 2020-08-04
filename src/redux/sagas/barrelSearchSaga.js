@@ -7,6 +7,16 @@ function* searchTheBarrels(action) {
   try {
     const response = yield axios.get(`/api/barrel-search/${action.payload}`);
     yield put({ type: "SET_SEARCH_TERM_BARRELS", payload: response.data });
+    console.log(response.data[0]);
+    // let city = response.data[0].city;
+    // let street = response.data[0].street;
+    // let zipcode = response.data[0].zipcode;
+    // let firstMap = {
+    //   city: city,
+    //   street: street,
+    //   zipcode: zipcode,
+    // };
+    // yield put({ type: "SET_MAP_TO_SEARCH", payload: firstMap });
   } catch (error) {
     console.log(error);
   }
