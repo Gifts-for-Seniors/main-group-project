@@ -45,10 +45,20 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   let description = req.body.description;
   let hours = req.body.hours;
   let dates = req.body.date;
-  let queryText = `INSERT INTO barrels (hosts, street, city, zipcode, description, hours, dates) VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+  let public = req.body.public;
+  let queryText = `INSERT INTO barrels (hosts, street, city, zipcode, description, hours, dates, public) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
 
   pool
-    .query(queryText, [hosts, street, city, zipcode, description, hours, dates])
+    .query(queryText, [
+      hosts,
+      street,
+      city,
+      zipcode,
+      description,
+      hours,
+      dates,
+      public,
+    ])
     .then((result) => {
       res.sendStatus(200);
     })
@@ -77,10 +87,46 @@ router.put("/update/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+router.put("/update/:id", rejectUnauthenticated, (req, res) => {
+  let status = req.body.status;
+  let id = req.body.id;
+  let statusUpdater = !status;
+  const queryText = `UPDATE barrels set status = $2 WHERE id = $1;`;
+  pool
+    .query(queryText, [id, statusUpdater])
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/update/barrel-status/:id", rejectUnauthenticated, (req, res) => {
+  let public = req.body.public;
+  let id = req.body.id;
+  let statusUpdater = !public;
+  console.log(!public);
+  const queryText = `UPDATE barrels set public = $2 WHERE id = $1;`;
+  pool
+    .query(queryText, [id, statusUpdater])
+    .then((result) => {
+      console.log(result);
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR IN SERVER PUT", error);
+      res.sendStatus(500);
+    });
+});
+
 /**
  * EDIT BARREL
  */
 router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
+  // console.log(req.body);
+  console.log(req.body.public);
   console.log(req.body);
   let itemToEdit = req.body.itemToEdit;
   let hosts = req.body.hosts;
@@ -90,7 +136,6 @@ router.put("/edit/:id", rejectUnauthenticated, (req, res) => {
   let zipcode = req.body.zipcode;
   let dates = req.body.date;
   let hours = req.body.hours;
-
   const queryText = `UPDATE barrels SET (hosts, street, city, description, zipcode, hours, dates) = ($1, $2, $3, $4, $5, $6, $7) WHERE id = $8`;
   pool
     .query(queryText, [
@@ -122,7 +167,6 @@ router.get("/search/:search", (req, res) => {
     pool
       .query(queryText)
       .then((result) => {
-        console.log(result.rows);
         res.send(result.rows);
       })
       .catch((error) => {

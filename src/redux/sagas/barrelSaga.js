@@ -37,9 +37,6 @@ function* deleteBarrel(action) {
   console.log(action.payload.id);
   try {
     yield axios.delete(`/api/barrel-locations/delete/${action.payload.id}`);
-    if (action.payload.previousSearch === Array(0)) {
-      console.log("pooter");
-    }
     yield put({
       type: "SEARCH_ALL_BARRELS",
       payload: action.payload.previousSearch,
@@ -51,6 +48,7 @@ function* deleteBarrel(action) {
 
 function* updateBarrel(action) {
   console.log(action.payload);
+
   try {
     let searchTerm = action.payload.searchTerm;
     yield axios.put(
@@ -91,6 +89,29 @@ function* updateStatus(action) {
   }
 }
 
+// Update PUBLIC/PRIVATE
+function* updatePublic(action) {
+  let data = {
+    id: action.payload.id,
+    public: action.payload.public,
+  };
+  console.log(data);
+  try {
+    const config = {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    };
+    yield axios.put(`api/barrel-locations/update/barrel-status/${data}`, data);
+
+    yield put({
+      type: "SEARCH_ALL_BARRELS",
+      payload: action.payload.previousSearch,
+    });
+  } catch (error) {
+    console.log("UPDATE public FAILED", error);
+  }
+}
+
 function* newBarrelSaga() {
   yield takeEvery("ADD_TO_LIST", newBarrel);
   yield takeEvery("GET_BARRELS", getBarrels);
@@ -98,6 +119,7 @@ function* newBarrelSaga() {
   yield takeEvery("DELETE_BARREL", deleteBarrel);
   yield takeEvery("UPDATE_BARREL", updateBarrel);
   yield takeEvery("UPDATE_STATUS", updateStatus);
+  yield takeEvery("UPDATE_PUBLIC", updatePublic);
 }
 
 export default newBarrelSaga;

@@ -9,7 +9,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
 import TextField from "@material-ui/core/TextField";
-import { Alert, AlertTitle } from "@material-ui/lab";
 import "./BarrelInputForm.css";
 class BarrelInput extends Component {
   state = {
@@ -44,6 +43,7 @@ class BarrelInput extends Component {
       hours: "",
     });
   };
+
   handleInput = (event) => {
     this.setState({
       [event.target.name]: event.target.value,

@@ -2,8 +2,31 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
-import GoogleMap from '../GoogleMap/GoogleMap';
+import GoogleMap from "../GoogleMap/GoogleMap";
 class BarrelClient extends Component {
+  componentDidMount() {
+    let homeBase = {
+      street: "2300 Kennedy Street",
+      zipcode: "55413",
+    };
+    this.props.dispatch({
+      type: "SET_MAP_TO_SEARCH",
+      payload: homeBase,
+    });
+  }
+
+  setMapToDisplay = (barrel) => {
+    console.log(barrel);
+    let data = {
+      hosts: barrel.hosts,
+      street: barrel.street,
+      zipcode: barrel.zipcode,
+    };
+    this.props.dispatch({
+      type: "SET_MAP_TO_SEARCH",
+      payload: data,
+    });
+  };
   render() {
     return (
       <div>
@@ -23,29 +46,21 @@ class BarrelClient extends Component {
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true) {
                 return (
-                  <li className="boldIt" key={barrel.id}>
-                    {barrel.hosts} ,
-                    <ul>
-                      <li>
-                        {barrel.street} {barrel.city} {barrel.zipcode}
-                      </li>
-                      {barrel.description !== null ? (
-                        <li>{barrel.description}</li>
-                      ) : (
-                          <div></div>
-                        )}
-                      {barrel.dates !== null ? (
-                        <li>{barrel.dates}</li>
-                      ) : (
-                          <div></div>
-                        )}
-                      {barrel.hours !== null ? (
-                        <li>{barrel.hours}</li>
-                      ) : (
-                          <div></div>
-                        )}
-                    </ul>
-                  </li>
+                  <div onClick={() => this.setMapToDisplay(barrel)}>
+                    <li className="boldIt" key={barrel.id}>
+                      {barrel.hosts} ,
+                      <ul>
+                        <li>
+                          {barrel.street} {barrel.city} {barrel.zipcode}
+                        </li>
+                        {barrel.description !== null ? (
+                          <li>{barrel.description}</li>
+                        ) : null}
+                        {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
+                        {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
+                      </ul>
+                    </li>
+                  </div>
                 );
               }
             })}

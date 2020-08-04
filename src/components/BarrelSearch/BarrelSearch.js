@@ -4,9 +4,12 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
 
 
 
@@ -55,8 +58,9 @@ class BarrelSearch extends Component {
                 <span>
                   <TextField
                     id="searchField"
-                    label="Search"
+                    label="Search by City or Zipcode"
                     name="search"
+                    // placeholder="Search by City or Zipcode"
                     type="text"
                     variant="outlined"
                     value={this.state.search}

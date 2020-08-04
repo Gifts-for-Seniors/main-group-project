@@ -20,6 +20,7 @@ class BarrelTable extends Component {
     date: "",
     barrelStatus: false,
     toggleEvent: false,
+    public: true,
   };
 
   editItem = (item) => {
@@ -28,6 +29,7 @@ class BarrelTable extends Component {
       itemToEdit: item.id,
       hosts: item.hosts,
       street: item.street,
+      public: item.public,
       city: item.city,
       description: item.description,
       zipcode: item.zipcode,
@@ -55,6 +57,19 @@ class BarrelTable extends Component {
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
+      payload: data,
+    });
+  };
+
+  updatePublic = (item) => {
+    console.log(item);
+    let data = {
+      id: item.id,
+      public: item.public,
+      previousSearch: this.props.state.searchTerm,
+    };
+    this.props.dispatch({
+      type: "UPDATE_PUBLIC",
       payload: data,
     });
   };
@@ -93,6 +108,7 @@ class BarrelTable extends Component {
       type: "UPDATE_BARREL",
       payload: this.state,
     });
+    console.log(this.state);
     this.setState({
       ...this.state,
       itemToEdit: 0,
@@ -114,6 +130,7 @@ class BarrelTable extends Component {
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Public/Private</th>
               <th>Edit</th>
             </tr>
           </thead>
@@ -127,6 +144,7 @@ class BarrelTable extends Component {
                       <TextField
                         autoFocus="true"
                         className="editInput"
+                        placeholder="Host Name"
                         type="text"
                         multiline
                         rowsMax={10}
@@ -141,6 +159,7 @@ class BarrelTable extends Component {
                         rowsMax={10}
                         autoFocus="true"
                         className="editInput"
+                        placeholder="Street Address"
                         type="text"
                         value={this.state.street}
                         variant="outlined"
@@ -154,6 +173,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="City"
                         value={this.state.city}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "city")}
@@ -166,6 +186,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Zipcode"
                         value={this.state.zipcode}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "zipcode")}
@@ -181,6 +202,7 @@ class BarrelTable extends Component {
                         value={this.state.date}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "date")}
+                        placeholder="Dates Available"
                       ></TextField>
                     </td>
                     <td>
@@ -190,6 +212,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Hours Open"
                         value={this.state.hours}
                         variant="outlined"
                         onChange={(event) => this.trackEdit(event, "hours")}
@@ -202,6 +225,7 @@ class BarrelTable extends Component {
                         type="text"
                         rowsMax={10}
                         multiline
+                        placeholder="Description"
                         value={this.state.description}
                         variant="outlined"
                         onChange={(event) =>
@@ -224,6 +248,25 @@ class BarrelTable extends Component {
                         />{" "}
                         <label className="sliderLabel">
                           {item.status ? "Active" : "Not Active"}
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        className="sliderCheckbox"
+                        class="ui slider checkbox"
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            console.log(item.public);
+                            this.updatePublic(item);
+                          }}
+                          checked={item.public}
+                          name="newsletter"
+                        />{" "}
+                        <label className="sliderLabel">
+                          {item.public ? "Public" : "Private"}
                         </label>
                       </div>
                     </td>
@@ -262,6 +305,8 @@ class BarrelTable extends Component {
                     <td>{item.hours}</td>
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
+                    <td>{item.public ? "Public" : "Private"}</td>
+                    {console.log(item.public)}
                     <td>
                       <i
                         class="edit icon"
@@ -275,24 +320,6 @@ class BarrelTable extends Component {
               }
             })}
           </tbody>
-          {/* <tfoot>
-            <tr>
-              <th colspan="5">
-                <div class="ui right floated pagination menu">
-                  <a class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                  <a class="item">1</a>
-                  <a class="item">2</a>
-                  <a class="item">3</a>
-                  <a class="item">4</a>
-                  <a class="icon item">
-                    <i class="right chevron icon"></i>
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot> */}
         </table>
       </div>
     );
