@@ -27,6 +27,13 @@ class BarrelClient extends Component {
       payload: data,
     });
   };
+  // ChangePrivateColor = (event) => {
+  //   this.setState({
+  //     ...this.state,
+  //     privateColor: !this.state.privateColor,
+  //   });
+
+  // };
   render() {
     return (
       <div>
@@ -61,8 +68,31 @@ class BarrelClient extends Component {
                       </ul>
                     </li>
                   </div>
+
                 );
               }
+              if (barrel.public === false) {
+                return (
+                  // <div onClick={() => this.setMapToDisplay(barrel)}>
+                  <li className="color" key={barrel.id}>
+                    {barrel.hosts} ,
+                    <ul>
+                      <li>
+                        {barrel.street} {barrel.city} {barrel.zipcode}
+                      </li>
+                      {barrel.description !== null ? (
+                        <li>{barrel.description}</li>
+                      ) : null}
+                      {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
+                      {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
+                      {/* {item.public ? "Public" : "Private"} */}
+                    </ul>
+                  </li>
+                  // </div>
+
+                );
+              }
+
             })}
           </div>
         </ul>

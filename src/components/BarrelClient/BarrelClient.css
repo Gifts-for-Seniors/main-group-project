@@ -23,6 +23,10 @@
   max-width: 80%;
 }
 
+.color{
+  background-color: teal;
+}
+
 .covid19Response {
   font-style: italic;
   text-align: left;
