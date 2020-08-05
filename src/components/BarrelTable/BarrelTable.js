@@ -122,7 +122,7 @@ class BarrelTable extends Component {
     console.log(item);
     confirmAlert({
       title: "Delete Barrel Location",
-      message: "Are you sure?",
+      message: "This action is permanent, are you sure?",
       buttons: [
         {
           label: "Yes",

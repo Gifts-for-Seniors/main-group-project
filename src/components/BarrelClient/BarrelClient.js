@@ -15,6 +15,7 @@ class BarrelClient extends Component {
     });
   }
 
+  // UPDATE MAP WITH TARGET INFORMATION (*barrel)
   setMapToDisplay = (barrel) => {
     console.log(barrel);
     let data = {
@@ -45,12 +46,12 @@ class BarrelClient extends Component {
         </div>
         <ul className="locationLists">
           <div className="barrelMap">
+            {/* ONLY DISPLAY RELEVANT INFORMATION */}
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true && barrel.public === false) {
+                // THESE ARE PRIVATE BARRELS
                 return (
-                  <div
-                    onClick={() => this.setMapToDisplay(barrel)}
-                  >
+                  <div onClick={() => this.setMapToDisplay(barrel)}>
                     <li className="privateBarrels" key={barrel.id}>
                       {barrel.hosts} ,
                       <ul>
@@ -67,6 +68,7 @@ class BarrelClient extends Component {
                   </div>
                 );
               } else {
+                // THESE ARE PUBLIC BARRELS
                 return (
                   <div onClick={() => this.setMapToDisplay(barrel)}>
                     <li className="boldIt" key={barrel.id}>

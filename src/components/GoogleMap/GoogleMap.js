@@ -17,6 +17,7 @@ class GoogleMap extends Component {
       case "2300 Kennedy Street":
         console.log("RETURNED", searchTerm, mapToSearch);
         return (
+          // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
           <div className="map">
             <iframe
               className="maperoo"
@@ -31,6 +32,7 @@ class GoogleMap extends Component {
         );
       default:
         return (
+          // RENDER A MAP WITH EITHER THE FIRST MAP IN SEARCH-QUERY OR FROM BarrelClient Barrel CLICK
           <div className="map">
             <iframe
               className="maperoo"
