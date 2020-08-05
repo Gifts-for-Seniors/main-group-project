@@ -38,12 +38,11 @@ class GoogleMap extends Component {
           <div className="map">
             <iframe
               className="maperoo"
-              width="300"
-              height="300"
+              width="auto"
+              height="400"
+              zoom="2"
               frameborder="0"
-              style={{
-                border: 0,
-              }}
+              style={{ border: 0, margin: "auto" }}
               src={mapSource}
               allowfullscreen
             ></iframe>

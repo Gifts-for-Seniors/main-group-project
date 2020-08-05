@@ -1,7 +1,7 @@
-.privateBarrel {
+.privateBarrel .ui.card {
   background-color: red;
 }
 
-.ui.card {
+/* .ui.card {
   background-color: red;
-}
+} */

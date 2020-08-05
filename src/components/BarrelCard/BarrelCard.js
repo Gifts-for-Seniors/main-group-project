@@ -11,7 +11,7 @@ class BarrelCard extends Component {
     console.log(this.props.barrel);
 
     return (
-      <Card.Group itemsPerRow={5}>
+      <div>
         {this.props.barrel.public ? (
           <Card
             color="red"
@@ -75,7 +75,7 @@ class BarrelCard extends Component {
             </Card.Content>
           </Card>
         )}
-      </Card.Group>
+      </div>
     );
   }
 }

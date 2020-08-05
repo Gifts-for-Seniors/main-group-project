@@ -5,6 +5,8 @@ import "./BarrelClient.css";
 import GoogleMap from "../GoogleMap/GoogleMap";
 import InsetGoogleMap from "../GoogleMap/BarrelInsetGoogleMap";
 import BarrelCard from "../BarrelCard/BarrelCard";
+import { Button, Card, Image, Label, Grid } from "semantic-ui-react";
+
 class BarrelClient extends Component {
   componentDidMount() {
     let homeBase = {
@@ -53,25 +55,26 @@ class BarrelClient extends Component {
         <div className="clientSearch">
           <BarrelSearch />
         </div>{" "}
-        {/* <div className="overlyingList"> */}
-        {/* <div className="barrelMap"> */}
-        {/* ONLY DISPLAY RELEVANT INFORMATION */}
-        {this.props.state.searchBarrels.map((barrel) => {
-          if (barrel.status === true) {
-            // THESE ARE PRIVATE BARRELS
-            return (
-              <BarrelCard
-                barrel={barrel}
-                setMapToDisplay={this.setMapToDisplay}
-              />
-            );
-          } else {
-            // THESE ARE PUBLIC BARRELS
-            return null;
-          }
-        })}
-        {/* </div> */}
-        {/* </div> */}
+        <Grid>
+          <Grid.Row columns={5}>
+            {/* ONLY DISPLAY RELEVANT INFORMATION */}
+            {this.props.state.searchBarrels.map((barrel) => {
+              if (barrel.status === true) {
+                // RETURN BARREL CARDS
+                return (
+                  <Grid.Column>
+                    <BarrelCard
+                      barrel={barrel}
+                      setMapToDisplay={this.setMapToDisplay}
+                    />
+                  </Grid.Column>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }

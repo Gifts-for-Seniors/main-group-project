@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-let item = this.props.item;
 
 class BarrelData extends Component {
   render() {
+    let item = this.props.item;
+
     return (
       <tr className="barrelItem">
         <td>{item.hosts}</td>
