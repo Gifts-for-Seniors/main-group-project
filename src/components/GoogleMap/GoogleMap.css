@@ -1,14 +1,15 @@
 .map {
-  justify-content: center;
-}
-.maperoo {
+  display: flex;
   margin: auto;
-  width: 100%;
-  height: 600px;
 }
 
+/* 
 .mapContainer {
   object-fit: fill;
+} */
+.maperoo {
+  width: 70%;
+  justify-content: center;
 }
 
 .mapImage {
