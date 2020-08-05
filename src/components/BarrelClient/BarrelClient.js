@@ -57,7 +57,7 @@ class BarrelClient extends Component {
         {/* <div className="barrelMap"> */}
         {/* ONLY DISPLAY RELEVANT INFORMATION */}
         {this.props.state.searchBarrels.map((barrel) => {
-          if (barrel.status === true && barrel.public === false) {
+          if (barrel.status === true) {
             // THESE ARE PRIVATE BARRELS
             return (
               <BarrelCard
@@ -67,23 +67,7 @@ class BarrelClient extends Component {
             );
           } else {
             // THESE ARE PUBLIC BARRELS
-            return (
-              <div onClick={() => this.setMapToDisplay(barrel)}>
-                <li className="boldIt" key={barrel.id}>
-                  {barrel.hosts} ,
-                  <ul>
-                    <li>
-                      {barrel.street} {barrel.city} {barrel.zipcode}
-                    </li>
-                    {barrel.description !== null ? (
-                      <li>{barrel.description}</li>
-                    ) : null}
-                    {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
-                    {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
-                  </ul>
-                </li>
-              </div>
-            );
+            return null;
           }
         })}
         {/* </div> */}
