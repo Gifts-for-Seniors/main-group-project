@@ -6,6 +6,8 @@ import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input, TextField } from "@material-ui/core";
 import "./BarrelTable.css";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class BarrelTable extends Component {
   state = {
@@ -21,6 +23,7 @@ class BarrelTable extends Component {
     barrelStatus: false,
     toggleEvent: false,
     public: true,
+    openModal: false,
   };
 
   editItem = (item) => {
@@ -112,6 +115,24 @@ class BarrelTable extends Component {
     this.setState({
       ...this.state,
       itemToEdit: 0,
+    });
+  };
+
+  submitAlert = (item) => {
+    console.log(item);
+    confirmAlert({
+      title: "Delete Barrel Location",
+      message: "This action is permanent, are you sure?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => this.deleteItem(item),
+        },
+        {
+          label: "Cancel",
+          onClick: () => this.cancelEdit(),
+        },
+      ],
     });
   };
 
@@ -298,7 +319,7 @@ class BarrelTable extends Component {
                     <td>
                       <i
                         class="trash icon"
-                        onClick={() => this.deleteItem(item.id)}
+                        onClick={() => this.submitAlert(item.id)}
                       >
                         <p>Delete</p>
                       </i>

@@ -6,6 +6,7 @@ import BarrelTable from "../BarrelTable/BarrelTable";
 import BarrelInput from "../BarrelInputForm/BarrelInputForm";
 class BarrelAdmin extends Component {
   render() {
+    //HANDLES THE BARREL ADMIN COMPONENTS
     return (
       <div className="barrelForm">
         <BarrelInput />

@@ -10,18 +10,20 @@ class GoogleMap extends Component {
     let street = this.props.state.mapToSearch.street;
     let zipcode = this.props.state.mapToSearch.zipcode;
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=${street}+${zipcode}+${host}`;
+    &q=${street}+${zipcode}+${host}&zoom=12`;
     let homeBase = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
-    &q=2300 Kennedy Street NE Suite 40 Mpls MN 55413`;
+    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=8`;
     switch (mapToSearch.street) {
       case "2300 Kennedy Street":
         console.log("RETURNED", searchTerm, mapToSearch);
         return (
+          // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
           <div className="map">
             <iframe
               className="maperoo"
               width="600"
               height="450"
+              zoom="2"
               frameborder="0"
               src={homeBase}
               allowfullscreen
@@ -30,6 +32,7 @@ class GoogleMap extends Component {
         );
       default:
         return (
+          // RENDER A MAP WITH EITHER THE FIRST MAP IN SEARCH-QUERY OR FROM BarrelClient Barrel CLICK
           <div className="map">
             <iframe
               className="maperoo"

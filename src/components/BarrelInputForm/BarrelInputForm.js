@@ -26,6 +26,7 @@ class BarrelInput extends Component {
 
   addBarrel = (event) => {
     const barrelData = Object.values(this.state);
+    // FILL ALL THE FORM FIELDS PLEASE
     for (let i = 0; i < barrelData.length; i++) {
       console.log(barrelData[i]);
       if (barrelData[i] === "") {
@@ -80,6 +81,7 @@ class BarrelInput extends Component {
         <form>
           <div className="addBarrels">
             <div className="addBarrelInput">
+              {/* INPUT FIELDS */}
               <TextField
                 label="Host Name"
                 variant="outlined"
@@ -137,9 +139,6 @@ class BarrelInput extends Component {
                 type="text"
                 value={this.state.dates}
                 onChange={this.handleInput}
-
-                //   {moment(this.props.startDate).format("MMM Do, YYYY")} -{" "}
-                // {moment(this.props.endDate).format("MMM Do, YYYY")}
               />
             </div>
             <div className="addBarrelInput">
