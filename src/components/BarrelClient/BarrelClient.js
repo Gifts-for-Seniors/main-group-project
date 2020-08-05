@@ -15,6 +15,7 @@ class BarrelClient extends Component {
     });
   }
 
+  // UPDATE MAP WITH TARGET INFORMATION (*barrel)
   setMapToDisplay = (barrel) => {
     console.log(barrel);
     let data = {
@@ -34,7 +35,7 @@ class BarrelClient extends Component {
       <div>
         <GoogleMap />
         <p className="covid19Response">
-          Covid 19 Response: Please click here to deliver gift donations at our
+          Covid 19 Response:<a href="mailto:carolyn@giftsforseniors.org" target="_blank">Please click here</a> to deliver gift donations at our
           operations center in Minneapolis. Individual appointments are socially
           distanced and honor CDC guidelines. Other drop locations below! You
           may also browse our Wish List for gift ideas.
@@ -45,17 +46,20 @@ class BarrelClient extends Component {
         </div>
         <ul className="locationLists">
           <div className="barrelMap">
+            {/* ONLY DISPLAY RELEVANT INFORMATION */}
             {this.props.state.searchBarrels.map((barrel) => {
               if (barrel.status === true && barrel.public === false) {
+                // THESE ARE PRIVATE BARRELS
                 return (
-                  <div
-                    onClick={() => this.setMapToDisplay(barrel)}
-                  >
+                  <div onClick={() => this.setMapToDisplay(barrel)}>
                     <li className="privateBarrels" key={barrel.id}>
-                      {barrel.hosts} ,
+                      {barrel.hosts},
                       <ul>
                         <li>
                           {barrel.street} {barrel.city} {barrel.zipcode}
+                        </li>
+                        <li className="employee">
+                          Employees only
                         </li>
                         {barrel.description !== null ? (
                           <li>{barrel.description}</li>
@@ -67,6 +71,7 @@ class BarrelClient extends Component {
                   </div>
                 );
               } else {
+                // THESE ARE PUBLIC BARRELS
                 return (
                   <div onClick={() => this.setMapToDisplay(barrel)}>
                     <li className="boldIt" key={barrel.id}>

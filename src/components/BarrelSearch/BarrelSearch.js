@@ -8,15 +8,18 @@ import searchTerm from "../../redux/reducers/searchTermReducer";
 
 
 class BarrelSearch extends Component {
+  //
   state = {
     search: "",
     toggler: false,
   };
+  // OUR BASE SEARCH IS *all, SEARCH ALL BARRELS ON PAGE LOAD
   componentDidMount() {
     this.props.dispatch({
       type: "SET_SEARCH_TERM",
       payload: "*all",
     });
+    //
   }
 
   handleInput = (event) => {
@@ -35,13 +38,16 @@ class BarrelSearch extends Component {
   search = () => {
     let search = this.state.search;
     this.props.dispatch({
+      // SEARCH DATABASE FOR BARRELS
       type: "SEARCH_ALL_BARRELS",
       payload: search,
     });
+    // KEEP TRACK OF SEARCH TERM
     this.props.dispatch({
       type: "SET_SEARCH_TERM",
       payload: search,
     });
+    // HELPS DISPLAY A NEW MAP
     this.props.dispatch({
       type: "NEW_MAP_QUERY",
       payload: search,
