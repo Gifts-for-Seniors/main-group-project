@@ -50,6 +50,13 @@
   font-style: italic;
   text-align: left;
   max-width: 35%;
+  color:black
+}
+a{
+  color:black;
+  display: inline-box;
+  text-align: center;
+  flex-wrap: wrap-reverse;
 }
 
 .barrelMap {
