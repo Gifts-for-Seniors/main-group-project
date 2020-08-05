@@ -71,6 +71,7 @@ class BarrelInput extends Component {
   }
 
   render() {
+
     return (
       <div className="barrelForm">
         <h3 id="addDonationH3" className="tableTitle">
@@ -157,9 +158,9 @@ class BarrelInput extends Component {
                 <FormLabel component="legend"></FormLabel>
                 <RadioGroup
                   row
-                  aria-label="gender"
+                  aria-label="public"
                   name="public"
-                  value={this.state.public}
+                  // value={this.state.public}
                   onChange={this.handleRadioButton}
                   classes="label"
                 >
