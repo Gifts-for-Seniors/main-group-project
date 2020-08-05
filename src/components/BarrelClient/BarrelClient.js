@@ -52,10 +52,13 @@ class BarrelClient extends Component {
                     onClick={() => this.setMapToDisplay(barrel)}
                   >
                     <li className="privateBarrels" key={barrel.id}>
-                      {barrel.hosts} ,
+                      {barrel.hosts},
                       <ul>
                         <li>
                           {barrel.street} {barrel.city} {barrel.zipcode}
+                        </li>
+                        <li className="employee">
+                          Employees only
                         </li>
                         {barrel.description !== null ? (
                           <li>{barrel.description}</li>
