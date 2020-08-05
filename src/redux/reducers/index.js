@@ -7,6 +7,8 @@ import barrels from "./barrelReducer";
 import adminBarrels from "./adminBarrelsReducer";
 import searchBarrels from "./searchBarrelReducer";
 import searchTerm from "./searchTermReducer";
+import mapToSearch from "./mapToSearch";
+
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,6 +24,7 @@ const rootReducer = combineReducers({
   adminBarrels,
   searchBarrels,
   searchTerm,
+  mapToSearch,
 });
 
 export default rootReducer;

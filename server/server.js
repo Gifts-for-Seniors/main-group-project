@@ -10,7 +10,11 @@ const passport = require("./strategies/user.strategy");
 // Route includes
 const userRouter = require("./routes/user.router");
 const wishlistRouter = require("./routes/wishlist.router");
-const barrelLocations = require("./routes/barrel.router");
+const barrelCreate = require("./routes/barrel-create.router");
+const barrelEdit = require("./routes/barrel-edit.router");
+const barrelUpdate = require("./routes/barrel-update.router");
+const barrelSelect = require("./routes/barrel-select.router");
+const barrelSearch = require("./routes/barrel-search.router");
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +29,11 @@ app.use(passport.session());
 /* Routes */
 app.use("/api/user", userRouter);
 app.use("/api/wishlist", wishlistRouter);
-app.use("/api/barrel-locations", barrelLocations);
+app.use("/api/barrel-update", barrelUpdate);
+app.use("/api/barrel-select", barrelSelect);
+app.use("/api/barrel-edit", barrelEdit);
+app.use("/api/barrel-create", barrelCreate);
+app.use("/api/barrel-search", barrelSearch);
 
 // Serve static files
 app.use(express.static("build"));

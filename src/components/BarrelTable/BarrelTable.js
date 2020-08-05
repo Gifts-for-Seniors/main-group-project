@@ -6,7 +6,8 @@ import { StyledButton, RemoveButton } from "../ButtonStyles/Buttons";
 import StyledCheckbox from "../ButtonStyles/Checkbox";
 import { Input, TextField } from "@material-ui/core";
 import "./BarrelTable.css";
-import Popup from "reactjs-popup";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class BarrelTable extends Component {
   state = {
@@ -21,7 +22,8 @@ class BarrelTable extends Component {
     date: "",
     barrelStatus: false,
     toggleEvent: false,
-    searchTerm: this.props.state.searchTerm,
+    public: true,
+    openModal: false,
   };
 
   editItem = (item) => {
@@ -30,6 +32,7 @@ class BarrelTable extends Component {
       itemToEdit: item.id,
       hosts: item.hosts,
       street: item.street,
+      // public: item.public,
       city: item.city,
       description: item.description,
       zipcode: item.zipcode,
@@ -38,8 +41,7 @@ class BarrelTable extends Component {
       hours: item.hours,
       searchTerm: this.props.state.searchTerm,
     });
-    console.log(this.state);
-    console.log(this.props.state.searchTerm);
+    console.log("ITEM IS", item.public);
   };
 
   cancelEdit = () => {
@@ -58,6 +60,19 @@ class BarrelTable extends Component {
     };
     this.props.dispatch({
       type: "UPDATE_STATUS",
+      payload: data,
+    });
+  };
+
+  updatePublic = (item) => {
+    console.log(item);
+    let data = {
+      id: item.id,
+      public: item.public,
+      previousSearch: this.props.state.searchTerm,
+    };
+    this.props.dispatch({
+      type: "UPDATE_PUBLIC",
       payload: data,
     });
   };
@@ -96,13 +111,27 @@ class BarrelTable extends Component {
       type: "UPDATE_BARREL",
       payload: this.state,
     });
-    this.props.dispatch({
-      type: "SEARCH_ALL_BARRELS",
-      payload: this.props.state.searchTerm,
-    });
+    console.log(this.state);
     this.setState({
       ...this.state,
       itemToEdit: 0,
+    });
+  };
+
+  submitAlert = (item) => {
+    confirmAlert({
+      title: "Delete Barrel Location",
+      message: "Are you sure?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => this.deleteItem(item.id),
+        },
+        {
+          label: "Cancel",
+          onClick: () => this.cancelEdit()
+        }
+      ],
     });
   };
 
@@ -110,7 +139,7 @@ class BarrelTable extends Component {
     return (
       <div className="table-container">
         <table class="ui celled table">
-          {" "}
+          {/* TABLE HEADERS */}
           <thead className="tableHeader">
             <tr className="coolTableTr">
               <th className="hostTag">Host</th>
@@ -121,13 +150,183 @@ class BarrelTable extends Component {
               <th>Hours</th>
               <th>Description</th>
               <th>Status</th>
+              <th>Public/Private</th>
               <th>Edit</th>
             </tr>
           </thead>
           <tbody>
-            {/* Display data based on whether editing or not */}
+            {/* IF EDITING, DISPLAY THIS */}
             {this.props.state.searchBarrels.map((item) => {
-              {
+              if (item.id === this.state.itemToEdit) {
+                return (
+                  <tr>
+                    <td>
+                      {/* INPUT FIELDS */}
+                      {/* HOSTS */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        placeholder="Host Name"
+                        type="text"
+                        multiline
+                        rowsMax={10}
+                        value={this.state.hosts}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "hosts")}
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* STREET */}
+                      <TextField
+                        multiline
+                        rowsMax={10}
+                        autoFocus="true"
+                        className="editInput"
+                        placeholder="Street Address"
+                        type="text"
+                        value={this.state.street}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "street")}
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* CITY */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        rowsMax={10}
+                        multiline
+                        placeholder="City"
+                        value={this.state.city}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "city")}
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* ZIPCODE */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        rowsMax={10}
+                        multiline
+                        placeholder="Zipcode"
+                        value={this.state.zipcode}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "zipcode")}
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* DATES */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        rowsMax={10}
+                        multiline
+                        value={this.state.date}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "date")}
+                        placeholder="Dates Available"
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* HOURS */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        rowsMax={10}
+                        multiline
+                        placeholder="Hours Open"
+                        value={this.state.hours}
+                        variant="outlined"
+                        onChange={(event) => this.trackEdit(event, "hours")}
+                      ></TextField>
+                    </td>
+                    <td>
+                      {/* DESCRIPTION */}
+                      <TextField
+                        autoFocus="true"
+                        className="editInput"
+                        type="text"
+                        rowsMax={10}
+                        multiline
+                        placeholder="Description"
+                        value={this.state.description}
+                        variant="outlined"
+                        onChange={(event) =>
+                          this.trackEdit(event, "description")
+                        }
+                      ></TextField>
+                    </td>
+                    {/* ENDS INPUT FIELDS */}
+                    <td>
+                      {/* TOGGLES */}
+                      <div
+                        className="sliderCheckbox"
+                        class="ui slider checkbox"
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            this.updateStatus(item);
+                          }}
+                          checked={item.status}
+                          name="newsletter"
+                        />{" "}
+                        <label className="sliderLabel">
+                          {item.status ? "Active" : "Not Active"}
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div
+                        className="sliderCheckbox"
+                        class="ui slider checkbox"
+                      >
+                        <input
+                          type="checkbox"
+                          onChange={() => {
+                            console.log(item.public);
+                            this.updatePublic(item);
+                          }}
+                          checked={item.public}
+                          name="newsletter"
+                        />{" "}
+                        <label className="sliderLabel">
+                          {item.public ? "Public" : "Private"}
+                        </label>
+                      </div>
+                    </td>
+                    {/* ENDS TOGGLES */}
+                    <td>
+                      <i
+                        class="archive icon"
+                        value={item.id}
+                        onClick={() => this.saveChanges()}
+                      >
+                        <p>Save</p>
+                      </i>
+                    </td>
+                    <td>
+                      <i class="ban icon" onClick={this.cancelEdit}>
+                        <p>Cancel</p>
+                      </i>
+                    </td>
+                    <td>
+                      <i
+                        class="trash icon"
+                        onClick={() => this.deleteItem(item.id)}
+                      >
+                        <p>Delete</p>
+                      </i>
+                    </td>
+                  </tr>
+                );
+              } else {
+                // RETURN A TABLE WITH DATA
                 return (
                   <tr className="barrelItem">
                     <td>{item.hosts}</td>
@@ -138,150 +337,21 @@ class BarrelTable extends Component {
                     <td>{item.hours}</td>
                     <td>{item.description}</td>
                     <td>{item.status ? "Active" : "Deactivated"}</td>
+                    <td>{item.public ? "Public" : "Private"}</td>
+
                     <td>
-                      <Popup
-                        trigger={
-                          <i
-                            class="edit icon"
-                            onClick={() => {
-                              this.editItem(item);
-                            }}
-                          ></i>
-                        }
-                      >
-                        <div>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            multiline
-                            rowsMax={10}
-                            value={this.state.hosts}
-                            variant="outlined"
-                            onChange={(event) => this.trackEdit(event, "hosts")}
-                          ></TextField>
-                          <TextField
-                            multiline
-                            rowsMax={10}
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            value={this.state.street}
-                            variant="outlined"
-                            onChange={(event) =>
-                              this.trackEdit(event, "street")
-                            }
-                          ></TextField>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            rowsMax={10}
-                            multiline
-                            value={this.state.city}
-                            variant="outlined"
-                            onChange={(event) => this.trackEdit(event, "city")}
-                          ></TextField>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            rowsMax={10}
-                            multiline
-                            value={this.state.zipcode}
-                            variant="outlined"
-                            onChange={(event) =>
-                              this.trackEdit(event, "zipcode")
-                            }
-                          ></TextField>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            rowsMax={10}
-                            multiline
-                            value={this.state.date}
-                            variant="outlined"
-                            onChange={(event) => this.trackEdit(event, "date")}
-                          ></TextField>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            rowsMax={10}
-                            multiline
-                            value={this.state.hours}
-                            variant="outlined"
-                            onChange={(event) => this.trackEdit(event, "hours")}
-                          ></TextField>
-                          <TextField
-                            autoFocus="true"
-                            className="editInput"
-                            type="text"
-                            rowsMax={10}
-                            multiline
-                            value={this.state.description}
-                            variant="outlined"
-                            onChange={(event) =>
-                              this.trackEdit(event, "description")
-                            }
-                          ></TextField>
-                          <div
-                            className="sliderCheckbox"
-                            class="ui slider checkbox"
-                          >
-                            <input
-                              type="checkbox"
-                              onChange={() => {
-                                this.updateStatus(item);
-                              }}
-                              checked={item.status}
-                              name="newsletter"
-                            />{" "}
-                            <label className="sliderLabel">
-                              {item.status ? "Active" : "Not Active"}
-                            </label>
-                          </div>
-                          <i
-                            class="archive icon"
-                            value={item.id}
-                            onClick={() => this.saveChanges()}
-                          />{" "}
-                          <i class="ban icon" onClick={this.cancelEdit}>
-                            <p>Cancel</p>
-                          </i>
-                          <i
-                            class="trash icon"
-                            onClick={() => this.deleteItem(item.id)}
-                          >
-                            <p>Delete</p>
-                          </i>
-                        </div>
-                      </Popup>
+                      <i
+                        class="edit icon"
+                        onClick={() => {
+                          this.editItem(item);
+                        }}
+                      ></i>
                     </td>
                   </tr>
                 );
               }
             })}
           </tbody>
-          {/* <tfoot>
-            <tr>
-              <th colspan="5">
-                <div class="ui right floated pagination menu">
-                  <a class="icon item">
-                    <i class="left chevron icon"></i>
-                  </a>
-                  <a class="item">1</a>
-                  <a class="item">2</a>
-                  <a class="item">3</a>
-                  <a class="item">4</a>
-                  <a class="icon item">
-                    <i class="right chevron icon"></i>
-                  </a>
-                </div>
-              </th>
-            </tr>
-          </tfoot> */}
         </table>
       </div>
     );
