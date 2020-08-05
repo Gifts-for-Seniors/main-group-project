@@ -4,18 +4,20 @@ import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
-import mapboxgl from "mapbox-gl";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoibmFpbGFqIiwiYSI6ImNrY3V6bXlpaDJkanYycHFycmE2eTlxNnAifQ.xYg_U7x-hAed6a0YpVPIFw";
+
 
 class BarrelSearch extends Component {
   state = {
     search: "",
     toggler: false,
-    // showDetails: false,
-    // opacity: 0
   };
+  componentDidMount() {
+    this.props.dispatch({
+      type: "SET_SEARCH_TERM",
+      payload: "*all",
+    });
+  }
 
   handleInput = (event) => {
     this.setState({
@@ -31,16 +33,17 @@ class BarrelSearch extends Component {
   };
 
   search = () => {
-    console.log("click");
-    console.log(this.state);
     let search = this.state.search;
-    console.log(this.state.search);
     this.props.dispatch({
       type: "SEARCH_ALL_BARRELS",
       payload: search,
     });
     this.props.dispatch({
       type: "SET_SEARCH_TERM",
+      payload: search,
+    });
+    this.props.dispatch({
+      type: "NEW_MAP_QUERY",
       payload: search,
     });
   };
@@ -56,7 +59,6 @@ class BarrelSearch extends Component {
                     id="searchField"
                     label="Search by City or Zipcode"
                     name="search"
-                    // placeholder="Search by City or Zipcode"
                     type="text"
                     variant="outlined"
                     value={this.state.search}

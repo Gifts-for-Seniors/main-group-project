@@ -33,12 +33,12 @@ router.put("/barrel-status/:id", rejectUnauthenticated, (req, res) => {
   let public = req.body.public;
   let id = req.body.id;
   let statusUpdater = !public;
-  console.log(!public);
+  // console.log(!public);
   const queryText = `UPDATE barrels set public = $2 WHERE id = $1;`;
   pool
     .query(queryText, [id, statusUpdater])
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.sendStatus(200);
     })
     .catch((error) => {

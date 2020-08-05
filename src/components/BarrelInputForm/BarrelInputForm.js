@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../BarrelAdmin/BarrelAdmin.css";
 import { StyledButton } from "../ButtonStyles/Buttons";
+import { FormControl } from "@material-ui/core";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+
 import TextField from "@material-ui/core/TextField";
 import "./BarrelInputForm.css";
 class BarrelInput extends Component {
@@ -13,7 +19,9 @@ class BarrelInput extends Component {
     description: "",
     dates: "",
     hours: "",
-    public: true
+    public: true,
+    searchTerm: this.props.state.searchTerm,
+    // searchTerm: this.props.state.searchTerm,
   };
 
   addBarrel = (event) => {
@@ -22,7 +30,6 @@ class BarrelInput extends Component {
       console.log(barrelData[i]);
       if (barrelData[i] === "") {
         console.log("bump");
-
         return alert("All form fields must be filled out.");
       }
     }
@@ -36,15 +43,32 @@ class BarrelInput extends Component {
       description: "",
       dates: "",
       hours: "",
-      public: true
+      public: true,
     });
   };
 
   handleInput = (event) => {
+    console.log('state:',this.state)
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
+
+  handleRadioButton = event => {
+    if (event.target.value === "true") {
+      this.setState({
+        ...this.state,
+        public: true
+      })
+    }
+    else {
+      this.setState({
+        ...this.state,
+        public: false
+      })
+    }
+    console.log("public",this.state.public)
+  }
 
   render() {
     return (
@@ -129,15 +153,32 @@ class BarrelInput extends Component {
               />
             </div>
             <div className="addBarrelInput">
-              <TextField
-                label="Public"
-                variant="outlined"
-                name="public"
-                type="boolean"
-                value={this.state.public}
-                onChange={this.handleInput}
-              ></TextField>
+              <FormControl component="fieldset">
+                <FormLabel component="legend"></FormLabel>
+                <RadioGroup
+                  row
+                  aria-label="gender"
+                  name="public"
+                  value={this.state.public}
+                  onChange={this.handleRadioButton}
+                  classes="label"
+                >
+                  <FormControlLabel
+                    value="true"
+                    control={<Radio />}
+                    label="Public"
+                    labelPlacement="Top"                   
+                  />
+                  <FormControlLabel
+                    value="false"
+                    control={<Radio />}
+                    label="Private"
+                    labelPlacement="Top"
+                  />
+                </RadioGroup>
+              </FormControl>
             </div>
+
             <StyledButton
               id="theSubmitButtonForCarolyn"
               className="addBarrelButton"
@@ -145,8 +186,6 @@ class BarrelInput extends Component {
             >
               Submit
             </StyledButton>
-
-
           </div>
         </form>
       </div>
