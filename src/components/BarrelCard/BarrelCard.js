@@ -30,17 +30,17 @@ class BarrelCard extends Component {
                 </Card.Description>
               </Card.Header>
 
-              <div>
+              <Label.Group>
                 {barrel.description !== null ? (
-                  <Label>Details: {barrel.description}</Label>
+                  <Label color="blue">Details: {barrel.description}</Label>
                 ) : null}
                 {barrel.dates !== null ? (
-                  <Label>Dates: {barrel.dates}</Label>
+                  <Label color="blue">Dates: {barrel.dates}</Label>
                 ) : null}
                 {barrel.hours !== null ? (
-                  <Label>Hours: {barrel.hours}</Label>
+                  <Label color="blue">Hours: {barrel.hours}</Label>
                 ) : null}
-              </div>
+              </Label.Group>
             </Card.Content>
           </Card>
         ) : (
@@ -64,17 +64,17 @@ class BarrelCard extends Component {
                 <Card.Description>
                   {barrel.street} {barrel.city} {barrel.zipcode}
                 </Card.Description>
-                <div>
+                <Label.Group>
                   {barrel.description !== null ? (
-                    <Label>Details: {barrel.description}</Label>
+                    <Label color="blue">Details: {barrel.description}</Label>
                   ) : null}
                   {barrel.dates !== null ? (
-                    <Label>Dates: {barrel.dates}</Label>
+                    <Label color="blue">Dates: {barrel.dates}</Label>
                   ) : null}
                   {barrel.hours !== null ? (
-                    <Label>Hours: {barrel.hours}</Label>
+                    <Label color="blue">Hours: {barrel.hours}</Label>
                   ) : null}
-                </div>
+                </Label.Group>
               </Card.Header>
             </Card.Content>
           </Card>
