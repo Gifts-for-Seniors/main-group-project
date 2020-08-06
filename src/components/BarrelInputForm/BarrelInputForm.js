@@ -49,30 +49,28 @@ class BarrelInput extends Component {
   };
 
   handleInput = (event) => {
-    console.log('state:',this.state)
+    console.log("state:", this.state);
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
 
-  handleRadioButton = event => {
+  handleRadioButton = (event) => {
     if (event.target.value === "true") {
       this.setState({
         ...this.state,
-        public: true
-      })
-    }
-    else {
+        public: true,
+      });
+    } else {
       this.setState({
         ...this.state,
-        public: false
-      })
+        public: false,
+      });
     }
-    console.log("public",this.state.public)
-  }
+    console.log("public", this.state.public);
+  };
 
   render() {
-
     return (
       <div className="barrelForm">
         <h3 id="addDonationH3" className="tableTitle">
@@ -167,7 +165,7 @@ class BarrelInput extends Component {
                     value="true"
                     control={<Radio />}
                     label="Public"
-                    labelPlacement="Top"                   
+                    labelPlacement="Top"
                   />
                   <FormControlLabel
                     value="false"

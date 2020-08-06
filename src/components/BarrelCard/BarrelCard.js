@@ -18,28 +18,29 @@ class BarrelCard extends Component {
             className="privateBarrel"
             onClick={() => this.props.setMapToDisplay(barrel)}
           >
-            <Image label={{ as: "a", corner: "left", icon: "heart" }}>
+            <Image>
               <InsetGoogleMap barrel={barrel} />
             </Image>
             <Card.Content class="content">
-              <Card.Header key={barrel.id}>
+              <Card.Header className="hostHeader" key={barrel.id}>
                 {barrel.hosts},
                 <Card.Description>{barrel.street}</Card.Description>
                 <Card.Description>
                   {barrel.city} MN, {barrel.zipcode}
                 </Card.Description>
-                <div>
-                  {barrel.description !== null ? (
-                    <Label>Details: {barrel.description}</Label>
-                  ) : null}
-                  {barrel.dates !== null ? (
-                    <Label>Dates: {barrel.dates}</Label>
-                  ) : null}
-                  {barrel.hours !== null ? (
-                    <Label>Hours: {barrel.hours}</Label>
-                  ) : null}
-                </div>
               </Card.Header>
+
+              <div>
+                {barrel.description !== null ? (
+                  <Label>Details: {barrel.description}</Label>
+                ) : null}
+                {barrel.dates !== null ? (
+                  <Label>Dates: {barrel.dates}</Label>
+                ) : null}
+                {barrel.hours !== null ? (
+                  <Label>Hours: {barrel.hours}</Label>
+                ) : null}
+              </div>
             </Card.Content>
           </Card>
         ) : (
