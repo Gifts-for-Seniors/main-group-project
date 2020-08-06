@@ -39,6 +39,7 @@ class MyComponent extends Component {
         // renderCustomControls={someComponent}
         autoPlay={true}
         showNav={true}
+        showThumbnails={false}
         // slideDuration={425}
       />
     );
