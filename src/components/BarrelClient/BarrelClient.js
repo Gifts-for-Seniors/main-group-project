@@ -55,7 +55,7 @@ class BarrelClient extends Component {
         <div className="clientSearch">
           <BarrelSearch />
         </div>{" "}
-        <Grid columns="equal">
+        <Grid columns="equal" stackable>
           <Grid.Row streched={true} columns={4}>
             {/* ONLY DISPLAY RELEVANT INFORMATION */}
             {this.props.state.searchBarrels.map((barrel) => {
