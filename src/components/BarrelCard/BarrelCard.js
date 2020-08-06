@@ -23,10 +23,10 @@ class BarrelCard extends Component {
               <InsetGoogleMap barrel={barrel} />
             </Image>
             <Card.Content class="content">
-              <Card.Header key={barrel.id}>{barrel.hosts},</Card.Header>
+              <Card.Header key={barrel.id}>{barrel.hosts}</Card.Header>
 
               <Card.Description>
-                {barrel.street} {barrel.city} {barrel.zipcode}
+                {barrel.street} {barrel.city}, {barrel.zipcode}
               </Card.Description>
             </Card.Content>
             <Card.Content>
@@ -54,10 +54,10 @@ class BarrelCard extends Component {
               <InsetGoogleMap barrel={barrel} />
             </Image>
             <Card.Content class="content">
-              <Card.Header key={barrel.id}>{barrel.hosts},</Card.Header>
+              <Card.Header key={barrel.id}>{barrel.hosts}</Card.Header>
 
               <Card.Description>
-                {barrel.street} {barrel.city} {barrel.zipcode}
+                {barrel.street} {barrel.city}, {barrel.zipcode}
               </Card.Description>
             </Card.Content>
             <Card.Content>
