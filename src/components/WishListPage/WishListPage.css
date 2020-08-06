@@ -65,6 +65,29 @@
 }
 
 .happy-image {
-
   border-radius: 50%;
+}
+
+.image-gallery {
+  display: flexbox;
+  margin-left: 8%;
+  object-fit: contain;
+
+  flex: content;
+  /* height: 200px; */
+  width: 20%;
+  height: 10%;
+}
+
+.image-gallery-image {
+  height: 100%;
+  width: auto;
+  height: 600px;
+  padding: -2%;
+  border: 1px;
+  border-radius: 22px;
+}
+
+.image-gallery-svg {
+  opacity: 100%;
 }

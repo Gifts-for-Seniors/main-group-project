@@ -6,7 +6,6 @@ import { SearchButton } from "../ButtonStyles/Buttons";
 import Gallery from "./Gallery";
 // import happy from "./happiness.jpg";
 
-
 class WishList extends Component {
   goToBarrelPage = () => {
     this.props.history.push("/barrels");
@@ -40,8 +39,6 @@ class WishList extends Component {
         </div>
 
         {/* <img className="happy-image" src={happy}></img> */}
-
-
         <div className="regularItems">
           <div className="priorityHeader">
             <h2>Other Items</h2>
