@@ -6,6 +6,8 @@ import GoogleMap from "../GoogleMap/GoogleMap";
 import InsetGoogleMap from "../GoogleMap/BarrelInsetGoogleMap";
 import BarrelCard from "../BarrelCard/BarrelCard";
 import { Button, Card, Image, Label, Grid } from "semantic-ui-react";
+import CovidReponse from "./CovidResponse";
+import Footer from "../Footer/Footer";
 
 class BarrelClient extends Component {
   componentDidMount() {
@@ -38,23 +40,10 @@ class BarrelClient extends Component {
     return (
       <div>
         <GoogleMap />
-        <p className="covid19Response">
-          Covid 19 Response:
-          <a
-            className="emailAdd"
-            href="mailto:carolyn@giftsforseniors.org"
-            target="_blank"
-          >
-            Please click here
-          </a>{" "}
-          to deliver gift donations at our operations center in Minneapolis.
-          Individual appointments are socially distanced and honor CDC
-          guidelines. Other drop locations below! You may also browse our Wish
-          List for gift ideas.
-        </p>
-        <div className="clientSearch">
-          <BarrelSearch />
-        </div>{" "}
+        <CovidReponse />
+        {/* <section className="clientSearch"> */}
+        <BarrelSearch />
+        {/* </section> */}
         <Grid columns="equal" stackable>
           <Grid.Row streched={true} columns={4}>
             {/* ONLY DISPLAY RELEVANT INFORMATION */}
@@ -75,6 +64,7 @@ class BarrelClient extends Component {
             })}
           </Grid.Row>
         </Grid>
+        <Footer />
       </div>
     );
   }

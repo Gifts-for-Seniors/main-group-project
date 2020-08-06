@@ -55,7 +55,6 @@ class BarrelCard extends Component {
             </Image>
             <Card.Content class="content">
               <Card.Header key={barrel.id}>{barrel.hosts}</Card.Header>
-
               <Card.Description>
                 {barrel.street} {barrel.city}, {barrel.zipcode}
               </Card.Description>

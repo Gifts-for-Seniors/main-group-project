@@ -1,5 +1,6 @@
-import React from 'react';
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
+import { Link } from "react-router-dom";
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -8,7 +9,9 @@ import './Footer.css'
 
 const Footer = () => (
   <footer>
-    &copy; Prime Digital Academy
+    <Link className="adminLogin" to="/admin">
+      Admin Login
+    </Link>
   </footer>
 );
 
