@@ -51,7 +51,9 @@ class BarrelCard extends Component {
             onClick={() => this.props.setMapToDisplay(barrel)}
           >
             <Card.Content>
-              *<Label>Private Location for Employees Only</Label>
+              <Label circular color="blue" ribbon>
+                Private Location for Employees Only
+              </Label>
             </Card.Content>
             <Image fluid>
               <InsetGoogleMap barrel={barrel} />
