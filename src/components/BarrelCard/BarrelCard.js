@@ -17,7 +17,10 @@ class BarrelCard extends Component {
             color="red"
             className="public-barrel"
             label={{ as: "p", corner: "left", icon: "map marker alternate" }}
-            onClick={() => this.props.setMapToDisplay(barrel)}
+            onClick={() => {
+              this.props.setMapToDisplay(barrel);
+              window.scrollTo(0, 0);
+            }}
           >
             <Image fluid>
               <InsetGoogleMap barrel={barrel} />
@@ -48,7 +51,10 @@ class BarrelCard extends Component {
             color="red"
             className="public-barrel"
             label={{ as: "p", corner: "left", icon: "map marker alternate" }}
-            onClick={() => this.props.setMapToDisplay(barrel)}
+            onClick={() => {
+              this.props.setMapToDisplay(barrel);
+              window.scrollTo(0, 0);
+            }}
           >
             <Image fluid>
               <InsetGoogleMap barrel={barrel} />

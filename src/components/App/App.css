@@ -1,3 +1,8 @@
+/* .App {
+  font-family: sans-serif;
+  text-align: center;
+} */
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
@@ -18,7 +23,6 @@ form {
   padding: 0%;
   border-radius: 17px;
 }
-
 
 /* input {
   margin: 5px;

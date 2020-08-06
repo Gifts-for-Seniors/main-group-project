@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
-import Gallery from "./Gallery";
+import Gallery from "../WishlistGallery/Gallery";
+import { Grid, Image, Segment, Divider, List } from "semantic-ui-react";
+import SentimentalMessage from "./SentimentalMessage";
 // import happy from "./happiness.jpg";
-
 
 class WishList extends Component {
   goToBarrelPage = () => {
@@ -14,47 +15,44 @@ class WishList extends Component {
 
   render() {
     return (
-      <div>
+      <Segment>
         {/* <h1 id="wishListHeader">WishList</h1> */}
-        <div className="sentimentalMessage">
-          <p>
-            Older people are especially vulnerable to loneliness and social
-            isolation – and it can have a serious effect on health. But there
-            are ways to overcome loneliness, even if you live alone and find it
-            hard to get out. Help us connect with the elderly by donating some
-            of the most desired items!
-          </p>
-        </div>
+        <SentimentalMessage />
+        <Grid columns={2} relaxed="very">
+          <Grid.Column>
+            <div className="highPriorityItems">
+              <div id="highPriority" className="priorityHeader">
+                <h2>High Priority Items</h2>
+              </div>
+              <List>
+                {/* Mapping through our item reducer to display items marked as high priority */}
+                {this.props.state.list.map((item) => {
+                  if (item.priority === true) {
+                    return <ul key={item.id}>{item.item}</ul>;
+                  }
+                })}
+              </List>
+            </div>
 
-        <div className="highPriorityItems">
-          <div id="highPriority" className="priorityHeader">
-            <h2>High Priority Items</h2>
-          </div>
-
-          {/* Mapping through our item reducer to display items marked as high priority */}
-          {this.props.state.list.map((item) => {
-            if (item.priority === true) {
-              return <ul key={item.id}>{item.item}</ul>;
-            }
-          })}
-        </div>
-
-        {/* <img className="happy-image" src={happy}></img> */}
-
-
-        <div className="regularItems">
-          <div className="priorityHeader">
-            <h2>Other Items</h2>
-          </div>
-          {/* Mapping through our item reducer to display remaining items */}
-          {this.props.state.list.map((item) => {
-            if (item.priority === false) {
-              return <ul key={item.id}>{item.item}</ul>;
-            }
-          })}
-        </div>
-        <Gallery />
-
+            <Gallery />
+          </Grid.Column>
+          <Grid.Column verticalAlign="bottom">
+            <div className="regularItems">
+              <div className="priorityHeader">
+                <h2>Other Items</h2>
+              </div>
+              <List>
+                {/* Mapping through our item reducer to display remaining items */}
+                {this.props.state.list.map((item) => {
+                  if (item.priority === false) {
+                    return <ul key={item.id}>{item.item}</ul>;
+                  }
+                })}
+              </List>
+            </div>
+          </Grid.Column>
+        </Grid>
+        <Divider vertical />
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations
@@ -65,7 +63,7 @@ class WishList extends Component {
             </a>
           </SearchButton>
         </div>
-      </div>
+      </Segment>
     );
   }
 }
