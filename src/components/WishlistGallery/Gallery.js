@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-
+import "./Gallery.css";
 import Participant1 from "../../images/Participant1.jpg";
 import sweater from "../../images/sweater.jpg";
 import slippers from "../../images/slippers.JPG";
@@ -37,13 +37,13 @@ class MyComponent extends Component {
       <ImageGallery
         items={images}
         // defaultImage={defaultImage}
-        // showBullets={false}
-        // showIndex={false}
+        showBullets={false}
+        showIndex={false}
         lazyLoad={true}
         showPlayButton={false}
         // renderCustomControls={someComponent}
         autoPlay={true}
-        showNav={false}
+        showNav={true}
         slideDuration={425}
       />
     );
