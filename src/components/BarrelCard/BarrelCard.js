@@ -15,21 +15,21 @@ class BarrelCard extends Component {
         {this.props.barrel.public ? (
           <Card
             color="red"
-            className="privateBarrel"
+            className="public-barrel"
+            label={{ as: "p", corner: "left", icon: "map marker alternate" }}
             onClick={() => this.props.setMapToDisplay(barrel)}
           >
-            <Image>
+            <Image fluid>
               <InsetGoogleMap barrel={barrel} />
             </Image>
             <Card.Content class="content">
-              <Card.Header className="hostHeader" key={barrel.id}>
-                {barrel.hosts},
-                <Card.Description>{barrel.street}</Card.Description>
-                <Card.Description>
-                  {barrel.city} MN, {barrel.zipcode}
-                </Card.Description>
-              </Card.Header>
+              <Card.Header key={barrel.id}>{barrel.hosts},</Card.Header>
 
+              <Card.Description>
+                {barrel.street} {barrel.city} {barrel.zipcode}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content>
               <Label.Group>
                 {barrel.description !== null ? (
                   <Label color="blue">Details: {barrel.description}</Label>
@@ -50,32 +50,31 @@ class BarrelCard extends Component {
             label={{ as: "p", corner: "left", icon: "map marker alternate" }}
             onClick={() => this.props.setMapToDisplay(barrel)}
           >
-            <Card.Content>
-              <Label circular color="blue" ribbon>
-                Private Location for Employees Only
-              </Label>
-            </Card.Content>
             <Image fluid>
               <InsetGoogleMap barrel={barrel} />
             </Image>
             <Card.Content class="content">
-              <Card.Header key={barrel.id}>
-                {barrel.hosts},
-                <Card.Description>
-                  {barrel.street} {barrel.city} {barrel.zipcode}
-                </Card.Description>
-                <Label.Group>
-                  {barrel.description !== null ? (
-                    <Label color="blue">Details: {barrel.description}</Label>
-                  ) : null}
-                  {barrel.dates !== null ? (
-                    <Label color="blue">Dates: {barrel.dates}</Label>
-                  ) : null}
-                  {barrel.hours !== null ? (
-                    <Label color="blue">Hours: {barrel.hours}</Label>
-                  ) : null}
-                </Label.Group>
-              </Card.Header>
+              <Card.Header key={barrel.id}>{barrel.hosts},</Card.Header>
+
+              <Card.Description>
+                {barrel.street} {barrel.city} {barrel.zipcode}
+              </Card.Description>
+            </Card.Content>
+            <Card.Content>
+              <Label.Group>
+                {barrel.description !== null ? (
+                  <Label color="blue">Details: {barrel.description}</Label>
+                ) : null}
+                {barrel.dates !== null ? (
+                  <Label color="blue">Dates: {barrel.dates}</Label>
+                ) : null}
+                {barrel.hours !== null ? (
+                  <Label color="blue">Hours: {barrel.hours}</Label>
+                ) : null}
+              </Label.Group>
+              <Label circular color="red" ribbon>
+                Private Location for Employees Only
+              </Label>
             </Card.Content>
           </Card>
         )}

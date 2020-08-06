@@ -32,16 +32,14 @@ const Nav = (props) => (
           <Link className="nav-link" to="/barrel-admin">
             Barrel Admin
           </Link>
+
           {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
           {/* <LogOutButton className="nav-link" /> */}
         </>
       )}
-      {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about">
-        About
-      </Link> */}
+      {/* Always show this link since these pages are not protected */}
 
       <Link className="nav-link" to="/wishlist">
         Wishlist

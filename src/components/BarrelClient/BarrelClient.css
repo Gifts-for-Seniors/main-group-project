@@ -38,6 +38,7 @@
 }
 
 .covid19Response {
+  padding: 1%;
   font-style: italic;
   text-align: left;
   max-width: 35%;

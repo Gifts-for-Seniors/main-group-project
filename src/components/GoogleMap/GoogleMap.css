@@ -1,8 +1,8 @@
 .map {
   display: flex;
   margin: auto;
+  margin-top: -2%;
 }
-
 /* 
 .mapContainer {
   object-fit: fill;
@@ -14,5 +14,6 @@
 
 .mapImage {
   margin: auto;
-  padding: 3%;
+
+  padding: 2%;
 }

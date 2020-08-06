@@ -8,10 +8,22 @@
 
 .ui.equal.width.grid {
   margin: 2%;
-  height: 500px;
+  height: 600px;
   overflow: scroll;
 }
 
 .column {
   padding: 1%;
+}
+
+.header .hostHeader {
+  background-color: red;
+}
+
+.ui.card {
+  background-color: aliceblue;
+}
+
+.ui.card.header {
+  color: white;
 }
