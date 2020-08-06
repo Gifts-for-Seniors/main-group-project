@@ -28,11 +28,6 @@ class MyComponent extends Component {
       { original: happy },
     ];
 
-    const someComponent = (props) => {
-      // console.log(props.someProps.objectKey)
-      return <div>{/* {props.someProps.objectKey} */}</div>;
-    };
-
     return (
       <ImageGallery
         items={images}
@@ -44,7 +39,7 @@ class MyComponent extends Component {
         // renderCustomControls={someComponent}
         autoPlay={true}
         showNav={true}
-        slideDuration={425}
+        // slideDuration={425}
       />
     );
   }

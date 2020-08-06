@@ -17,7 +17,6 @@ class WishList extends Component {
     return (
       <Segment>
         {/* <h1 id="wishListHeader">WishList</h1> */}
-
         <SentimentalMessage />
         <Grid columns={2} relaxed="very">
           <Grid.Column>
@@ -35,7 +34,7 @@ class WishList extends Component {
             </div>
             <Gallery />
           </Grid.Column>
-          <Grid.Column>
+          <Grid.Column verticalAlign="bottom">
             <div className="regularItems">
               <div className="priorityHeader">
                 <h2>Other Items</h2>
@@ -49,7 +48,6 @@ class WishList extends Component {
             </div>
           </Grid.Column>
         </Grid>
-
         <Divider vertical />
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
