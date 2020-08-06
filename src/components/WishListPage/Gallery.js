@@ -1,58 +1,34 @@
-// import React, { Component } from "react";
-// import { connect } from "react-redux";
-// import ImageGallery from "react-image-gallery";
-// import happy from "./happiness.jpg";
-
-
-// const images = [
-//     {
-//         original: 'https://picsum.photos/id/1018/1000/600/',
-//         thumbnail: 'https://picsum.photos/id/1018/250/150/',
-//     },
-//     {
-//         original: 'https://picsum.photos/id/1015/1000/600/',
-//         thumbnail: 'https://picsum.photos/id/1015/250/150/',
-//     },
-//     {
-//         original: 'https://picsum.photos/id/1019/1000/600/',
-//         thumbnail: 'https://picsum.photos/id/1019/250/150/',
-//     },
-// ];
-
-// class MyGallery extends Component {
-//     render() {
-//         return <ImageGallery items={images} className="happy-image" src={happy} />;
-//     }
-// }
-// {/* <img className="happy-image" src={happy}></img> */ }
-
-
-// export default connect(MyGallery);
-
 import React, { Component } from 'react';
-// import ReactDOM from "react-dom";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import Connect from 'react-redux';
-import defaultImage from "./happiness.jpg";
-// import "./styles.css";
+import "./styles.css";
+import Participant1 from "./Participant1.jpg";
+import sweater from "./sweater.jpg";
+import slippers from "./slippers.JPG";
+import Gifts from "./Gifts.jpg";
+import blanket from "./blanket.jpg";
+import lobby from "./lobby.JPG";
+import gDrive from "./gDrive.jpg";
+import open from "./open.jpg";
+import happy from "./happy.jpg";
+import puzzle from "./puzzle.jpg";
 
 class MyComponent extends Component {
     render() {
+
         const images = [
-            {
-                original: "http://lorempixel.com/1000/600/nature/1/",
-                thumbnail: "http://lorempixel.com/250/150/nature/1/"
-            },
-            {
-                original: "http://lorempixel.com/1000/600/nature/2/",
-                thumbnail: "http://lorempixel.com/250/150/nature/2/"
-            },
-            {
-                original: "http://lorempixel.com/1000/600/nature/3/",
-                thumbnail: "http://lorempixel.com/250/150/nature/3/"
-            }
+            { original: Participant1, },
+            { original: sweater, },
+            { original: slippers, },
+            { original: puzzle, },
+            { original: Gifts, },
+            { original: blanket, },
+            { original: lobby, },
+            { original: gDrive, },
+            { original: open, },
+            { original: happy, },
         ];
+
 
         const someComponent = props => {
             // console.log(props.someProps.objectKey)
@@ -62,13 +38,13 @@ class MyComponent extends Component {
         return (
             <ImageGallery
                 items={images}
-                defaultImage={defaultImage}
-                showBullets={true}
-                showIndex={true}
-                showThumbnails={false}
+                // defaultImage={defaultImage}
+                showBullets={false}
+                showIndex={false}
                 lazyLoad={true}
                 showPlayButton={false}
                 renderCustomControls={someComponent}
+                autoPlay={true}
             />
         );
     }

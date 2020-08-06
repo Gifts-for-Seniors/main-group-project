@@ -4,7 +4,7 @@ import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
 import Gallery from "./Gallery";
-import happy from "./happiness.jpg";
+// import happy from "./happiness.jpg";
 
 
 class WishList extends Component {
@@ -39,7 +39,6 @@ class WishList extends Component {
           })}
         </div>
 
-        <Gallery />
         {/* <img className="happy-image" src={happy}></img> */}
 
 
@@ -54,6 +53,7 @@ class WishList extends Component {
             }
           })}
         </div>
+        <Gallery />
 
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>

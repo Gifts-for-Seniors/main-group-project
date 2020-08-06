@@ -65,12 +65,6 @@
   flex-wrap: wrap-reverse;
 }
 
-a{
-  color:white;
-  display: inline-box;
-  text-align: center;
-  flex-wrap: wrap-reverse;
-}
 img{
   border-radius: 50%;
 } 
