@@ -20,7 +20,7 @@ class BarrelData extends Component {
           <i
             class="edit icon"
             onClick={() => {
-              this.editItem(item);
+              this.props.editItem(item);
             }}
           ></i>
         </td>

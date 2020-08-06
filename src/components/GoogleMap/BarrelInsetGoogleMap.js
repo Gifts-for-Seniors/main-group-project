@@ -19,7 +19,11 @@ class InsetGoogleMap extends Component {
     console.log(this.props.barrel);
     return (
       // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
-      <Image size="small" src={test}></Image>
+      <Image
+        label={{ as: "a", corner: "left", icon: "search" }}
+        size="large"
+        src={test}
+      ></Image>
     );
   }
 }

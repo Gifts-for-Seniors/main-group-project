@@ -329,7 +329,7 @@ class BarrelTable extends Component {
                 );
               } else {
                 // RETURN A TABLE WITH DATA
-                return <TableData item={item} />;
+                return <TableData editItem={this.editItem} item={item} />;
               }
             })}
           </tbody>
