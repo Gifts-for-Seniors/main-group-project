@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import "./styles.css";
+
 import Participant1 from "../../images/Participant1.jpg";
 import sweater from "../../images/sweater.jpg";
 import slippers from "../../images/slippers.JPG";
@@ -44,7 +44,7 @@ class MyComponent extends Component {
         // renderCustomControls={someComponent}
         autoPlay={true}
         showNav={false}
-        slideDuration={400}
+        slideDuration={425}
       />
     );
   }

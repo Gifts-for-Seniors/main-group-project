@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
-import Gallery from "./Gallery";
+import Gallery from "../WishlistGallery/Gallery";
 // import happy from "./happiness.jpg";
 
 class WishList extends Component {
