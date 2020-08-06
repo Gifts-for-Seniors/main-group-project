@@ -12,7 +12,7 @@ const router = express.Router();
  */
 router.get("/:search", (req, res) => {
   let searchQuery = req.params.search;
-  if (searchQuery === "*all") {
+  if (searchQuery === "*all" || "") {
     console.log("hello");
     let queryText = `SELECT * FROM barrels ORDER BY city ASC`;
     pool

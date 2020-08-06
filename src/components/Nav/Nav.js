@@ -17,6 +17,13 @@ const Nav = (props) => (
       <a href="https://www.giftsforseniors.org/" className="nav-link">
         Home
       </a>
+
+      <Link className="nav-link" to="/wishlist">
+        Wishlist
+      </Link>
+      <Link className="nav-link" to="/barrels">
+        Donation Locations
+      </Link>
       {/* <Link className="nav-link" to="/home"> */}
       {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
@@ -32,23 +39,14 @@ const Nav = (props) => (
           <Link className="nav-link" to="/barrel-admin">
             Barrel Admin
           </Link>
+          <LogOutButton className="nav-link">Logout</LogOutButton>
           {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
           {/* <LogOutButton className="nav-link" /> */}
         </>
       )}
-      {/* Always show this link since the about page is not protected */}
-      {/* <Link className="nav-link" to="/about">
-        About
-      </Link> */}
-
-      <Link className="nav-link" to="/wishlist">
-        Wishlist
-      </Link>
-      <Link className="nav-link" to="/barrels">
-        Donation Locations
-      </Link>
+      {/* Always show this link since these pages are not protected */}
     </div>
   </div>
 );

@@ -1,7 +1,6 @@
-.locationLists {
-  list-style: none;
-  overflow: scroll;
-  height: 1000px;
+.overlyingList {
+  height: 600px;
+  overflow-y: auto;
 }
 
 .locationLists li {
@@ -11,19 +10,10 @@
   padding: 0.8%;
 }
 
-.privateBarrels {
-  background-color: red;
-  display: flexbox;
-  border: 3px solid black;
-  border-radius: 17px;
-  margin: auto;
-  text-align: center;
-  color: white;
-  margin: 0.05%;
-  max-width: 80%;
-}
 .boldIt {
-  display: flexbox;
+  display: flex;
+  flex-direction: row;
+
   background-color: #2483d0;
   border: 3px solid black;
   border-radius: 17px;
@@ -31,11 +21,12 @@
   text-align: center;
   color: white;
   margin: 0.05%;
-  max-width: 80%;
+  max-width: 100%;
 }
 
-.privateBarrels{
-  display: flexbox;
+.privateBarrels {
+  display: flex;
+  flex-direction: row;
   background-color: teal;
   border: 3px solid black;
   border-radius: 17px;
@@ -43,10 +34,11 @@
   text-align: center;
   color: white;
   margin: 0.05%;
-  max-width: 80%;
+  max-width: 100%;
 }
 
 .covid19Response {
+  padding: 1%;
   font-style: italic;
   text-align: left;
   max-width: 35%;
@@ -56,6 +48,10 @@
   margin: auto;
 }
 
-.employee{
+.employee {
   text-decoration: underline;
+}
+
+.InsetMap {
+  object-fit: contain;
 }

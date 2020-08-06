@@ -8,6 +8,7 @@ import { Input, TextField } from "@material-ui/core";
 import "./BarrelTable.css";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import TableData from "./TableData.js";
 
 class BarrelTable extends Component {
   state = {
@@ -328,28 +329,7 @@ class BarrelTable extends Component {
                 );
               } else {
                 // RETURN A TABLE WITH DATA
-                return (
-                  <tr className="barrelItem">
-                    <td>{item.hosts}</td>
-                    <td>{item.street}</td>
-                    <td>{item.city}</td>
-                    <td>{item.zipcode}</td>
-                    <td>{item.dates}</td>
-                    <td>{item.hours}</td>
-                    <td>{item.description}</td>
-                    <td>{item.status ? "Active" : "Deactivated"}</td>
-                    <td>{item.public ? "Public" : "Private"}</td>
-
-                    <td>
-                      <i
-                        class="edit icon"
-                        onClick={() => {
-                          this.editItem(item);
-                        }}
-                      ></i>
-                    </td>
-                  </tr>
-                );
+                return <TableData editItem={this.editItem} item={item} />;
               }
             })}
           </tbody>
