@@ -60,7 +60,7 @@ class WishList extends Component {
             Drop-Off Locations
           </SearchButton>
           <SearchButton className="links">
-            <a href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create">
+            <a className="amazon" href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create">
               Amazon Wishlist
             </a>
           </SearchButton>
