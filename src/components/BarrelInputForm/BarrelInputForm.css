@@ -22,7 +22,7 @@
   border-radius: 22px;
 }
 
-.addBarrelInput .MuiFormControl-root  {
+.addBarrelInput .MuiFormControl-root {
   width: 100%;
   background-color: lightblue;
   margin: -1.5%;
@@ -31,10 +31,16 @@
 .addBarrelInput .MuiFormControl-root:hover {
   color: lightsalmon;
 } */
- 
-.MuiFormControlLabel-label	{
-  color: rgb(79 99 104);
-  margin-top: 100px;
-  padding-top: 15px
+
+.emailAdd {
+  color: black;
+  display: inline-box;
+  text-align: center;
+  flex-wrap: wrap-reverse;
 }
 
+.MuiFormControlLabel-label {
+  color: rgb(79 99 104);
+  margin-top: 100px;
+  padding-top: 15px;
+}

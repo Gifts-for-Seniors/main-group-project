@@ -37,7 +37,7 @@ router.get("/admin", (req, res) => {
  * POST NEW BARREL LOCATION
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
-  console.log('Server is receiving:', req.body);
+  console.log("Server is receiving:", req.body);
   let hosts = req.body.host;
   let street = req.body.street;
   let city = req.body.city;
@@ -167,6 +167,7 @@ router.get("/search/:search", (req, res) => {
     pool
       .query(queryText)
       .then((result) => {
+        // console.log(result.rows);
         res.send(result.rows);
       })
       .catch((error) => {
@@ -179,7 +180,7 @@ router.get("/search/:search", (req, res) => {
     pool
       .query(queryText)
       .then((result) => {
-        console.log(result.rows);
+        // console.log(result.rows);
         res.send(result.rows);
       })
       .catch((error) => {

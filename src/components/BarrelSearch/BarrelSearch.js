@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import "./BarrelSearch.css";
 import searchTerm from "../../redux/reducers/searchTermReducer";
 
-
-
 class BarrelSearch extends Component {
   //
   state = {
@@ -55,30 +53,26 @@ class BarrelSearch extends Component {
   };
   render() {
     return (
-      <div>
-        <div>
-          <form>
-            <div className="searchBarrels">
-              <div className="addBarrelInput">
-                <span>
-                  <TextField
-                    id="searchField"
-                    label="Search by City or Zipcode"
-                    name="search"
-                    type="text"
-                    variant="outlined"
-                    value={this.state.search}
-                    onChange={this.handleInput}
-                  />
-                  <StyledButton onClick={this.search} id="searchButton">
-                    Search
-                  </StyledButton>
-                </span>
-              </div>
-            </div>
-          </form>
+      <form>
+        <div className="searchBarrels">
+          <div className="addBarrelInput">
+            <span>
+              <TextField
+                id="searchField"
+                label="Search by City or Zipcode"
+                name="search"
+                type="text"
+                variant="outlined"
+                value={this.state.search}
+                onChange={this.handleInput}
+              />
+              <StyledButton onClick={this.search} id="searchButton">
+                Search
+              </StyledButton>
+            </span>
+          </div>
         </div>
-      </div>
+      </form>
     );
   }
 }
