@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
-import happy from "./happiness.jpg";
+import Gallery from "./Gallery";
+// import happy from "./happiness.jpg";
+
 
 class WishList extends Component {
   goToBarrelPage = () => {
@@ -36,7 +38,9 @@ class WishList extends Component {
             }
           })}
         </div>
-        <img className="happy-image" src={happy}></img>
+
+        {/* <img className="happy-image" src={happy}></img> */}
+
 
         <div className="regularItems">
           <div className="priorityHeader">
@@ -49,6 +53,7 @@ class WishList extends Component {
             }
           })}
         </div>
+        <Gallery />
 
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
