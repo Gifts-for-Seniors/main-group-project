@@ -4,7 +4,7 @@ import "./WishListPage.css";
 import { Card } from "@material-ui/core";
 import { SearchButton } from "../ButtonStyles/Buttons";
 import Gallery from "../WishlistGallery/Gallery";
-import { Grid, Image, Segment, Divider } from "semantic-ui-react";
+import { Grid, Image, Segment, Divider, List } from "semantic-ui-react";
 import SentimentalMessage from "./SentimentalMessage";
 // import happy from "./happiness.jpg";
 
@@ -24,14 +24,16 @@ class WishList extends Component {
               <div id="highPriority" className="priorityHeader">
                 <h2>High Priority Items</h2>
               </div>
-
-              {/* Mapping through our item reducer to display items marked as high priority */}
-              {this.props.state.list.map((item) => {
-                if (item.priority === true) {
-                  return <ul key={item.id}>{item.item}</ul>;
-                }
-              })}
+              <List>
+                {/* Mapping through our item reducer to display items marked as high priority */}
+                {this.props.state.list.map((item) => {
+                  if (item.priority === true) {
+                    return <ul key={item.id}>{item.item}</ul>;
+                  }
+                })}
+              </List>
             </div>
+
             <Gallery />
           </Grid.Column>
           <Grid.Column verticalAlign="bottom">
@@ -39,12 +41,14 @@ class WishList extends Component {
               <div className="priorityHeader">
                 <h2>Other Items</h2>
               </div>
-              {/* Mapping through our item reducer to display remaining items */}
-              {this.props.state.list.map((item) => {
-                if (item.priority === false) {
-                  return <ul key={item.id}>{item.item}</ul>;
-                }
-              })}
+              <List>
+                {/* Mapping through our item reducer to display remaining items */}
+                {this.props.state.list.map((item) => {
+                  if (item.priority === false) {
+                    return <ul key={item.id}>{item.item}</ul>;
+                  }
+                })}
+              </List>
             </div>
           </Grid.Column>
         </Grid>
