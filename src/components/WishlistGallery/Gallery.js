@@ -34,8 +34,9 @@ class MyComponent extends Component {
         // defaultImage={defaultImage}
         showBullets={false}
         showIndex={false}
-        lazyLoad={true}
+        // lazyLoad={true}
         showPlayButton={false}
+        showThumbnails={false}
         // renderCustomControls={someComponent}
         autoPlay={true}
         showNav={true}
