@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import BarrelSearch from "../BarrelSearch/BarrelSearch";
 import "./BarrelClient.css";
 import GoogleMap from "../GoogleMap/GoogleMap";
+import InsetGoogleMap from "../GoogleMap/BarrelInsetGoogleMap";
+import BarrelCard from "../BarrelCard/BarrelCard";
+import { Button, Card, Image, Label, Grid } from "semantic-ui-react";
+import CovidReponse from "./CovidResponse";
+import Footer from "../Footer/Footer";
+
 class BarrelClient extends Component {
   componentDidMount() {
     let homeBase = {
@@ -34,65 +40,31 @@ class BarrelClient extends Component {
     return (
       <div>
         <GoogleMap />
-        <p className="covid19Response">
-          Covid 19 Response:<a className="email" href="mailto:carolyn@giftsforseniors.org" target="_blank">Please click here</a> to deliver gift donations at our
-          operations center in Minneapolis. Individual appointments are socially
-          distanced and honor CDC guidelines. Other drop locations below! You
-          may also browse our Wish List for gift ideas.
-        </p>
-
-        <div className="clientSearch">
-          <BarrelSearch />
-        </div>
-        <ul className="locationLists">
-          <div className="barrelMap">
+        <CovidReponse />
+        {/* <section className="clientSearch"> */}
+        <BarrelSearch />
+        {/* </section> */}
+        <Grid columns="equal" stackable>
+          <Grid.Row streched={true} columns={4}>
             {/* ONLY DISPLAY RELEVANT INFORMATION */}
             {this.props.state.searchBarrels.map((barrel) => {
-              if (barrel.status === true && barrel.public === false) {
-                // THESE ARE PRIVATE BARRELS
+              if (barrel.status === true) {
+                // RETURN BARREL CARDS
                 return (
-                  <div onClick={() => this.setMapToDisplay(barrel)}>
-                    <li className="privateBarrels" key={barrel.id}>
-                      {barrel.hosts},
-                      <ul>
-                        <li>
-                          {barrel.street} {barrel.city} {barrel.zipcode}
-                        </li>
-                        <li className="employee">
-                          Employees only
-                        </li>
-                        {barrel.description !== null ? (
-                          <li>{barrel.description}</li>
-                        ) : null}
-                        {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
-                        {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
-                      </ul>
-                    </li>
-                  </div>
+                  <Grid.Column>
+                    <BarrelCard
+                      barrel={barrel}
+                      setMapToDisplay={this.setMapToDisplay}
+                    />
+                  </Grid.Column>
                 );
               } else {
-                // THESE ARE PUBLIC BARRELS
-                return (
-                  <div onClick={() => this.setMapToDisplay(barrel)}>
-                    <li className="boldIt" key={barrel.id}>
-                      {barrel.hosts} ,
-                      <ul>
-                        <li>
-                          {barrel.street} {barrel.city} {barrel.zipcode}
-                        </li>
-                        {barrel.description !== null ? (
-                          <li>{barrel.description}</li>
-                        ) : null}
-                        {barrel.dates !== null ? <li>{barrel.dates}</li> : null}
-                        {barrel.hours !== null ? <li>{barrel.hours}</li> : null}
-                      </ul>
-                    </li>
-                  </div>
-                );
+                return null;
               }
             })}
-          </div>
-        </ul>
+          </Grid.Row>
+        </Grid>
+        <Footer />
       </div>
     );
   }

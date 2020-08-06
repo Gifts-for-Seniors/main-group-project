@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./GoogleMap.css";
+import { authorize } from "passport";
 class GoogleMap extends Component {
   render() {
     console.log(this.props.state.searchTerm);
@@ -21,10 +22,11 @@ class GoogleMap extends Component {
           <div className="map">
             <iframe
               className="maperoo"
-              width="600"
-              height="450"
+              width="auto"
+              height="400"
               zoom="2"
               frameborder="0"
+              style={{ border: 0, margin: "auto" }}
               src={homeBase}
               allowfullscreen
             ></iframe>
@@ -36,9 +38,11 @@ class GoogleMap extends Component {
           <div className="map">
             <iframe
               className="maperoo"
-              width="600"
-              height="450"
+              width="auto"
+              height="400"
+              zoom="2"
               frameborder="0"
+              style={{ border: 0, margin: "auto" }}
               src={mapSource}
               allowfullscreen
             ></iframe>

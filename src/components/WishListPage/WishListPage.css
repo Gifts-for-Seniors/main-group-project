@@ -5,7 +5,6 @@
   font-style: italic;
   font-weight: bolder;
   text-align: left;
-  
 }
 
 #highPriority {
@@ -14,12 +13,12 @@
 }
 
 .highPriorityItems {
-  background-color: red; 
+  background-color: red;
   max-width: 50%;
   /* border: 10px solid black; */
   margin: 0.08%;
   border-radius: 17px;
-  color:white;
+  color: white;
   box-shadow: black 10px;
 }
 #wishListHeader {
@@ -55,7 +54,7 @@
   background-color: #2483d0;
   /* border: 10px solid black; */
   margin-top: 2%;
-  color:white;
+  color: white;
   shape-outside: circle(50%); /* content will flow around the circle*/
 }
 
@@ -65,6 +64,7 @@
   flex-wrap: wrap-reverse;
 }
 
-img{
+
+.happy-image {
   border-radius: 50%;
-} 
+}
