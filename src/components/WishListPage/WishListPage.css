@@ -12,19 +12,22 @@
   display: inline-block;
 }
 
+.listHead {
+  padding-top: 2%;
+}
+
+.regularListHead {
+  margin-top: 1%;
+}
 .highPriorityItems {
   background-color: red;
-
+  margin: auto;
+  width: 80%;
   border-radius: 17px;
   color: white;
   box-shadow: black 10px;
-}
-#wishListHeader {
-  text-align: center;
-  font-weight: bolder;
-  font-size: xx-large;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 1.7%;
+  margin-bottom: 1.7%;
 }
 
 .sentimentalMessage {
@@ -41,13 +44,15 @@
 }
 
 .regularItems {
-  display: flex;
-  flex-direction: column;
+  margin: auto;
+  width: 80%;
   border-radius: 17px;
   color: white;
   box-shadow: black 10px;
   background-color: #2483d0;
-  margin-top: 2%;
+  padding: 1.7%;
+  /* margin-top: .1% */
+  margin-bottom: .5%;
 }
 
 .buttons {

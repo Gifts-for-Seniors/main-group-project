@@ -18,11 +18,11 @@ class WishList extends Component {
       <Segment>
         {/* <h1 id="wishListHeader">WishList</h1> */}
         <SentimentalMessage />
-        <Grid columns={2} relaxed="very">
+        <Grid columns={1} relaxed="very">
           <Grid.Column>
             <div className="highPriorityItems">
               <div id="highPriority" className="priorityHeader">
-                <h2>High Priority Items</h2>
+                <h2 className="listHead">High Priority Items</h2>
               </div>
               <List>
                 {/* Mapping through our item reducer to display items marked as high priority */}
@@ -39,7 +39,7 @@ class WishList extends Component {
           <Grid.Column verticalAlign="bottom">
             <div className="regularItems">
               <div className="priorityHeader">
-                <h2>Other Items</h2>
+                <h2 className="regularListHead">Other Items</h2>
               </div>
               <List>
                 {/* Mapping through our item reducer to display remaining items */}
@@ -52,7 +52,7 @@ class WishList extends Component {
             </div>
           </Grid.Column>
         </Grid>
-        <Divider vertical />
+        {/* <Divider vertical /> */}
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations

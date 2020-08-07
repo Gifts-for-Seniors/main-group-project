@@ -21,6 +21,7 @@
   object-fit: contain;
   /* height: 600px; */
   flex: content;
+  margin-bottom: -.1%
 }
 
 .image-gallery-image {

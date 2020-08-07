@@ -41,9 +41,7 @@ class BarrelClient extends Component {
       <div>
         <GoogleMap />
         <CovidReponse />
-        {/* <section className="clientSearch"> */}
         <BarrelSearch />
-        {/* </section> */}
         <Grid columns="equal" stackable>
           <Grid.Row streched={true} columns={4}>
             {/* ONLY DISPLAY RELEVANT INFORMATION */}
