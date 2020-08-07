@@ -57,16 +57,11 @@ class WishList extends Component {
           <SearchButton className="links" onClick={this.goToBarrelPage}>
             Drop-Off Locations
           </SearchButton>
-<<<<<<< HEAD
           <SearchButton className="amazonButton">
             <a
               className="amazonButton"
               href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create"
             >
-=======
-          <SearchButton className="links">
-            <a className="amazon" href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create">
->>>>>>> master
               Amazon Wishlist
             </a>
           </SearchButton>
