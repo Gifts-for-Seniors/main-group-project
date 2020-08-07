@@ -14,8 +14,7 @@ class InsetGoogleMap extends Component {
     let imageSource = `https://maps.googleapis.com/maps/api/staticmap?
     center=Minneapolis, MN&zoom=20&size=400x400&maptype=roadmap&markers=color:blue%7label:${host}%7${street}+${zipcode}+${city}"
     &key=AIzaSyBbn4YPkDlirgm-dFmTs_YvN6h-lSD7MoE`;
-    let test = `https://maps.googleapis.com/maps/api/staticmap?center=${city}&zoom=10&size=350x350&markers=size:large%7Ccolor:blue%7C${street}+${zipcode}&key=AIzaSyBbn4YPkDlirgm-dFmTs_YvN6h-lSD7MoE
-`;
+    let test = `https://maps.googleapis.com/maps/api/staticmap?center=${city}&zoom=10&size=350x350&markers=size:large%7Ccolor:blue%7C${street}+${zipcode}&key=AIzaSyBbn4YPkDlirgm-dFmTs_YvN6h-lSD7MoE`;
     console.log(this.props.barrel);
     return (
       // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
