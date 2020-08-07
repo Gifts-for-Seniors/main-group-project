@@ -165,7 +165,6 @@ class BarrelTable extends Component {
                 return (
                   <tr>
                     <td>
-                      <input type="submit" onClick={this.populateInputs} />
                       {/* INPUT FIELDS */}
                       {/* HOSTS */}
                       <TextField
