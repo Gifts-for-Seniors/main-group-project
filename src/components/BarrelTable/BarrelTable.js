@@ -45,6 +45,8 @@ class BarrelTable extends Component {
     console.log("ITEM IS", item.public);
   };
 
+
+
   cancelEdit = () => {
     this.setState({
       ...this.state,
