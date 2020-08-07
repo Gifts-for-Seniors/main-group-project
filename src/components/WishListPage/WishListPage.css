@@ -14,9 +14,7 @@
 
 .highPriorityItems {
   background-color: red;
-  max-width: 50%;
-  /* border: 10px solid black; */
-  margin: 0.08%;
+
   border-radius: 17px;
   color: white;
   box-shadow: black 10px;
@@ -24,9 +22,6 @@
 #wishListHeader {
   text-align: center;
   font-weight: bolder;
-  /* padding-top: -10%;
-  padding-bottom: 2%;
-  padding-left: 1%; */
   font-size: xx-large;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -40,22 +35,19 @@
   /* border: 10px solid black; */
   max-width: 50%;
   /* box-shadow: black 10px; */
+  padding: 2%;
   font-size: medium;
   font-style: italic;
 }
 
 .regularItems {
-  display: inline-box;
-  float: right;
-  text-align: right;
-  padding-right: 10%;
-  max-width: 50%;
+  display: flex;
+  flex-direction: column;
   border-radius: 17px;
-  background-color: #2483d0;
-  /* border: 10px solid black; */
-  margin-top: 2%;
   color: white;
-  shape-outside: circle(50%); /* content will flow around the circle*/
+  box-shadow: black 10px;
+  background-color: #2483d0;
+  margin-top: 2%;
 }
 
 .buttons {
