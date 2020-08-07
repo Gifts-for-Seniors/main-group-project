@@ -45,6 +45,8 @@ class BarrelTable extends Component {
     console.log("ITEM IS", item.public);
   };
 
+
+
   cancelEdit = () => {
     this.setState({
       ...this.state,
@@ -163,6 +165,7 @@ class BarrelTable extends Component {
                 return (
                   <tr>
                     <td>
+                      <input type="submit" onClick={this.populateInputs} />
                       {/* INPUT FIELDS */}
                       {/* HOSTS */}
                       <TextField
