@@ -11,6 +11,7 @@ const StyledButton = withStyles({
     background: "#2483d0",
     borderRadius: 17,
     color: "white",
+    width: "auto",
     padding: ".5%",
     boxShadow: "0 3px 2px black",
     justifySelf: "center",

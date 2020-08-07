@@ -62,3 +62,11 @@
 .InsetMap {
   object-fit: contain;
 }
+
+.emailAdd {
+  text-decoration: underline;
+}
+
+.emailAdd::hover {
+  background-color: lightblue;
+}
