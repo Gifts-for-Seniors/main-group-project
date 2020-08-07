@@ -59,7 +59,15 @@
   display: inline-box;
   text-align: center;
   flex-wrap: wrap-reverse;
+  color:white
 }
+.amazon{
+  display: inline-box;
+  text-align: center;
+  flex-wrap: wrap-reverse;
+  color:white
+}
+
 
 .happy-image {
   border-radius: 50%;
