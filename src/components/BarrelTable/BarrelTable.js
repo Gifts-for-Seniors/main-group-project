@@ -9,7 +9,7 @@ import "./BarrelTable.css";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import TableData from "./TableData.js";
-
+import BarrelHead from "./TableHead.js";
 class BarrelTable extends Component {
   state = {
     itemToEdit: 0,
@@ -142,20 +142,7 @@ class BarrelTable extends Component {
       <div className="table-container">
         <table class="ui celled table">
           {/* TABLE HEADERS */}
-          <thead className="tableHeader">
-            <tr className="coolTableTr">
-              <th className="hostTag">Host</th>
-              <th>Street Number</th>
-              <th className="cityTag">City</th>
-              <th>Zipcode</th>
-              <th>Dates</th>
-              <th>Hours</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Public/Private</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
+          <BarrelHead />
           <tbody>
             {/* IF EDITING, DISPLAY THIS */}
             {this.props.state.searchBarrels.map((item) => {
