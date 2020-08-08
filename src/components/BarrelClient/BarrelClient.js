@@ -39,7 +39,7 @@ class BarrelClient extends Component {
   render() {
     return (
       <div>
-        <GoogleMap />
+        {" "}
         <CovidReponse />
         <BarrelSearch />
         <Grid columns="equal" stackable>
@@ -62,6 +62,7 @@ class BarrelClient extends Component {
             })}
           </Grid.Row>
         </Grid>
+        <GoogleMap />
         <Footer />
       </div>
     );

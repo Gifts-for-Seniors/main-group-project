@@ -157,6 +157,13 @@ class BarrelTable extends Component {
                     submitAlert={this.submitAlert}
                     cancelEdit={this.cancelEdit}
                     saveChanges={this.saveChanges}
+                    hosts={this.state.hosts}
+                    street={this.state.street}
+                    city={this.state.city}
+                    zipcode={this.state.zipcode}
+                    dates={this.state.dates}
+                    hours={this.state.hours}
+                    description={this.state.description}
                   />
                 );
               } else {
