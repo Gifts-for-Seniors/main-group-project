@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./GoogleMap.css";
+
 import { authorize } from "passport";
+
 class GoogleMap extends Component {
   render() {
+    let googlekey = process.env.REACT_APP_GOOGLE_MAPS_NOT_STATIC_API_KEY;
     console.log(this.props.state.searchTerm);
     let mapToSearch = this.props.state.mapToSearch;
     let searchTerm = this.props.state.searchTerm;
     let host = this.props.state.mapToSearch.hosts;
     let street = this.props.state.mapToSearch.street;
     let zipcode = this.props.state.mapToSearch.zipcode;
-    let mapSource = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
+    let mapSource = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
     &q=${street}+${zipcode}+${host}&zoom=12`;
-    let homeBase = `https://www.google.com/maps/embed/v1/place?key=AIzaSyDXhJ8NfOUez_7i1OqfK5dX4bglT185TI0
+    let homeBase = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
     &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=8`;
     switch (mapToSearch.street) {
       case "2300 Kennedy Street":

@@ -10,18 +10,16 @@ class InsetGoogleMap extends Component {
     let zipcode = this.props.barrel.zipcode;
     let city = this.props.barrel.city;
     let host = this.props.barrel.host;
+    let googlekey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
-    let imageSource = `https://maps.googleapis.com/maps/api/staticmap?
-    center=Minneapolis, MN&zoom=20&size=400x400&maptype=roadmap&markers=color:blue%7label:${host}%7${street}+${zipcode}+${city}"
-    &key=AIzaSyBbn4YPkDlirgm-dFmTs_YvN6h-lSD7MoE`;
-    let test = `https://maps.googleapis.com/maps/api/staticmap?center=${street},${city}&zoom=10&size=350x350&markers=size:large%7Ccolor:blue%7C${street}+${zipcode}&key=AIzaSyA7VsTXsyzQQjL7SSJpaRUx69iONv85UpU`;
+    let imageSource = `https://maps.googleapis.com/maps/api/staticmap?center=${street},${city}&zoom=10&size=350x350&markers=size:large%7Ccolor:blue%7C${street}+${zipcode}&key=${googlekey}`;
     console.log(this.props.barrel);
     return (
       // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
       <Image
         label={{ as: "a", corner: "left", icon: "search" }}
         size="large"
-        src={test}
+        src={imageSource}
       ></Image>
     );
   }
