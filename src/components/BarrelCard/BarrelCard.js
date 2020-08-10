@@ -19,7 +19,7 @@ class BarrelCard extends Component {
             label={{ as: "p", corner: "left", icon: "map marker alternate" }}
             onClick={() => {
               this.props.setMapToDisplay(barrel);
-              window.scrollTo(0, 0);
+              window.scrollTo(1000, 1000);
             }}
           >
             <Image fluid>
