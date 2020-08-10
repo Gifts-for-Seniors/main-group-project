@@ -55,7 +55,7 @@ class WishList extends Component {
         {/* <Divider vertical /> */}
         <div className="buttons">
           <SearchButton className="links" onClick={this.goToBarrelPage}>
-            Drop-Off Locations
+            Find Location
           </SearchButton>
           <SearchButton className="amazonButton">
             <a
