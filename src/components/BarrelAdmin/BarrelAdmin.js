@@ -14,6 +14,11 @@ class BarrelAdmin extends Component {
           <BarrelSearch />
         </div>
         <BarrelTable />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     );
   }

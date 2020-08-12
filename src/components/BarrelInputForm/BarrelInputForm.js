@@ -76,7 +76,7 @@ class BarrelInput extends Component {
       city: 'Woodbury',
       zipcode: '	55125',
       description: 'East entrance',
-      dates: '08/23/2020',
+      dates: '6/1-12/31',
     });
 
   }

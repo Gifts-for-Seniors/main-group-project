@@ -233,6 +233,11 @@ class WishListAdmin extends Component {
             </tr>
           </tbody>
         </table>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     );
   }

@@ -161,7 +161,7 @@ class BarrelTable extends Component {
                     street={this.state.street}
                     city={this.state.city}
                     zipcode={this.state.zipcode}
-                    dates={this.state.dates}
+                    dates={this.state.date}
                     hours={this.state.hours}
                     description={this.state.description}
                   />

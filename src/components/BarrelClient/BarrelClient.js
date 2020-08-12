@@ -63,7 +63,17 @@ class BarrelClient extends Component {
           </Grid.Row>
         </Grid>
         <GoogleMap />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <Footer />
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     );
   }

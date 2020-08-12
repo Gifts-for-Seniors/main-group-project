@@ -66,6 +66,11 @@ class WishList extends Component {
             </a>
           </SearchButton>
         </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </Segment>
     );
   }
