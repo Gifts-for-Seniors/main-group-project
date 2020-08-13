@@ -1,4 +1,4 @@
-# Prime Project
+# Gifts For Seniors Web App
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
@@ -19,7 +19,7 @@ Before you get started, make sure you have the following software installed on y
 
 ## Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
+Create a new database called `prime_group_app` and create a `user`, `barrels`, and items table:
 
 ```SQL
 CREATE TABLE "user" (
@@ -27,9 +27,29 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE barrels (
+    "hosts" character varying(250),
+    "street" character varying(250),
+    "city" character varying(250),
+    "zipcode" character varying(250),
+    "public" boolean DEFAULT true,
+    "dates" character varying(250),
+    "hours" character varying(250),
+    "description" character varying(250),
+    "id" integer DEFAULT nextval('public.barrels_id_seq'::regclass),
+    "status" boolean DEFAULT true
+);
+
+CREATE TABLE public.items (
+    "item" character varying(1000),
+    "priority" boolean DEFAULT false,
+    "id" integer DEFAULT nextval('public.items_id_seq'::regclass)
+);
+
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+If you would like to name your database something else, you will need to change `prime_group_app` to the name of your new database name in `server/modules/pool.js`
 
 ## Development Setup Instructions
 
