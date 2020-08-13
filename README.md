@@ -1,4 +1,14 @@
 # Gifts For Seniors Web App
+
+## Description
+
+Duration: 3 Week Sprint
+
+This project was created to implement new features to an existing website for the Gifts For Seniors organization. Gifts For Seniors had the need to provide up to date information to potential donors on where they could make donations as well as what items were being requested. The application that has been developed provides an interface for an Admin user for the maintenance of this information and the changes are reflected in real time to visitors of the site. 
+
+The fully functional site can be accessed here:
+
+
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
 We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
