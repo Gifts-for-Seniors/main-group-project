@@ -47,7 +47,8 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
 
 
 
-// DELETE ITEM FROM BARREL
+/**
+ * DELETE BARREL LOCATION
 router.delete("/delete/:id", (req, res) => {
   let reqId = req.params.id;
   console.log("Delete request for id", reqId);

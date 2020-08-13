@@ -8,7 +8,7 @@ const { query } = require("../modules/pool");
 const router = express.Router();
 
 /**
- * UPDATE BARREL STATUS
+ * UPDATE BARREL STATUS ACTIVE/DEACTIVATED
  */
 router.put("/update/:id", rejectUnauthenticated, (req, res) => {
   let status = req.body.status;

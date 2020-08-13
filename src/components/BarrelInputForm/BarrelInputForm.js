@@ -21,16 +21,13 @@ class BarrelInput extends Component {
     hours: "",
     public: true,
     searchTerm: this.props.state.searchTerm,
-    // searchTerm: this.props.state.searchTerm,
   };
 
   addBarrel = (event) => {
     const barrelData = Object.values(this.state);
     // FILL ALL THE FORM FIELDS PLEASE
     for (let i = 0; i < barrelData.length; i++) {
-      console.log(barrelData[i]);
       if (barrelData[i] === "") {
-        console.log("bump");
         return alert("All form fields must be filled out.");
       }
     }
@@ -71,15 +68,14 @@ class BarrelInput extends Component {
   };
   populateInputs = () => {
     this.setState({
-      host: 'SPIRE Credit Union Woodbury',
-      street: '195 Radio Drive',
-      city: 'Woodbury',
-      zipcode: '	55125',
-      description: 'East entrance',
-      dates: '08/23/2020',
+      host: "SPIRE Credit Union Woodbury",
+      street: "195 Radio Drive",
+      city: "Woodbury",
+      zipcode: "	55125",
+      description: "East entrance",
+      dates: "08/23/2020",
     });
-
-  }
+  };
 
   render() {
     return (
@@ -93,7 +89,8 @@ class BarrelInput extends Component {
             <div className="addBarrelInput">
               {/* INPUT FIELDS */}
               <TextField
-                type="submit" onClick={this.populateInputs}
+                type="submit"
+                onClick={this.populateInputs}
                 label="Host Name"
                 variant="outlined"
                 name="host"
