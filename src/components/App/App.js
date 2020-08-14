@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import {
   HashRouter as Router,
   Route,
@@ -35,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="mainApp">
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
