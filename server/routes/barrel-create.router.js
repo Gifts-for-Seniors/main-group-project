@@ -18,7 +18,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
   let zipcode = req.body.zipcode;
   let description = req.body.description;
   let hours = req.body.hours;
-  let dates = req.body.date;
+  let dates = req.body.dates;
   let public = req.body.public;
   let queryText = `INSERT INTO barrels (hosts, street, city, zipcode, description, hours, dates, public) VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`;
 

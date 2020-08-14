@@ -10,6 +10,10 @@ body {
   padding-right: 1%;
 }
 
+.mainApp {
+  padding-bottom: 1%;
+}
+
 .alert {
   background-color: #ff4545;
   margin: 50px;
