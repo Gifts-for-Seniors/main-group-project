@@ -66,16 +66,6 @@ class BarrelInput extends Component {
     }
     console.log("public", this.state.public);
   };
-  populateInputs = () => {
-    this.setState({
-      host: "SPIRE Credit Union Woodbury",
-      street: "195 Radio Drive",
-      city: "Woodbury",
-      zipcode: "	55125",
-      description: "East entrance",
-      dates: "08/23/2020",
-    });
-  };
 
   render() {
     return (
@@ -90,7 +80,6 @@ class BarrelInput extends Component {
               {/* INPUT FIELDS */}
               <TextField
                 type="submit"
-                onClick={this.populateInputs}
                 label="Host Name"
                 variant="outlined"
                 name="host"
