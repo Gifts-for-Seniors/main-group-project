@@ -1,49 +1,54 @@
 import React, { Component } from "react";
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
-import "./Gallery.css";
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 import Participant1 from "../../images/Participant1.jpg";
 import sweater from "../../images/sweater.jpg";
 import slippers from "../../images/slippers.JPG";
 import Gifts from "../../images/Gifts.jpg";
-import blanket from "../../images/blanket.jpg";
-import lobby from "../../images/lobby.JPG";
-import gDrive from "../../images/gDrive.jpg";
-import open from "../../images/open.jpg";
-import happy from "../../images/happy.jpg";
 import puzzle from "../../images/puzzle.jpg";
+import { GridList } from "@material-ui/core";
+import "./Gallery.css";
 
-class MyComponent extends Component {
+class CustomGallery extends Component {
   render() {
-    const images = [
-      { original: Participant1 },
-      { original: sweater },
-      { original: slippers },
-      { original: puzzle },
-      { original: Gifts },
-      { original: blanket },
-      { original: lobby },
-      { original: gDrive },
-      { original: open },
-      { original: happy },
-    ];
+    const tileData = [
+      {
+        img: Participant1,
+        title: 'Joy'
+      },
+      {
+        img: sweater,
+        title: 'Sweater'
+      },
+      {
+        img: slippers,
+        title: 'Slippers'
+      },
+      {
+        img: puzzle,
+        title: 'Happiness'
+      },
+      {
+        img: Gifts,
+        title: 'Gifts'
+      }
+    ]
 
     return (
-      <ImageGallery
-        items={images}
-        // defaultImage={defaultImage}
-        showBullets={false}
-        showIndex={false}
-        lazyLoad={true}
-        showPlayButton={false}
-        // renderCustomControls={someComponent}
-        autoPlay={true}
-        showNav={true}
-        showThumbnails={false}
-        // slideDuration={425}
-      />
+      <div className="root">
+      <GridList className="gridList" cols={5}>
+        {tileData.map((tile) => (
+          <GridListTile style={{height: 450}} key={tile.img}>
+            <img src={tile.img} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+    </div>
     );
   }
 }
 
-export default MyComponent;
+export default CustomGallery;
