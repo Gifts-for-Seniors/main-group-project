@@ -15,3 +15,13 @@
 ul {
   line-height: .8em !important;
 }
+
+@media print {
+  @page { 
+    size: landscape;    
+  }  
+}
+
+.logo {  
+  text-align: center;
+}

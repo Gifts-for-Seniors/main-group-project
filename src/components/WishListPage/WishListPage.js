@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./WishListPage.css";
 import Gallery from "../WishlistGallery/Gallery";
 import { Button, Dialog, DialogActions, Paper, Typography, DialogTitle, DialogContent, Grid } from "@material-ui/core";
-import PriorityList from "./PriorityList";
+import PrintList from "./PriorityList";
 
 class WishList extends Component {
   constructor() {
@@ -63,7 +63,7 @@ class WishList extends Component {
             >
               Donate Online
             </Button>
-            <Dialog onClose={this.handleClose} maxWidth={true} open={this.state.open}>
+            <Dialog onClose={this.handleClose} maxWidth="lg" open={this.state.open}>
               <DialogTitle onClose={this.handleClose}>
                 Online Retailers and Shopping List
               </DialogTitle>
@@ -108,7 +108,7 @@ class WishList extends Component {
                   </Grid>
                 </Grid>
                   <Paper variant="outlined" style={{ marginTop: 10 }}>
-                    <PriorityList />
+                    <PrintList />
                   </Paper>
               </DialogContent>
               <DialogActions>
@@ -136,12 +136,12 @@ class WishList extends Component {
             >
               High Priority List
             </Button>
-            <Dialog onClose={this.handlePriorityClose} maxWidth={true} open={this.state.priorityDialogOpen}>
+            <Dialog onClose={this.handlePriorityClose} maxWidth="lg" open={this.state.priorityDialogOpen}>
             <DialogTitle onClose={this.handlePriorityClose}>
                 High Priority Items
               </DialogTitle>
               <DialogContent dividers>
-                <PriorityList />
+                <PrintList />
               </DialogContent>
               <DialogActions>
                 <Button autoFocus onClick={this.handlePriorityClose} color="primary">
