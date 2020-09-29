@@ -8,7 +8,7 @@ import "./Nav.css";
 
 const Nav = (props) => (
   <div className="nav">
-    <Grid container>
+    <Grid container style={{ height: 185 }}>
       <Grid item xs={4}>      
         <a className="srcLink" href="https://www.giftsforseniors.org/">
           <img alt="logo" className="srcLogo" src={logo} />

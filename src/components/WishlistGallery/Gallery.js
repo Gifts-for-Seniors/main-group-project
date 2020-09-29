@@ -38,7 +38,7 @@ class CustomGallery extends Component {
       <div className="root">
       <GridList className="gridList" cols={5}>
         {tileData.map((tile) => (
-          <GridListTile style={{height: 450}} key={tile.img}>
+          <GridListTile style={{height: 400}} key={tile.img}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
