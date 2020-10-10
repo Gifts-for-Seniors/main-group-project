@@ -1,41 +1,24 @@
-.nav-title {
-  display: flexbox;
-  font-size: 24px;
-  font-weight: 700;
-  display: inline-block;
-  color: black;
-  padding-left: 10px;
-  flex-flow: wrap-reverse;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  text-shadow: blue;
-  font-style: italic;
-}
-.nav {
-  padding-top: 1%;
-  display: inline-flex;
-  padding-bottom: 2%;
-}
-
 .nav-link {
-  color: #0352fc;
-  text-align: left;
+  color: #333333;
+  text-align: center;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-decoration: none;
   padding: 1.5%, 2%, 2%, 2%;
   margin: 1%;
-  font-size: 15px;
-
+  font-size: 16px;
   border: none;
   cursor: pointer;
   outline: 0;
 }
 
 .nav-right {
-  float: left;
+  float: right;
+  padding: 10%;
+  width: 55%;
 }
 
 .srcLogo {
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 

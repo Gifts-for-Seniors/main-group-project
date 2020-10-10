@@ -1,25 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Grid } from '@material-ui/core'
 import LogOutButton from "../LogOutButton/LogOutButton";
-import "./Nav.css";
 import logo from "../../images/gifts-for-seniors-logo.png";
+import "./Nav.css";
+
 const Nav = (props) => (
   <div className="nav">
-    {/* <Link to="/home">
-      <h2 className="nav-title">Gifts for Seniors</h2>
-    </Link> */}
-    <a className="srcLink" href="https://www.giftsforseniors.org/">
-      <img className="srcLogo" src={logo} />
-    </a>
-    {/* <h2 className="nav-title">Gifts for Seniors</h2> */}
-    <div className="nav-left">
+    <Grid container style={{ height: 185 }}>
+      <Grid item xs={4}>      
+        <a className="srcLink" href="https://www.giftsforseniors.org/">
+          <img alt="logo" className="srcLogo" src={logo} />
+        </a>
+      </Grid>
+      <Grid item xs={8}>
+      <div className="nav-right">
       <a href="https://www.giftsforseniors.org/" className="nav-link">
         Home
       </a>
-
       <Link className="nav-link" to="/wishlist">
-        Wishlist
+        WishList/Links To Retailers
       </Link>
       <Link className="nav-link" to="/barrels">
         Donation Locations
@@ -48,6 +49,8 @@ const Nav = (props) => (
       )}
       {/* Always show this link since these pages are not protected */}
     </div>
+      </Grid>
+    </Grid>
   </div>
 );
 

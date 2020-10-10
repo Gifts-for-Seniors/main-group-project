@@ -1,72 +1,159 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./WishListPage.css";
-import { Card } from "@material-ui/core";
-import { SearchButton } from "../ButtonStyles/Buttons";
 import Gallery from "../WishlistGallery/Gallery";
-import { Grid, Image, Segment, Divider, List } from "semantic-ui-react";
-import SentimentalMessage from "./SentimentalMessage";
-// import happy from "./happiness.jpg";
+import { Button, Dialog, DialogActions, Paper, Typography, DialogTitle, DialogContent, Grid } from "@material-ui/core";
+import PrintList from "./PriorityList";
 
 class WishList extends Component {
+  constructor() {
+    super()
+    this.state = {
+      open: false,
+      priorityDialogOpen: false
+    }
+  }
   goToBarrelPage = () => {
     this.props.history.push("/barrels");
   };
 
+  showShoppingDialog = () => {
+    this.setState({ open: true })
+  }
+
+  handlePriorityClose = () => {
+    this.setState({ priorityDialogOpen: false })
+  }
+
+  showHighPrioriorityDialog = () => {
+    this.setState({ priorityDialogOpen: true })
+  }
+
+  handleClose = () => {
+    this.setState({ open: false })
+  }
+
+  redirectToAmazon = () => {
+    window.open('https://smile.amazon.com', '_blank')
+  }
+
+  redirectToBestBuy = () => {
+    window.open('https://www.bestbuy.com', '_blank')
+  }
+
+  redirectToTarget = () => {
+    window.open('https://www.target.com', '_blank')
+  }
+
   render() {
     return (
-      <Segment>
-        {/* <h1 id="wishListHeader">WishList</h1> */}
-        <SentimentalMessage />
-        <Grid columns={1} relaxed="very">
-          <Grid.Column>
-            <div className="highPriorityItems">
-              <div id="highPriority" className="priorityHeader">
-                <h2 className="listHead">High Priority Items</h2>
-              </div>
-              <List>
-                {/* Mapping through our item reducer to display items marked as high priority */}
-                {this.props.state.list.map((item) => {
-                  if (item.priority === true) {
-                    return <ul key={item.id}>{item.item}</ul>;
-                  }
-                })}
-              </List>
-            </div>
-
-            <Gallery />
-          </Grid.Column>
-          <Grid.Column verticalAlign="bottom">
-            <div className="regularItems">
-              <div className="priorityHeader">
-                <h2 className="regularListHead">Other Items</h2>
-              </div>
-              <List>
-                {/* Mapping through our item reducer to display remaining items */}
-                {this.props.state.list.map((item) => {
-                  if (item.priority === false) {
-                    return <ul key={item.id}>{item.item}</ul>;
-                  }
-                })}
-              </List>
-            </div>
-          </Grid.Column>
-        </Grid>
-        {/* <Divider vertical /> */}
-        <div className="buttons">
-          <SearchButton className="links" onClick={this.goToBarrelPage}>
-            Find Location
-          </SearchButton>
-          <SearchButton className="amazonButton">
-            <a
-              className="amazonButton"
-              href="https://smile.amazon.com/hz/wishlist/ls/X1CA7P20SWPM?type=wishlist&ref=cm_wl_list_create"
+      <div>
+        <Gallery />
+        <Paper className="paper">
+          <div className="main">
+            <Typography>There are two ways to ensure your donations reach Gifts for Seniors.</Typography>
+            <Typography>Shop out gift registeries and ship directly to Gifts for Seniors.</Typography>
+            <Button
+              style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+              variant="outlined"
+              className="button"
+              onClick={() => {
+                this.showShoppingDialog()
+              }}
             >
-              Amazon Wishlist
-            </a>
-          </SearchButton>
-        </div>
-      </Segment>
+              Donate Online
+            </Button>
+            <Dialog onClose={this.handleClose} maxWidth="lg" open={this.state.open}>
+              <DialogTitle onClose={this.handleClose}>
+                Online Retailers and Shopping List
+              </DialogTitle>
+              <DialogContent dividers>
+                <Grid container>
+                  <Grid item xs={8}></Grid>
+                  <Grid item xs={2}>
+                    <Button
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToAmazon()
+                      }}
+                      >
+                      Amazon Smile
+                    </Button>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Button
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToBestBuy()
+                      }}
+                      >
+                      Best Buy
+                    </Button>
+                  </Grid>
+                  <Grid item xs={1}>
+                    <Button
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToTarget()
+                      }}
+                      >
+                      Target
+                  </Button>
+                  </Grid>
+                </Grid>
+                  <Paper variant="outlined" style={{ marginTop: 10 }}>
+                    <PrintList />
+                  </Paper>
+              </DialogContent>
+              <DialogActions>
+                <Button autoFocus onClick={this.handleClose} color="primary">
+                  OK
+                </Button>
+              </DialogActions>
+            </Dialog>
+            <Typography>Locate a donation barrel and drop off gifts in your community.</Typography>
+            <Button style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}} variant="outlined" className="button">
+              Find Drop off Location
+            </Button>
+            <Typography style={{width: '70%', marginLeft: '18%'}}>
+              Checkout our senior wish list for our current priority needs.
+              Once you make your donation, Gifts for Seniors will work with agency partners to coordinate the delivery of the gifts
+              and social visits to seniors.
+            </Typography>
+            <Button
+              style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+              variant="outlined"
+              className="button"
+              onClick={() => {
+                this.showHighPrioriorityDialog()
+              }}
+            >
+              High Priority List
+            </Button>
+            <Dialog onClose={this.handlePriorityClose} maxWidth="lg" open={this.state.priorityDialogOpen}>
+            <DialogTitle onClose={this.handlePriorityClose}>
+                High Priority Items
+              </DialogTitle>
+              <DialogContent dividers>
+                <PrintList />
+              </DialogContent>
+              <DialogActions>
+                <Button autoFocus onClick={this.handlePriorityClose} color="primary">
+                  OK
+                </Button>
+              </DialogActions>
+            </Dialog>
+            <Typography>Your donation is greatly appreciated.</Typography>
+            <Typography>Thank you for helping Gifts for Seniors provide life-affirming gifts for isolated older adults in need.</Typography>
+          </div>
+        </Paper>
+      </div>
     );
   }
 }
