@@ -4,15 +4,18 @@ import "./WishListPage.css";
 import Gallery from "../WishlistGallery/Gallery";
 import { Button, Dialog, DialogActions, Paper, Typography, DialogTitle, DialogContent, Grid } from "@material-ui/core";
 import PrintList from "./PriorityList";
+import { withRouter } from 'react-router-dom';
 
 class WishList extends Component {
   constructor() {
     super()
+    this.redirectToMap = this.redirectToMap.bind(this);
     this.state = {
       open: false,
       priorityDialogOpen: false
     }
   }
+  
   goToBarrelPage = () => {
     this.props.history.push("/barrels");
   };
@@ -43,6 +46,11 @@ class WishList extends Component {
 
   redirectToTarget = () => {
     window.open('https://www.target.com', '_blank')
+  }
+
+  redirectToMap = () => {
+    let path = `barrels`;
+    this.props.history.push(path);
   }
 
   render() {
@@ -118,7 +126,12 @@ class WishList extends Component {
               </DialogActions>
             </Dialog>
             <Typography>Locate a donation barrel and drop off gifts in your community.</Typography>
-            <Button style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}} variant="outlined" className="button">
+            <Button
+              style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+              variant="outlined"
+              className="button"
+              onClick={this.redirectToMap}
+            >
               Find Drop off Location
             </Button>
             <Typography style={{width: '70%', marginLeft: '18%'}}>
