@@ -12,7 +12,7 @@ const BarrelLocationsMap = ({ barrelLocations }) => {
   const [selected, setSelected] = useState({});
   const [pinLocations, setPins] = useState([]);
 
-  useEffect(() => {    
+  useEffect(() => {
     try {
       let locationsWithGeocode = barrelLocations.map(async (location) => {
         function getGeocode() {
@@ -28,13 +28,18 @@ const BarrelLocationsMap = ({ barrelLocations }) => {
             return res.json();
           });
         }
-  
-        let res = await getGeocode();
-  
-        location.latLong = res.results[0].geometry.location;
-        location.fullAddress = res.results[0].formatted_address;
-  
-        return location;
+
+        try {
+          let res = await getGeocode();
+          console.log('GEOCODE: ', res);
+
+          location.latLong = res.results[0].geometry.location;
+          location.fullAddress = res.results[0].formatted_address;
+
+          return location;
+        } catch {
+          return [];
+        }
       });
   
       const results = Promise.all(locationsWithGeocode).then(
