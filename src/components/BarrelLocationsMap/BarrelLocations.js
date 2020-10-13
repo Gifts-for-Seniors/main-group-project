@@ -13,30 +13,35 @@ const BarrelLocationsMap = ({ barrelLocations }) => {
   const [pinLocations, setPins] = useState([]);
 
   useEffect(() => {
-    let locationsWithGeocode = barrelLocations.map(async (location) => {
-      function getGeocode() {
-        let addressUrl =
-          location.street.split(' ').join('+') +
-          '+' +
-          location.city.split(' ').join('+') +
-          ',+Minnesota';
-
-        return fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${addressUrl}&key=${apiKey}`
-        ).then((res) => {
-          return res.json();
-        });
-      }
-
-      let res = await getGeocode();
-
-      location.latLong = res.results[0].geometry.location;
-      location.fullAddress = res.results[0].formatted_address;
-
-      return location;
-    });
-
     try {
+      let locationsWithGeocode = barrelLocations.map(async (location) => {
+        function getGeocode() {
+          let addressUrl =
+            location.street.split(' ').join('+') +
+            '+' +
+            location.city.split(' ').join('+') +
+            ',+Minnesota';
+  
+          return fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${addressUrl}&key=${apiKey}`
+          ).then((res) => {
+            return res.json();
+          });
+        }
+
+        try {
+          let res = await getGeocode();
+          console.log('GEOCODE: ', res);
+
+          location.latLong = res.results[0].geometry.location;
+          location.fullAddress = res.results[0].formatted_address;
+
+          return location;
+        } catch {
+          return [];
+        }
+      });
+  
       const results = Promise.all(locationsWithGeocode).then(
         (locationsWithGeocode) => {
           setPins(locationsWithGeocode);
