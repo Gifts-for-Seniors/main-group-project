@@ -46,6 +46,7 @@
 
   .filtered-list-item p {
     margin: 0px;
+    text-align: center;
   }
   
   .results-header {
