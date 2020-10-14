@@ -7,6 +7,7 @@ import BarrelSearch from '../BarrelSearch/BarrelSearch';
 import './BarrelClient.css';
 import GoogleMap from '../GoogleMap/GoogleMap';
 import InsetGoogleMap from '../GoogleMap/BarrelInsetGoogleMap';
+
 import BarrelCard from '../BarrelCard/BarrelCard';
 import { Button, Card, Image, Label, Grid } from 'semantic-ui-react';
 import CovidReponse from './CovidResponse';
@@ -80,15 +81,18 @@ class BarrelClient extends Component {
           </div>
         </div>
         <ZipcodeFilter
+          state={this.props.state}
           barrelLocations={this.props.state.searchBarrels}
+          setBarrelMap={this.setMapToDisplay}
         ></ZipcodeFilter>
-        <div className="barrel-locations-header">
+        <GoogleMap state={this.state}></GoogleMap>
+        {/* <div className="barrel-locations-header">
           <h2 className="location-header">Barrel Locations Map</h2>
           <p className="pin-info">Click/Touch pin for donation location details</p>
         </div>
         <BarrelLocationsMap
           barrelLocations={this.props.state.searchBarrels}
-        ></BarrelLocationsMap>
+        ></BarrelLocationsMap> */}
         <Footer />
       </div>
     );

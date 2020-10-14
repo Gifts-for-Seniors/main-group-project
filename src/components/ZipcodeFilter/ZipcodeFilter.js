@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import InsetGoogleMap from '../GoogleMap/BarrelInsetGoogleMap';
 import './ZipcodeFilter.css';
 
-const ZipcodeFilter = ({ barrelLocations }) => {
+const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
   const [filteredZipcodes, setFilteredZipcodes] = useState([]);
   const [zipcodeSearch, setZipcodeSearch] = useState(null);
 
@@ -42,6 +43,7 @@ const ZipcodeFilter = ({ barrelLocations }) => {
               <p>{location.hosts}</p>
               <p>{location.street}</p>
               <p>{location.city + ' ' + location.zipcode}</p>
+              <InsetGoogleMap setBarrelMap={setBarrelMap} barrel={location} state={state}></InsetGoogleMap>
             </li>
           );
         })}

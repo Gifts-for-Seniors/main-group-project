@@ -4,7 +4,7 @@ import "./GoogleMap.css";
 import { Image } from "semantic-ui-react";
 class InsetGoogleMap extends Component {
   render() {
-    console.log(this.props);
+    console.log('Inset map Props: ', this.props);
     console.log(this.props.state.searchTerm);
     let street = this.props.barrel.street;
     let zipcode = this.props.barrel.zipcode;
@@ -16,11 +16,13 @@ class InsetGoogleMap extends Component {
     console.log(this.props.barrel);
     return (
       // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
-      <Image
-        label={{ as: "a", corner: "left", icon: "search" }}
-        size="large"
-        src={imageSource}
-      ></Image>
+      <a style={{cursor: 'pointer'}} onClick={() => this.props.setBarrelMap(this.props.barrel)}>SHOW ON MAP BELOW</a>
+      // <Image
+      //   onClick={() => this.props.setBarrelMap(this.props.barrel)}
+      //   label={{ as: "a", corner: "left", icon: "search" }}
+      //   size="large"
+      //   src={imageSource}
+      // ></Image>
     );
   }
 }
