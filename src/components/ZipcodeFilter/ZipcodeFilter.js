@@ -16,24 +16,32 @@ const ZipcodeFilter = ({ barrelLocations }) => {
   };
 
   return (
-    <div className="zip-filtered-container">
-      <label className="zip-label" htmlFor="zipcode">Search By Zipcode</label>
+    <div className='zip-filtered-container'>
+      <label className='zip-label' htmlFor='zipcode'>
+        Search By Zipcode
+      </label>
       <input
-        name="zipcode"
-        id="zipcode"
+        name='zipcode'
+        id='zipcode'
         className='filtered-zip-input'
         type='text'
         onChange={(e) => {
           filterLocations(e.target.value);
         }}
       />
-      { filteredZipcodes[0] && <h3 className="results-header">{'Donation barrel locations matching zipcode: '}</h3>}
+      {filteredZipcodes[0] && (
+        <h3 className='results-header'>
+          {'Donation barrel locations matching zipcode: '}
+        </h3>
+      )}
 
       <ul className='filtered-locations-by-zip'>
         {filteredZipcodes.map((location) => {
           return (
             <li key={location.hosts} className='filtered-list-item'>
-              {location.hosts + ': ' + location.street + ', ' + location.city + ' ' + location.zipcode }
+              <p>{location.hosts}</p>
+              <p>{location.street}</p>
+              <p>{location.city + ' ' + location.zipcode}</p>
             </li>
           );
         })}

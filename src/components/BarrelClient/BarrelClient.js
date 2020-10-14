@@ -79,10 +79,16 @@ class BarrelClient extends Component {
             </a>
           </div>
         </div>
+        <ZipcodeFilter
+          barrelLocations={this.props.state.searchBarrels}
+        ></ZipcodeFilter>
+        <div className="barrel-locations-header">
+          <h2 className="location-header">Barrel Locations Map</h2>
+          <p className="pin-info">Click/Touch pin for donation location details</p>
+        </div>
         <BarrelLocationsMap
           barrelLocations={this.props.state.searchBarrels}
         ></BarrelLocationsMap>
-        <ZipcodeFilter barrelLocations={this.props.state.searchBarrels}></ZipcodeFilter>
         <Footer />
       </div>
     );
