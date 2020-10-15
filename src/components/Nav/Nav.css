@@ -48,7 +48,7 @@
 .srcLink {
   /* background-color: blue; */
   margin-left: 15px;
-  max-width: 10%;
+  max-width: 12%;
   height: 100%;
 }
 
@@ -58,8 +58,8 @@
 
 }
 
-@media (max-width: 800px) { 
+@media (max-width: 740px) { 
   .srcLink {
-    max-width: 15%;
+    max-width: 25%;
   }
  }
