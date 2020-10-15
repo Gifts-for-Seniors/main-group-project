@@ -40,10 +40,10 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
         {filteredZipcodes.map((location) => {
           return (
             <li key={location.hosts} className='filtered-list-item'>
-              <p>{location.hosts}</p>
-              <p>{location.street}</p>
-              <p>{location.city + ' ' + location.zipcode}</p>
-              <InsetGoogleMap setBarrelMap={setBarrelMap} barrel={location} state={state}></InsetGoogleMap>
+              <p className="location-host">{location.hosts}</p>
+              <p className="location-street">{location.street}</p>
+              <p className="location-street">{location.city + ' ' + location.zipcode}</p>
+              <a style={{cursor: 'pointer', fontSize: '.80em'}} onClick={() => setBarrelMap(location)}>SHOW ON MAP BELOW</a>
             </li>
           );
         })}
