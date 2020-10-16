@@ -77,12 +77,12 @@ class WishList extends Component {
               </DialogTitle>
               <DialogContent dividers>
                 <Grid container>
-                  <Grid item xs={8}></Grid>
-                  <Grid item xs={2}>
-                    <Button
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
-                      variant="outlined"
-                      className="button"
+                  <Grid item xs={2}></Grid>                 
+                  <Grid item xs={3}>
+                    <Button                      
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToAmazon()
                       }}
@@ -90,11 +90,11 @@ class WishList extends Component {
                       Amazon Smile
                     </Button>
                   </Grid>
-                  <Grid item xs={1}>
-                    <Button
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
-                      variant="outlined"
-                      className="button"
+                  <Grid item xs={3}>
+                    <Button                                         
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToBestBuy()
                       }}
@@ -102,11 +102,11 @@ class WishList extends Component {
                       Best Buy
                     </Button>
                   </Grid>
-                  <Grid item xs={1}>
-                    <Button
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
-                      variant="outlined"
-                      className="button"
+                  <Grid item xs={3}>
+                    <Button                      
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToTarget()
                       }}
@@ -120,7 +120,11 @@ class WishList extends Component {
                   </Paper>
               </DialogContent>
               <DialogActions>
-                <Button autoFocus onClick={this.handleClose} color="primary">
+                <Button autoFocus onClick={this.handleClose}
+                 color="primary"
+                 style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
+                 variant="outlined"
+                >
                   OK
                 </Button>
               </DialogActions>
@@ -157,7 +161,11 @@ class WishList extends Component {
                 <PrintList />
               </DialogContent>
               <DialogActions>
-                <Button autoFocus onClick={this.handlePriorityClose} color="primary">
+                <Button autoFocus onClick={this.handlePriorityClose}
+                 color="primary"
+                 style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', float: 'right'}}
+                 variant="outlined"
+                >
                   OK
                 </Button>
               </DialogActions>
