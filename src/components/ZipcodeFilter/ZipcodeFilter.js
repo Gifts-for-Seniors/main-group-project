@@ -23,9 +23,6 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
           return res.json();
         }).then(postalCodes => {
           postalCodes = postalCodes.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
-
-          console.dir(postalCodes);
-          postalCodes.map((z, i) => console.log(`Zip ${i}: `, z));
           let results = [];
 
           while (postalCodes) {
@@ -38,7 +35,6 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
 
             results = results.concat(filteredResults);
 
-            console.log('RESULTS: ', results);
             if (results.length >= 3) {
               setFilteredZipcodes(results);
               return;
