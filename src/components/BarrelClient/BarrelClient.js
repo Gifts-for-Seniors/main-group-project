@@ -60,7 +60,7 @@ class BarrelClient extends Component {
         <div className='barrel-header'>
           <h1>FIND A BARREL</h1>
           <h3>
-            Find a blue donation barrel location on the map nearest you. Donate
+            Find a blue donation barrel location on the map. Donate
             today to impact someones life tomorrow.
           </h3>
 

@@ -60,7 +60,7 @@ class WishList extends Component {
         <Paper className="paper">
           <div className="main">
             <Typography>There are two ways to ensure your donations reach Gifts for Seniors.</Typography>
-            <Typography>Shop out gift registeries and ship directly to Gifts for Seniors.</Typography>
+            <Typography>Shop our gift registries and ship directly to Gifts for Seniors.</Typography>
             <Button
               style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
               variant="outlined"
@@ -135,7 +135,7 @@ class WishList extends Component {
               Find Drop off Location
             </Button>
             <Typography style={{width: '70%', marginLeft: '18%'}}>
-              Checkout our senior wish list for our current priority needs.
+              Check out our senior wish list for current priority needs.
               Once you make your donation, Gifts for Seniors will work with agency partners to coordinate the delivery of the gifts
               and social visits to seniors.
             </Typography>
