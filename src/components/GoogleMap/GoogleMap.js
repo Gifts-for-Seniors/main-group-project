@@ -15,7 +15,7 @@ class GoogleMap extends Component {
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
     &q=${street}+${zipcode}&zoom=14`;
     let homeBase = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
-    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=11`;
+    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=10`;
     switch (mapToSearch.street) {
       case "2300 Kennedy Street":
         console.log("RETURNED", searchTerm, mapToSearch);

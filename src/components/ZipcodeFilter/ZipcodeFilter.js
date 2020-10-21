@@ -8,46 +8,54 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
 
   const filterLocations = async (zipcodeInput) => {
     const nearestMatches = [];
-    
+    let zipDictionary = {};
+
     const filteredZips = barrelLocations.filter((location) => {
+      zipDictionary[location.zipcode] = true
       const zipReg = new RegExp('^' + zipcodeInput + '$');
 
       return String(location.zipcode).match(zipReg);
     });
 
-    if (filteredZips.length === 0) {
-      try {
-        await fetch(
-          `/api/barrel-zips/${zipcodeInput}`
-        ).then((res) => {
+    try {
+      await fetch(`/api/barrel-zips/${zipcodeInput}`)
+        .then((res) => {
           return res.json();
-        }).then(postalCodes => {
-          postalCodes = postalCodes.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
+        })
+        .then((postalCodes) => {
+          console.log(postalCodes);
+          if(postalCodes.length === 0) {
+            setFilteredZipcodes(filteredZips);
+          }
+          postalCodes = postalCodes.sort((a, b) =>
+            a.distance > b.distance ? 1 : -1
+          );
           let results = [];
 
           while (postalCodes) {
             let currentZip = postalCodes.shift().zip_code;
-            let filteredResults = barrelLocations.filter((location) => {
-              const zipReg = new RegExp('^' + currentZip + '$');
-  
-              return String(location.zipcode).match(zipReg);
-            });
 
-            results = results.concat(filteredResults);
+            if (zipDictionary[currentZip]) {
+              console.log('Triggered');
+              let filteredResults = barrelLocations.filter((location) => {
+                const zipReg = new RegExp('^' + currentZip + '$');
 
-            if (results.length >= 3) {
-              setFilteredZipcodes(results);
-              return;
+                return String(location.zipcode).match(zipReg);
+              });
+
+              results = results.concat(filteredResults);
+
+              if (results.length >= 3) {
+                setFilteredZipcodes(results);
+                return;
+              }
             }
           }
           setFilteredZipcodes([]);
         });
-      } catch (e) {
-        console.log('ZIPCODE API ERROR: ', e);
-        setFilteredZipcodes([]);
-      }
-    } else {
-      setFilteredZipcodes(filteredZips);
+    } catch (e) {
+      console.log('ZIPCODE API ERROR: ', e);
+      setFilteredZipcodes([]);
     }
   };
 
