@@ -19,6 +19,11 @@ const mapStyles = {
 };
 
 class BarrelClient extends Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
   componentDidMount() {
     let homeBase = {
       street: '2300 Kennedy Street',
@@ -28,9 +33,10 @@ class BarrelClient extends Component {
       type: 'SET_MAP_TO_SEARCH',
       payload: homeBase,
     });
-
     // this.getMap(this.props.state.searchBarrels);
   }
+
+  mapRef = React.createRef();
 
   getBarrelLocationsMap = (barrelLocations) => {
     // console.log('Barrel Locations', barrelLocations);
@@ -81,11 +87,12 @@ class BarrelClient extends Component {
           </div>
         </div>
         <ZipcodeFilter
+          mapRef={this.mapRef}
           state={this.props.state}
           barrelLocations={this.props.state.searchBarrels}
           setBarrelMap={this.setMapToDisplay}
         ></ZipcodeFilter>
-        <GoogleMap state={this.state}></GoogleMap>
+        <GoogleMap mapRef={this.mapRef} state={this.state}></GoogleMap>
         {/* <div className="barrel-locations-header">
           <h2 className="location-header">Barrel Locations Map</h2>
           <p className="pin-info">Click/Touch pin for donation location details</p>

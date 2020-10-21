@@ -10,6 +10,7 @@ router.get('/:zipcode', (req, res) => {
     res.json(resp.data.zip_codes);
   }).catch(e => {
     console.log(e.response);
+    res.status(400).send(new Error(e.toString()));
   });
 });
 

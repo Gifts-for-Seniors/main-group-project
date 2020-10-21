@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import InsetGoogleMap from '../GoogleMap/BarrelInsetGoogleMap';
 import './ZipcodeFilter.css';
 
-const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
+const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap, mapRef }) => {
   const [filteredZipcodes, setFilteredZipcodes] = useState([]);
   const [zipcodeSearch, setZipcodeSearch] = useState(null);
 
@@ -23,9 +23,9 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
           return res.json();
         })
         .then((postalCodes) => {
-          console.log(postalCodes);
-          if(postalCodes.length === 0) {
+          if(Object.keys(postalCodes).length === 0) {
             setFilteredZipcodes(filteredZips);
+            return;
           }
           postalCodes = postalCodes.sort((a, b) =>
             a.distance > b.distance ? 1 : -1
@@ -36,7 +36,6 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
             let currentZip = postalCodes.shift().zip_code;
 
             if (zipDictionary[currentZip]) {
-              console.log('Triggered');
               let filteredResults = barrelLocations.filter((location) => {
                 const zipReg = new RegExp('^' + currentZip + '$');
 
@@ -53,8 +52,12 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
           }
           setFilteredZipcodes([]);
         });
+
     } catch (e) {
       console.log('ZIPCODE API ERROR: ', e);
+        if(filteredZips.length > 0) {
+          setFilteredZipcodes(filteredZips);
+        }
       setFilteredZipcodes([]);
     }
   };
@@ -92,7 +95,10 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
               </p>
               <a
                 style={{ cursor: 'pointer', fontSize: '.80em' }}
-                onClick={() => setBarrelMap(location)}
+                onClick={() => {
+                  setBarrelMap(location);
+                  mapRef.current.scrollIntoView({behavior: 'smooth'});
+                }}
               >
                 SHOW ON MAP BELOW
               </a>
