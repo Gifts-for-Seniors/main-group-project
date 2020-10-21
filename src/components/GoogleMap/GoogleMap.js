@@ -15,13 +15,12 @@ class GoogleMap extends Component {
     let mapSource = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
     &q=${street}+${zipcode}&zoom=14`;
     let homeBase = `https://www.google.com/maps/embed/v1/place?key=${googlekey}
-    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=11`;
+    &q=Gifts for Seniors 2300 Kennedy Street NE Suite 40 Mpls MN 55413&zoom=10`;
     switch (mapToSearch.street) {
       case "2300 Kennedy Street":
-        console.log("RETURNED", searchTerm, mapToSearch);
         return (
           // RENDER A DEFAULT MAP WITH GIFTS FOR SENIORS LOCATION
-          <div className="map">
+          <div ref={this.props.mapRef} className="map">
             <iframe
               className="maperoo"
               width="auto"
@@ -37,7 +36,7 @@ class GoogleMap extends Component {
       default:
         return (
           // RENDER A MAP WITH EITHER THE FIRST MAP IN SEARCH-QUERY OR FROM BarrelClient Barrel CLICK
-          <div className="map">
+          <div ref={this.props.mapRef} className="map">
             <iframe
               className="maperoo"
               width="auto"

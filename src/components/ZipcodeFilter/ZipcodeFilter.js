@@ -2,52 +2,63 @@ import React, { useState, useEffect } from 'react';
 import InsetGoogleMap from '../GoogleMap/BarrelInsetGoogleMap';
 import './ZipcodeFilter.css';
 
-const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
+const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap, mapRef }) => {
   const [filteredZipcodes, setFilteredZipcodes] = useState([]);
   const [zipcodeSearch, setZipcodeSearch] = useState(null);
 
   const filterLocations = async (zipcodeInput) => {
     const nearestMatches = [];
-    
+    let zipDictionary = {};
+
     const filteredZips = barrelLocations.filter((location) => {
+      zipDictionary[location.zipcode] = true
       const zipReg = new RegExp('^' + zipcodeInput + '$');
 
       return String(location.zipcode).match(zipReg);
     });
 
-    if (filteredZips.length === 0) {
-      try {
-        await fetch(
-          `/api/barrel-zips/${zipcodeInput}`
-        ).then((res) => {
+    try {
+      await fetch(`/api/barrel-zips/${zipcodeInput}`)
+        .then((res) => {
           return res.json();
-        }).then(postalCodes => {
-          postalCodes = postalCodes.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
+        })
+        .then((postalCodes) => {
+          if(Object.keys(postalCodes).length === 0) {
+            setFilteredZipcodes(filteredZips);
+            return;
+          }
+          postalCodes = postalCodes.sort((a, b) =>
+            a.distance > b.distance ? 1 : -1
+          );
           let results = [];
 
           while (postalCodes) {
             let currentZip = postalCodes.shift().zip_code;
-            let filteredResults = barrelLocations.filter((location) => {
-              const zipReg = new RegExp('^' + currentZip + '$');
-  
-              return String(location.zipcode).match(zipReg);
-            });
 
-            results = results.concat(filteredResults);
+            if (zipDictionary[currentZip]) {
+              let filteredResults = barrelLocations.filter((location) => {
+                const zipReg = new RegExp('^' + currentZip + '$');
 
-            if (results.length >= 3) {
-              setFilteredZipcodes(results);
-              return;
+                return String(location.zipcode).match(zipReg);
+              });
+
+              results = results.concat(filteredResults);
+
+              if (results.length >= 3) {
+                setFilteredZipcodes(results);
+                return;
+              }
             }
           }
           setFilteredZipcodes([]);
         });
-      } catch (e) {
-        console.log('ZIPCODE API ERROR: ', e);
-        setFilteredZipcodes([]);
-      }
-    } else {
-      setFilteredZipcodes(filteredZips);
+
+    } catch (e) {
+      console.log('ZIPCODE API ERROR: ', e);
+        if(filteredZips.length > 0) {
+          setFilteredZipcodes(filteredZips);
+        }
+      setFilteredZipcodes([]);
     }
   };
 
@@ -84,7 +95,10 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
               </p>
               <a
                 style={{ cursor: 'pointer', fontSize: '.80em' }}
-                onClick={() => setBarrelMap(location)}
+                onClick={() => {
+                  setBarrelMap(location);
+                  mapRef.current.scrollIntoView({behavior: 'smooth'});
+                }}
               >
                 SHOW ON MAP BELOW
               </a>
