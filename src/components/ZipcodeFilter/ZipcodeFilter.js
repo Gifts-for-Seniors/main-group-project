@@ -17,31 +17,38 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap }) => {
 
     if (filteredZips.length === 0) {
       try {
-        let { postalCodes } = await fetch(
-          `http://api.geonames.org/findNearbyPostalCodesJSON?postalcode=${zipcodeInput}&country=US&radius=10&username=Jasonn318`
-        ).then((res) => res.json());
+        await fetch(
+          `/api/barrel-zips/${zipcodeInput}`
+        ).then((res) => {
+          return res.json();
+        }).then(postalCodes => {
+          postalCodes = postalCodes.sort((a, b) => (a.distance > b.distance) ? 1 : -1);
+          let results = [];
+
+          while (postalCodes) {
+            let currentZip = postalCodes.shift().zip_code;
+            let filteredResults = barrelLocations.filter((location) => {
+              const zipReg = new RegExp('^' + currentZip + '$');
   
-        while (postalCodes.length > 0) {
-          let currentZip = postalCodes.shift().postalCode;
-          let filteredResults = barrelLocations.filter((location) => {
-            const zipReg = new RegExp('^' + currentZip + '$');
-  
-            return String(location.zipcode).match(zipReg);
-          });
-  
-          if(filteredResults.length > 0) {
-            setFilteredZipcodes(filteredResults)
-            return;
+              return String(location.zipcode).match(zipReg);
+            });
+
+            results = results.concat(filteredResults);
+
+            if (results.length >= 3) {
+              setFilteredZipcodes(results);
+              return;
+            }
           }
-        }
-        setFilteredZipcodes([]);
-      } catch {
+          setFilteredZipcodes([]);
+        });
+      } catch (e) {
+        console.log('ZIPCODE API ERROR: ', e);
         setFilteredZipcodes([]);
       }
     } else {
       setFilteredZipcodes(filteredZips);
     }
-
   };
 
   return (

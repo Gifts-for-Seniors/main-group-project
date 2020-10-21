@@ -9,6 +9,7 @@ const passport = require('./strategies/user.strategy');
 const path = require('path');
 
 // Route includes
+const barrelZipCodes = require('./routes/barrel-api-zip-codes');
 const userRouter = require('./routes/user.router');
 const wishlistRouter = require('./routes/wishlist.router');
 const barrelCreate = require('./routes/barrel-create.router');
@@ -28,6 +29,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 /* Routes */
+app.use('/api/barrel-zips', barrelZipCodes);
 app.use('/api/user', userRouter);
 app.use('/api/wishlist', wishlistRouter);
 app.use('/api/barrel-update', barrelUpdate);
