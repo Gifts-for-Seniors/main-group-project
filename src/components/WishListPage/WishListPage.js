@@ -59,9 +59,9 @@ class WishList extends Component {
         <Gallery />
         <Paper className="paper">
           <div className="main">
-            <Typography>There are two ways to ensure your donations reach Gifts for Seniors.</Typography>
-            <Typography>Shop our gift registries and ship directly to Gifts for Seniors.</Typography>
-            <Button
+            <Typography style={{fontSize: 15}}><i><b>There are two ways to ensure your donations reach Gifts for Seniors.</b></i></Typography>
+            <Typography style={{fontSize: 15}}>Shop our gift registries and ship directly to Gifts for Seniors.</Typography>
+            {/* <Button
               style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
               variant="outlined"
               className="button"
@@ -70,8 +70,48 @@ class WishList extends Component {
               }}
             >
               Donate Online
-            </Button>
-            <Dialog onClose={this.handleClose} maxWidth="lg" open={this.state.open}>
+            </Button> */}
+            <Grid container>
+                  <Grid item xs={2}></Grid>                 
+                  <Grid item xs={3}>
+                    <Button
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToAmazon()
+                      }}
+                      >
+                      Amazon Smile
+                    </Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button                                         
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToBestBuy()
+                      }}
+                      >
+                      Best Buy
+                    </Button>
+                  </Grid>
+                  <Grid item xs={3}>
+                    <Button                      
+                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
+                      variant="outlined"
+                      className="button"
+                      onClick={() => {
+                        this.redirectToTarget()
+                      }}
+                      >
+                      Target
+                  </Button>
+                  </Grid>
+                </Grid>
+
+            {/* <Dialog onClose={this.handleClose} maxWidth="lg" open={this.state.open}>
               <DialogTitle onClose={this.handleClose}>
                 Online Retailers and Shopping List
               </DialogTitle>
@@ -128,8 +168,8 @@ class WishList extends Component {
                   OK
                 </Button>
               </DialogActions>
-            </Dialog>
-            <Typography>Locate a donation barrel and drop off gifts in your community.</Typography>
+            </Dialog> */}
+            <Typography style={{fontSize: 15}}>Locate a donation barrel and drop off gifts in your community.</Typography>
             <Button
               style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
               variant="outlined"
@@ -138,7 +178,7 @@ class WishList extends Component {
             >
               Find Drop off Location
             </Button>
-            <Typography style={{width: '70%', marginLeft: '18%'}}>
+            <Typography style={{width: '70%', marginLeft: '18%', fontSize: 15}}>
               Check out our senior wish list for current priority needs.
               Once you make your donation, Gifts for Seniors will work with agency partners to coordinate the delivery of the gifts
               and social visits to seniors.
@@ -170,8 +210,8 @@ class WishList extends Component {
                 </Button>
               </DialogActions>
             </Dialog>
-            <Typography>Your donation is greatly appreciated.</Typography>
-            <Typography>Thank you for helping Gifts for Seniors provide life-affirming gifts for isolated older adults in need.</Typography>
+            <Typography style={{fontSize: 15}}>Your donation is greatly appreciated.</Typography>
+            <Typography style={{fontSize: 15}}>Thank you for helping Gifts for Seniors provide life-affirming gifts for isolated older adults in need.</Typography>
           </div>
         </Paper>
       </div>
