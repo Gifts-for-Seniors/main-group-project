@@ -75,9 +75,9 @@ class WishList extends Component {
                   <Grid item xs={2}></Grid>                 
                   <Grid item xs={3}>
                     <Button
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
-                      variant="outlined"
-                      className="button"
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToAmazon()
                       }}
@@ -87,9 +87,9 @@ class WishList extends Component {
                   </Grid>
                   <Grid item xs={3}>
                     <Button                                         
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
-                      variant="outlined"
-                      className="button"
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToBestBuy()
                       }}
@@ -99,9 +99,9 @@ class WishList extends Component {
                   </Grid>
                   <Grid item xs={3}>
                     <Button                      
-                      style={{backgroundColor: 'rgb(54, 108, 217)', color:'#fff', marginBottom: 10, marginTop: 10}}
-                      variant="outlined"
-                      className="button"
+                      className="app-button app-link"
+                      size="large"
+                      color="primary"
                       onClick={() => {
                         this.redirectToTarget()
                       }}
