@@ -37,15 +37,15 @@ class WishList extends Component {
   }
 
   redirectToAmazon = () => {
-    window.open('https://smile.amazon.com', '_blank')
+    window.open('https://smile.amazon.com/gp/clpf/ref=smi_se_clpf_rd_clpf', '_blank')
   }
 
   redirectToBestBuy = () => {
-    window.open('https://www.bestbuy.com', '_blank')
+    window.open('https://www.myregistry.com/wishlist/gfs-seniors-minneapolis-mn/2561305', '_blank')
   }
 
   redirectToTarget = () => {
-    window.open('https://www.target.com', '_blank')
+    window.open('https://www.target.com/gift-registry/giftgiver?registryId=07082930f60f4a85986b61da26dc3ea8&lnk=registry_custom_url', '_blank')
   }
 
   redirectToMap = () => {
