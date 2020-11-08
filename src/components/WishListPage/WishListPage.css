@@ -30,6 +30,9 @@ ul {
   background-color: rgb(54, 108, 217) !important;
   color: rgb(255, 255, 255) !important;
   width: 150px !important;
+  height: 35px;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -43,6 +46,7 @@ ul {
     text-decoration: underline !important;
     cursor: pointer;
     width: auto !important;
+    margin-top: 10px !important;
   }
 }
 
