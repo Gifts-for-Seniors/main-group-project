@@ -13,8 +13,8 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap, mapRef }) => {
     const filteredZips = barrelLocations.filter((location) => {
       zipDictionary[location.zipcode] = true
       const zipReg = new RegExp('^' + zipcodeInput + '$');
-
-      return String(location.zipcode).match(zipReg);
+      
+      return String(location.zipcode).match(zipReg) && location.status && location.public;
     });
 
     try {
@@ -39,7 +39,7 @@ const ZipcodeFilter = ({ barrelLocations, state, setBarrelMap, mapRef }) => {
               let filteredResults = barrelLocations.filter((location) => {
                 const zipReg = new RegExp('^' + currentZip + '$');
 
-                return String(location.zipcode).match(zipReg);
+                return String(location.zipcode).match(zipReg) && location.status && location.public;
               });
 
               results = results.concat(filteredResults);
